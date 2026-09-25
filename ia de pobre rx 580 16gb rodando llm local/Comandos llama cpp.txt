@@ -1,0 +1,12 @@
+llama-server.exe -m "models\Qwen3.5-9B-Q4_K_M.gguf" -ngl 99 -c 32800 -np 1 --chat-template chatml --host 127.0.0.1 --port 8081 --api-key sk-local
+
+llama-server.exe -m "models\Qwen3.5-9B-Q8_0.gguf" -ngl 99 -c 32800 -np 1 --chat-template chatml --host 127.0.0.1 --port 8081 --api-key sk-local
+
+llama-server.exe -m "models\DeepSeek-Coder-V2-Lite-Instruct-Q4_K_M.gguf" -ngl 99 -c 32800 -np 1 --chat-template chatml --host 127.0.0.1 --port 8081 --api-key sk-local
+	Estour VRAM
+	
+llama-server.exe -m "models\DeepSeek-Coder-V2-Lite-Instruct-Q4_K_M.gguf" -ngl 99 -c 16192 -np 1 --host 127.0.0.1 --port 8081 --api-key sk-local
+	14gb de VRAM
+	
+
+llama-server.exe -m "models\Ornith-1.5-9B-Q8_0.gguf" -ngl 99 -c 16192 -np 1 --host 127.0.0.1 --port 8081 --api-key sk-local

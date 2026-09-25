@@ -1,0 +1,29 @@
+RX 580 16GB - Task Manager
+
+Qwen3.5-9B-Q4_K_M
+	Entendimento e inicio: 49 segundos, tokens: 34,5	
+	Tokens saida: 8,35
+	Tempo total: 17 minutos e 45 segundos
+	
+	Resultado: Não atendeu item 7, local storage;
+	
+Qwen3.5-9B-Q8_0.gguf
+	Entendimento e inicio: 8 segundos, tokens: 21,79
+	Tokens saida: 9,59
+	Tempo total: 4 minutos e 49 segundos
+	
+	Resultado: Não gravou index.html, Mas ateneu todos os requisitos e ficou mais bonito;
+	
+DeepSeek-Coder-V2-Lite-Instruct-Q4_K_M.gguf
+	Entendimento e inicio: 31 segundos, tokens: 126,62
+	Tokens saida:  13,71
+	Tempo total: 2 minutos e 25 segundos
+	
+	Resultado: Não gravou index.html, CSS feio, mas funcinou;
+	
+Ornith-1.5-9B-Q8_0.gguf
+	Entendimento e inicio: 71 segundos, tokens: 49,35
+	Tokens saida:  7,24
+	Tempo total: 6 minutos e 45 segundos
+	
+	Resultado: Não gravou index.html, e não funcionou

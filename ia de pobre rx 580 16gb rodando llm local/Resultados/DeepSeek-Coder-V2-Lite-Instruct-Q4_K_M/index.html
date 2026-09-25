@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Manager</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            text-align: center;
+            padding: 50px;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            background: white;
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 5px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .completed {
+            text-decoration: line-through;
+            color: gray;
+        }
+        input {
+            padding: 5px;
+            margin-right: 10px;
+        }
+        button {
+            padding: 5px 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Task Manager</h1>
+    <div id="task-container">
+        <ul id="task-list">
+            <!-- Tasks will be added here -->
+        </ul>
+        <div>
+            <input type="text" id="new-task" placeholder="Add a new task">
+            <button id="add-task">Add Task</button>
+            <button id="clear-all">Clear All</button>
+        </div>
+        <div id="status-bar">
+            <span id="task-count">Total: 0</span> | <span id="active-count">Active: 0</span> | <span id="completed-count">Completed: 0</span>
+        </div>
+    </div>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // Load tasks from localStorage
+        let tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+        let taskList = document.getElementById('task-list');
+        let taskCount = document.getElementById('task-count');
+        let activeCount = document.getElementById('active-count');
+        let completedCount = document.getElementById('completed-count');
+
+        // Render tasks
+        tasks.forEach(task => {
+            addTaskToList(task, taskList);
+        });
+
+        // Update counters
+        updateCounters();
+
+        // Add task button click handler
+        document.getElementById('add-task').addEventListener('click', () => {
+            let newTaskText = document.getElementById('new-task').value;
+            if (newTaskText) {
+                let newTask = { text: newTaskText, completed: false };
+                tasks.push(newTask);
+                addTaskToList(newTask, taskList);
+                updateCounters();
+                saveTasks();
+                document.getElementById('new-task').value = '';
+            }
+        });
+
+        // Clear all button click handler
+        document.getElementById('clear-all').addEventListener('click', () => {
+            tasks = [];
+            taskList.innerHTML = '';
+            updateCounters();
+            saveTasks();
+        });
+
+        function addTaskToList(task, list) {
+            let li = document.createElement('li');
+            li.textContent = task.text;
+            li.classList.toggle('completed', task.completed);
+            li.addEventListener('click', () => {
+                task.completed = !task.completed;
+                li.classList.toggle('completed');
+                updateCounters();
+                saveTasks();
+            });
+            let deleteButton = document.createElement('button');
+            deleteButton.textContent = '✕';
+            deleteButton.addEventListener('click', () => {
+                tasks = tasks.filter(t => t !== task);
+                list.removeChild(li);
+                updateCounters();
+                saveTasks();
+            });
+            li.appendChild(deleteButton);
+            list.appendChild(li);
+        }
+
+        function updateCounters() {
+            let activeTasks = tasks.filter(task => !task.completed);
+            activeCount.textContent = `Active: ${activeTasks.length}`;
+            completedCount.textContent = `Completed: ${tasks.filter(task => task.completed).length}`;
+            taskCount.textContent = `Total: ${tasks.length}`;
+        }
+
+        function saveTasks() {
+            localStorage.setItem('tasks', JSON.stringify(tasks));
+        }
+    });
+</script>
+</body>
+</html>
