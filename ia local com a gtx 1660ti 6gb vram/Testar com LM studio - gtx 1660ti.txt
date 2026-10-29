@@ -1,0 +1,19 @@
+Testar com LM studio - gtx 1660ti
+
+unsloth/gemma-3-4b-it-GGUF 
+	* Q4_K_S
+	* Uso geral:
+	
+unsloth/Qwen2.5-VL-3B-Instruct-GGUF
+	* Q4_K_S
+	- Analisar fotos e prints
+	
+	
+##############################################
+	
+unsloth/Qwen3.5-9B-GGUF
+	* Q3_K_S
+	* Uso para codificação
+	
+
+	
