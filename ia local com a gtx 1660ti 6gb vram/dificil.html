@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kanban Board</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        /* Dark Theme Styles */
+        body {
+            background-color: #171f23;
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            overflow: hidden; /* Prevent scrollbars on larger screens */
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            max-width: 800px;
+            margin: 20px auto;
+        }
+
+        /* Glassmorphism Columns */
+        .column {
+            background-color: rgba(255, 255, 255, 0.1); /* Semi-transparent background */
+            border: 1px solid #37474f;
+            margin-bottom: 20px;
+            overflow-y: auto; /* Enable vertical scrolling */
+        }
+
+        .column header {
+            background-color: #37474f;
+            color: white;
+            padding: 10px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* Card Styles */
+        .card {
+            background-color: #37474f;
+            border: 1px solid #5c636f;
+            padding: 10px;
+            margin-bottom: 5px;
+            cursor: move; /* Indicate draggable */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .card header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 5px;
+            font-size: 0.8em;
+            color: #aaa;
+        }
+
+        .card .title {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .card .description {
+            background-color: #3e444f;
+            padding: 8px;
+            border-radius: 4px;
+            max-height: 150px;
+            overflow: auto;
+        }
+
+        .card .priority {
+            font-style: italic;
+            color: #e9c46a; /* Green */
+        }
+
+        .card .priority.amber {
+            color: #ffb74d; /* Amber */
+        }
+
+        .card .priority.red {
+            color: #f44336; /* Red */
+        }
+
+        .card .due-date {
+            font-size: 0.8em;
+            color: #aaa;
+            margin-top: 5px;
+        }
+
+        .card .due-date.overdue {
+            color: red;
+            font-weight: bold;
+        }
+
+        .card .due-date i {
+            color: red;
+        }
+
+        .card .delete {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            background-color: rgba(255, 46, 46, 0.7); /* Dark Red */
+            color: white;
+            border-radius: 3px;
+            padding: 2px 5px;
+            cursor: pointer;
+        }
+
+        /* Drop Zone Indicator */
+        .column:not(.done) .drop-zone {
+            background-color: rgba(255, 255, 255, 0.1); /* Same as column background */
+            width: 100%;
+            height: 100%;
+            position: relative;
+        }
+
+        /* Statistics Bar */
+        .stats-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: #37474f;
+            padding: 5px;
+            color: white;
+            text-align: right;
+            font-size: 0.9em;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Kanban Board</h1>
+
+        <!-- Columns -->
+        <div class="column" id="startColumn">
+            <h2>Start</h2>
+            <button id="add-column">+</button>
+        </div>
+        <div class="column" id="toDoColumn">
+            <h2>To Do</h2>
+        </div>
+        <div class="column" id="inProgressColumn">
+            <h2>In Progress</h2>
+        </div>
+        <div class="column" id="doneColumn">
+            <h2>Done</h2>
+        </div>
+
+        <!-- Card Form (Inline) -->
+        <div id="card-form" style="display: none;">
+            <h3>Add a Card</h3>
+            <input type="text" placeholder="Title" id="card-title">
+            <select id="card-priority">
+                <option value="low">Low</option>
+                <option value="medium">Medium</option>
+                <option value="high">High</option>
+            </select>
+            <label for="card-due-date">Due Date:</label>
+            <input type="date" id="card-due-date">
+            <textarea id="card-description"></textarea>
+            <button id="save-card">Save</button>
+            <button id="cancel-card">Cancel</button>
+        </div>
+
+        <!-- Cards -->
+        <div id="cards-container"></div>
+
+        <!-- Statistics Bar -->
+        <div class="stats-bar">
+            Total: <span id="total-cards">0</span>, Overdue: <span id="overdue-cards">0</span>, Done: <span id="done-count">0</span>, Completion Rate: <span id="completion-rate">%</span>
+        </div>
+    </div>
+
+    <script>
+        // JavaScript Code (State, Rendering, Drag & Drop, Persistence)
+        const columns = {
+            start: document.getElementById('startColumn'),
+            todo: document.getElementById('toDoColumn'),
+            inprogress: document.getElementById('inProgressColumn'),
+            done: document.getElementById('doneColumn')
+        };
+
+        const cardsContainer = document.getElementById('cards-container');
+        const cardForm = document.getElementById('card-form');
+        const cardTitleInput = document.getElementById('card-title');
+        const cardPrioritySelect = document.getElementById('card-priority');
+        const cardDueDateInput = document.getElementById('card-due-date');
+        const cardDescriptionTextarea = document.getElementById('card-description');
+        const saveCardButton = document.getElementById('save-card');
+        const cancelCardButton = document.getElementById('cancel-card');
+
+        let cards = []; // Array to store card data
+        let columnOrder = ['start', 'todo', 'inprogress', 'done']; // Order of columns
+
+        // Load from localStorage on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedState = localStorage.getItem('kanban-state');
+            if (savedState) {
+                cards = JSON.parse(savedState);
+                renderCards();
+                renderColumns();
+                updateStatistics();
+            } else {
+                // Initialize with example cards
+                initializeBoard();
+            }
+        });
+
+        function initializeBoard() {
+            cards = [
+                { title: 'Design UI', priority: 'medium', dueDate: new Date('2024-12-31'), description: 'Create the user interface design.', column: 'start' },
+                { title: 'Implement Login', priority: 'high', dueDate: new Date('2024-12-28'), description: 'Develop the login functionality.', column: 'todo' },
+                { title: 'Write Tests', priority: 'medium', dueDate: new Date('2024-12-30'), description: 'Create unit tests for the core features.', column: 'inprogress' }
+            ];
+            renderCards();
+            renderColumns();
+            updateStatistics();
+        }
+
+        function renderCards() {
+            cardsContainer.innerHTML = ''; // Clear existing cards
+            cards.forEach(card => {
+                const cardElement = document.createElement('div');
+                cardElement.classList.add('card');
+                cardElement.draggable = true;
+
+                const titleElement = document.createElement('div');
+                titleElement.classList.add('title');
+                titleElement.textContent = card.title;
+                cardElement.appendChild(titleElement);
+
+                const priorityElement = document.createElement('span');
+                priorityElement.classList.add('priority');
+                priorityElement.textContent = card.priority;
+                cardElement.appendChild(priorityElement);
+
+                if (card.description) {
+                    const descriptionElement = document.createElement('div');
+                    descriptionElement.classList.add('description');
+                    descriptionElement.innerHTML = `<span>${card.description}</span>`;
+                    cardElement.appendChild(descriptionElement);
+                }
+
+                const dueDateElement = document.createElement('div');
+                dueDateElement.classList.add('due-date');
+                if (card.dueDate && card.dueDate < new Date()) {
+                    dueDateElement.classList.add('overdue');
+                    dueDateElement.innerHTML = `⚠️ ${card.dueDate}`;
+                } else {
+                    dueDateElement.textContent = card.dueDate ? card.dueDate : 'No Due Date';
+                }
+                cardElement.appendChild(dueDateElement);
+
+                const deleteButton = document.createElement('button');
+                deleteButton.classList.add('delete');
+                deleteButton.textContent = 'Delete';
+                cardElement.appendChild(deleteButton);
+
+                cardElement.addEventListener('dragstart', dragStart);
+                cardElement.addEventListener('dragend', dragEnd);
+
+                cardsContainer.appendChild(cardElement);
+            });
+        }
+
+        function renderColumns() {
+            columnOrder.forEach(columnName => {
+                const column = columns[columnName];
+                if (column) {
+                    column.innerHTML = ''; // Clear existing cards in the column
+                    column.style.display = 'flex'; // Make column scrollable
+                }
+            });
+        }
+
+        function dragStart(event) {
+            const card = event.target;
+            card.classList.add('dragging');
+            event.dataTransfer.setData('text/plain', JSON.stringify({ id: card.id, column: columnOrder[columnOrder.indexOf(card.parentNode.id)] }));
+        }
+
+        function dragEnd(event) {
+            const card = event.target;
+            card.classList.remove('dragging');
+        }
+
+        function drop(event) {
+            const cardData = JSON.parse(event.dataTransfer.getData('text/plain'));
+            const targetColumn = columns[columnOrder[cardData.column]];
+
+            if (targetColumn && columnOrder.indexOf(targetColumn.id) !== cardData.column) {
+                const draggedCard = document.getElementById(cardData.id);
+                targetColumn.insertBefore(draggedCard, targetColumn.firstChild);
+                updateCardPosition(cardData.id);
+            }
+        }
+
+        function updateCardPosition(cardId) {
+            cards.forEach(card => {
+                if (card.id === cardId) {
+                    card.column = columnOrder[columnOrder.indexOf(card.parentNode.id)];
+                }
+            });
+        }
+
+
+        function addCard() {
+            const title = cardTitleInput.value;
+            const priority = cardPrioritySelect.value;
+            const dueDate = cardDueDateInput.value;
+            const description = cardDescriptionTextarea.value;
+
+            if (!title) {
+                alert('Please enter a card title.');
+                return;
+            }
+
+            const newCard = {
+                id: Date.now(), // Unique ID
+                title,
+                priority,
+                dueDate: dueDate ? new Date(dueDate) : null,
+                description,
+                column: columnOrder[columnOrder.indexOf(cardForm.parentNode.id)]
+            };
+
+            cards.push(newCard);
+            renderCards();
+            saveState();
+            updateStatistics();
+            closeCardForm();
+        }
+
+        function saveState() {
+            localStorage.setItem('kanban-state', JSON.stringify(cards));
+        }
+
+        saveCardButton.addEventListener('click', () => addCard());
+        cancelCardButton.addEventListener('click', closeCardForm);
+
+
+        function closeCardForm() {
+            cardForm.style.display = 'none';
+        }
+
+        function openCardForm() {
+            cardForm.style.display = 'block';
+        }
+
+        // Add Column Functionality
+        const addColumnButton = document.getElementById('add-column');
+        addColumnButton.addEventListener('click', () => {
+            const newColumnName = prompt("Enter the name for the new column:");
+            if (newColumnName) {
+                const newColumnId = `column${columnOrder.length}`; // Generate a unique ID
+                const newColumnElement = document.createElement('div');
+                newColumnElement.classList.add('column');
+                newColumnElement.id = newColumnId;
+
+                const headerText = document.createElement('header');
+                headerText.textContent = newColumnName;
+                newColumnElement.appendChild(headerText);
+
+                columns[newColumnName] = newColumnElement;
+                renderColumns();
+                saveState();
+            }
+        });
+
+
+        // Filtering and Search
+        const searchBar = document.getElementById('search-bar');
+        searchBar.addEventListener('input', () => {
+            const searchTerm = searchBar.value.toLowerCase();
+            const filteredCards = cards.filter(card =>
+                card.title.toLowerCase().includes(searchTerm) || card.description.toLowerCase().includes(searchTerm)
+            );
+            renderCardsForSearch(filteredCards);
+        });
+
+        function renderCardsForSearch(cardsToRender) {
+            cardsContainer.innerHTML = '';
+            cardsToRender.forEach(card => {
+                const cardElement = document.createElement('div');
+                cardElement.classList.add('card');
+                cardElement.draggable = true;
+
+                const titleElement = document.createElement('div');
+                titleElement.classList.add('title');
+                titleElement.textContent = card.title;
+                cardElement.appendChild(titleElement);
+
+                // ... (Rest of the card rendering code - same as renderCards)
+            });
+        }
+
+
+        function updateStatistics() {
+            const totalCards = cards.length;
+            const overdueCards = cards.filter(card => card.dueDate && new Date(card.dueDate) < new Date()).length;
+            const doneCount = cards.filter(card => card.column === 'done').length;
+
+            const completionRate = (doneCount / totalCards) * 100;
+
+            document.getElementById('total-cards').textContent = totalCards;
+            document.getElementById('overdue-cards').textContent = overdueCards;
+            document.getElementById('done-count').textContent = doneCount;
+            document.getElementById('completion-rate').textContent = completionRate + '%';
+        }
+
+    </script>
+</body>
+</html>

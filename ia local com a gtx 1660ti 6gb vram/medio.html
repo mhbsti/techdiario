@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Real-Time Sorting Visualizer</title>
+    <style>
+        body {
+            background-color: #121212;
+            font-family: sans-serif;
+            margin: 0;
+            overflow: hidden; /* Prevent scrollbars */
+        }
+
+        #container {
+            display: flex;
+            width: 100%;
+            height: 90vh;
+        }
+
+        #array-container {
+            flex: 2;
+            background-color: #333;
+            padding: 10px;
+        }
+
+        .bar {
+            height: 20px;
+            margin: 5px;
+            display: flex;
+            align-items: center;
+        }
+
+        .bar .value {
+            color: white;
+            font-weight: bold;
+        }
+
+        #algorithm-controls {
+            flex: 1;
+            padding: 10px;
+        }
+
+        #stats-panel {
+            flex: 1;
+            background-color: #444;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        button {
+            background-color: #666;
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            margin: 5px;
+            cursor: pointer;
+            border-radius: 3px;
+        }
+
+        button:hover {
+            background-color: #888;
+        }
+
+        #speed-slider, #size-slider {
+            width: 200px;
+            margin: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div id="array-container">
+            <!-- Array bars will be dynamically added here -->
+        </div>
+        <div id="algorithm-controls">
+            <h2>Algorithm: <span id="selected-algorithm">Bubble Sort</span></h2>
+            <label for="algorithm-select">Select Algorithm:</label>
+            <select id="algorithm-select">
+                <option value="bubble">Bubble Sort</option>
+                <option value="insertion">Insertion Sort</option>
+                <option value="selection">Selection Sort</option>
+                <option value="merge">Merge Sort</option>
+                <option value="quick">Quick Sort</option>
+                <option value="heap">Heap Sort</option>
+            </select>
+
+            <label for="speed-slider">Animation Speed:</label>
+            <input type="range" id="speed-slider" min="0.1" max="5" value="1" step="0.1">
+
+            <label for="size-slider">Array Size:</label>
+            <input type="range" id="size-slider" min="10" max="200" value="100" step="10">
+
+            <button id="shuffle-reset">Shuffle & Reset</button>
+            <button id="start-pause">Start / Pause</button>
+        </div>
+        <div id="stats-panel">
+            <h3>Statistics</h3>
+            <p>Algorithm: <span id="algorithm-name"></span></p>
+            <p>Comparisons: <span id="comparisons">0</span></p>
+            <p>Swaps: <span id="swaps">0</span></p>
+            <p>Time Elapsed: <span id="time-elapsed">0.00ms</span></p>
+        </div>
+    </div>
+
+    <script>
+        const arrayContainer = document.getElementById('array-container');
+        const algorithmSelect = document.getElementById('algorithm-select');
+        const speedSlider = document.getElementById('speed-slider');
+        const sizeSlider = document.getElementById('size-slider');
+        const shuffleResetButton = document.getElementById('shuffle-reset');
+        const startPauseButton = document.getElementById('start-pause');
+        const statsPanel = document.getElementById('stats-panel');
+        const algorithmNameSpan = document.getElementById('algorithm-name');
+        const comparisonsSpan = document.getElementById('comparisons');
+        const swapsSpan = document.getElementById('swaps');
+        const timeElapsedSpan = document.getElementById('time-elapsed');
+
+        let array = [];
+        let animationSpeed = 1; // Default speed
+        let isRunning = false;
+        let startTime;
+
+        function createBar(value) {
+            return document.createElement('div');
+            //bar.classList.add('bar');
+            //bar.style.height = '20px';
+            //bar.style.margin = '5px';
+            //bar.style.backgroundColor = '#eee';
+        }
+
+        function generateArray(size) {
+            array = [];
+            for (let i = 0; i < size; i++) {
+                array.push(Math.floor(Math.random() * 100)); // Random values between 0 and 99
+            }
+        }
+
+        function renderArray() {
+            arrayContainer.innerHTML = '';
+            for (let i = 0; i < array.length; i++) {
+                const bar = document.createElement('div');
+                bar.classList.add('bar');
+                bar.style.height = '20px';
+                bar.style.margin = '5px';
+
+                const valueSpan = document.createElement('span');
+                valueSpan.textContent = array[i];
+                valueSpan.classList.add('value');
+                bar.appendChild(valueSpan);
+                arrayContainer.appendChild(bar);
+            }
+        }
+
+
+        function bubbleSort() {
+            let comparisons = 0;
+            let swaps = 0;
+            const n = array.length;
+
+            for (let i = 0; i < n - 1; i++) {
+                for (let j = 0; j < n - i - 1; j++) {
+                    comparisons++;
+                    if (array[j] > array[j + 1]) {
+                        // Swap elements
+                        const temp = array[j];
+                        array[j] = array[j + 1];
+                        array[j + 1] = temp;
+                        swaps++;
+                    }
+                }
+            }
+
+            return { comparisons, swaps };
+        }
+
+
+        function insertionSort() {
+            let comparisons = 0;
+            let swaps = 0;
+            const n = array.length;
+
+            for (let i = 1; i < n; i++) {
+                let key = array[i];
+                let j = i - 1;
+
+                while (j >= 0 && array[j] > key) {
+                    comparisons++;
+                    array[j + 1] = array[j];
+                    j--;
+                }
+                swaps += (i-j);
+                array[j + 1] = key;
+            }
+
+            return { comparisons, swaps };
+        }
+
+
+        function selectionSort() {
+            let comparisons = 0;
+            let swaps = 0;
+            const n = array.length;
+
+            for (let i = 0; i < n - 1; i++) {
+                let minIndex = i;
+                for (let j = i + 1; j < n; j++) {
+                    comparisons++;
+                    if (array[j] < array[minIndex]) {
+                        minIndex = j;
+                    }
+                }
+
+                if (minIndex !== i) {
+                    // Swap elements
+                    const temp = array[i];
+                    array[i] = array[minIndex];
+                    array[minIndex] = temp;
+                    swaps++;
+                }
+            }
+
+            return { comparisons, swaps };
+        }
+
+
+        function mergeSort() {
+            let comparisons = 0;
+            let swaps = 0;
+            const n = array.length;
+
+            if (n <= 1) return { comparisons, swaps };
+
+            const mid = Math.floor(n / 2);
+            const left = array.slice(0, mid);
+            const right = array.slice(mid);
+
+            let lCounts = mergeSort(left);
+            let rCounts = mergeSort(right);
+
+            comparisons += lCounts.comparisons + rCounts.comparisons;
+            swaps += lCounts.swaps + rCounts.swaps;
+
+            return { comparisons, swaps };
+        }
+
+
+        function quickSort() {
+            let comparisons = 0;
+            let swaps = 0;
+            const n = array.length;
+
+            if (n <= 1) return { comparisons, swaps };
+
+            const pivotIndex = Math.floor(Math.random() * n);
+            const pivot = array[pivotIndex];
+
+            const left = [];
+            const right = [];
+
+            for (let i = 0; i < n; i++) {
+                if (i !== pivotIndex) {
+                    comparisons++;
+                    if (array[i] < pivot) {
+                        left.push(array[i]);
+                    } else {
+                        right.push(array[i]);
+                    }
+                }
+            }
+
+            let qCounts = quickSort(left);
+            let rCounts = quickSort(right);
+
+            comparisons += qCounts.comparisons + rCounts.comparisons;
+            swaps += qCounts.swaps + rCounts.swaps;
+
+            return { comparisons, swaps };
+        }
+
+
+        function heapSort() {
+            let comparisons = 0;
+            let swaps = 0;
+            const n = array.length;
+
+            // Build max heap
+            for (let i = Math.floor(n / 2) - 1; i >= 0; i--) {
+                heapify(i);
+            }
+
+            // Heap sort
+            for (let i = n - 1; i > 0; i--) {
+                // Move current root to end
+                [array[0], array[i]] = [array[i], array[0]];
+
+                // Call max heapify on the reduced heap
+                comparisons++;
+                heapify(0);
+                swaps++;
+            }
+
+            return { comparisons, swaps };
+        }
+
+
+        function heapify(i) {
+            let largest = i;
+            const left = 2 * i + 1;
+            const right = 2 * i + 2;
+            comparisons += 3; // Compare with children
+
+            if (left < array.length && array[left] > array[largest]) {
+                largest = left;
+            }
+
+            if (right < array.length && array[right] > array[largest]) {
+                largest = right;
+            }
+
+            if (largest !== i) {
+                [array[i], array[largest]] = [array[largest], array[i]];
+                swaps++;
+                heapify(largest);
+            }
+        }
+
+
+        function startSorting() {
+            isRunning = true;
+            startTime = performance.now();
+
+            const selectedAlgorithm = algorithmSelect.value;
+            switch (selectedAlgorithm) {
+                case 'bubble':
+                    algorithmNameSpan.textContent = 'Bubble Sort';
+                    break;
+                case 'insertion':
+                    algorithmNameSpan.textContent = 'Insertion Sort';
+                    break;
+                case 'selection':
+                    algorithmNameSpan.textContent = 'Selection Sort';
+                    break;
+                case 'merge':
+                    algorithmNameSpan.textContent = 'Merge Sort';
+                    break;
+                case 'quick':
+                    algorithmNameSpan.textContent = 'Quick Sort';
+                    break;
+                case 'heap':
+                    algorithmNameSpan.textContent = 'Heap Sort';
+                    break;
+            }
+
+            let result;
+            switch (selectedAlgorithm) {
+                case 'bubble':
+                    result = bubbleSort();
+                    break;
+                case 'insertion':
+                    result = insertionSort();
+                    break;
+                case 'selection':
+                    result = selectionSort();
+                    break;
+                case 'merge':
+                    result = mergeSort();
+                    break;
+                case 'quick':
+                    result = quickSort();
+                    break;
+                case 'heap':
+                    result = heapSort();
+                    break;
+            }
+
+            comparisonsSpan.textContent = result.comparisons;
+            swapsSpan.textContent = result.swaps;
+            timeElapsedSpan.textContent = (performance.now() - startTime).toFixed(2) + "ms";
+        }
+
+
+        function pauseSorting() {
+            isRunning = false;
+        }
+
+        function shuffleReset() {
+            generateArray(sizeSlider.value);
+            renderArray();
+            startSorting(); // Restart sorting after shuffling
+        }
+
+        // Event listeners
+        shuffleResetButton.addEventListener('click', shuffleReset);
+        startPauseButton.addEventListener('click', () => isRunning ? pauseSorting() : startSorting());
+        speedSlider.addEventListener('input', (e) => animationSpeed = parseFloat(e.target.value));
+        sizeSlider.addEventListener('input', shuffleReset);
+
+        // Initial rendering
+        renderArray();
+    </script>
+</body>
+</html>

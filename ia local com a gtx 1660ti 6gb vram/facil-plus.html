@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Task Manager</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            background-color: #f4f4f4;
+            margin: 0; /* Remove default body margin */
+        }
+
+        #task-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh; /* Make the container at least full viewport height */
+        }
+
+        #task-list {
+            width: 80%;  /* Adjust width for better spacing */
+            max-width: 600px; /* Limit maximum width */
+            margin: 20px auto;
+            padding: 15px;
+            border: 1px solid #ccc;
+            background-color: white;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+            width: 100%; /* Ensure list takes full width */
+        }
+
+        li {
+            margin-bottom: 8px;
+            font-size: 16px;
+            display: flex;  /* Use flexbox for alignment */
+            justify-content: space-between; /* Distribute items evenly */
+            align-items: center;
+        }
+
+        li.completed {
+            text-decoration: line-through;
+            color: gray;
+        }
+
+        button {
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            padding: 5px 10px;
+            cursor: pointer;
+            margin-left: 10px; /* Space between task and delete button */
+        }
+
+        button:hover {
+            background-color: #3e8e41;
+        }
+
+        #task-input {
+            width: 95%;
+            padding: 8px;
+            margin-bottom: 10px;
+            box-sizing: border-box; /* Include padding and border in element's total width */
+        }
+
+        #add-task-btn {
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            padding: 8px 16px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 5px;
+            cursor: pointer;
+        }
+
+        #add-task-btn:hover {
+            background-color: #3e8e41;
+        }
+
+        #clear-all-btn {
+            background-color: #f44336; /* Red color for clear all */
+            border: none;
+            color: white;
+            padding: 8px 16px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 5px;
+            cursor: pointer;
+        }
+
+        #clear-all-btn:hover {
+            background-color: #da190b; /* Darker red on hover */
+        }
+
+    </style>
+</head>
+<body>
+
+    <div id="task-container">
+        <h1>Task Manager</h1>
+        <p>Active: <span id="active-count">0</span> | Completed: <span id="completed-count">0</span> | Total: <span id="total-count">0</span></p>
+
+        <ul id="task-list">
+            <!-- Hardcoded tasks -->
+            <li>Buy groceries</li>
+            <li>Walk the dog</li>
+            <li>Pay bills</li>
+            <li>Clean the house</li>
+            <li>Call a friend</li>
+        </ul>
+
+        <input type="text" id="task-input">
+        <button id="add-task-btn">Add Task</button>
+    </div>
+
+    <script>
+        const taskInput = document.getElementById('task-input');
+        const addTaskBtn = document.getElementById('add-task-btn');
+        const taskList = document.querySelector('#task-list ul');
+        const activeCountSpan = document.getElementById('active-count');
+        const completedCountSpan = document.getElementById('completed-count');
+        const totalCountSpan = document.getElementById('total-count');
+        const clearAllBtn = document.getElementById('clear-all-btn');
+
+        // Load tasks from localStorage on page load
+        window.onload = function() {
+            const storedTasks = localStorage.getItem('tasks');
+            if (storedTasks) {
+                const parsedTasks = JSON.parse(storedTasks);
+                parsedTasks.forEach(task => addTaskToList(task));
+                updateCounts(); // Update counts after loading tasks
+            }
+        };
+
+        // Add Task Functionality
+        addTaskBtn.addEventListener('click', function() {
+            const taskText = taskInput.value.trim();
+            if (taskText !== "") {
+                addTaskToList(taskText);
+                taskInput.value = ""; // Clear the input
+                updateCounts();
+            }
+        });
+
+        // Add Task to List Function
+        function addTaskToList(task) {
+            const listItem = document.createElement('li');
+            listItem.textContent = task;
+            listItem.addEventListener('click', toggleTask);
+
+            const deleteButton = document.createElement('button');
+            deleteButton.textContent = '✕';
+            deleteButton.addEventListener('click', deleteTask);
+            listItem.appendChild(deleteButton);
+
+            taskList.appendChild(listItem);
+        }
+
+
+        // Toggle Task Completion
+        function toggleTask() {
+            const listItem = this.parentNode;
+            if (listItem.classList.contains('completed')) {
+                listItem.classList.remove('completed');
+            } else {
+                listItem.classList.add('completed');
+            }
+        }
+
+        // Delete Task Functionality
+        taskList.addEventListener('click', function(event) {
+            if (event.target.tagName === 'BUTTON') {
+                const listItem = event.target.parentNode;
+                taskList.removeChild(listItem);
+                updateCounts();
+            }
+        });
+
+
+        // Update Counts Function
+        function updateCounts() {
+            let activeCount = 0;
+            let completedCount = 0;
+
+            const listItems = taskList.querySelectorAll('li');
+            listItems.forEach(item => {
+                if (item.classList.contains('completed')) {
+                    completedCount++;
+                } else {
+                    activeCount++;
+                }
+            });
+            const totalCount = activeCount + completedCount;
+
+            activeCountSpan.textContent = activeCount;
+            completedCountSpan.textContent = completedCount;
+            totalCountSpan.textContent = totalCount;
+        }
+
+
+        // Clear All Functionality
+        clearAllBtn.addEventListener('click', function() {
+            localStorage.removeItem('tasks'); // Remove all tasks from localStorage
+            taskList.innerHTML = '';  // Clear the list in the DOM
+            updateCounts();
+        });
+
+        document.body.appendChild(clearAllBtn);
+
+
+    </script>
+
+</body>
+</html>
