@@ -1,14 +1,14 @@
 # Projetos do canal no youtube @techdiario
 
 <p align="center">
-  <a href="https://github.com/mhbsti/techdiario/tree/main/IA%20EM%20HARDWARE%20BARATO%20com%20llama.cpp%20e%20QWEN%20-%20GTX%201660TI%206gb">
-    <img src="./IA EM HARDWARE BARATO com llama.cpp e QWEN - GTX 1660TI 6gb/IA em hardware acessível com llama.cpp e Qwen - GTX 1660TI 6gb.png" width="500">
+  <a href="https://github.com/mhbsti/techdiario/tree/main/IA%20LOCAL%20COM%20HERMES%2C%20Projeto%20pr%C3%A1tico%20na%20GTX%201660%20Ti">
+    <img src="./IA LOCAL COM HERMES, Projeto prático na GTX 1660 Ti/0004 - IA LOCAL COM HERMES, Projeto prático na GTX 1660 Ti.png" width="500">
   </a>
 </p>
 
 <p align="center">
-  <a href="https://github.com/mhbsti/techdiario/tree/main/IA%20LOCAL%20COM%20HERMES%2C%20Projeto%20pr%C3%A1tico%20na%20GTX%201660%20Ti">
-    <img src="./IA LOCAL COM HERMES, Projeto prático na GTX 1660 Ti/0004 - IA LOCAL COM HERMES, Projeto prático na GTX 1660 Ti.png" width="500">
+  <a href="https://github.com/mhbsti/techdiario/tree/main/IA%20EM%20HARDWARE%20BARATO%20com%20llama.cpp%20e%20QWEN%20-%20GTX%201660TI%206gb">
+    <img src="./IA EM HARDWARE BARATO com llama.cpp e QWEN - GTX 1660TI 6gb/IA em hardware acessível com llama.cpp e Qwen - GTX 1660TI 6gb.png" width="500">
   </a>
 </p>
 
