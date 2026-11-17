@@ -1,0 +1,379 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sorting Algorithm Visualizer</title>
+    <style>
+        :root { --bg: #1e1e2e; --bar-bg: #2d3748; --bar-default: #4a5568; --bar-comp: #f6e05e; --bar-sorted: #48bb78; --bar-swap: #fc8181; --text: #e2e8f0; --btn-bg: #3742fa; --btn-hover: #434c9e; --btn-active: #f6851b; }
+        body { margin: 0; padding: 0; background: var(--bg); color: var(--text); font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; display: flex; flex-direction: column; height: 100vh; overflow: hidden; }
+        header { padding: 15px 20px; background: #1a1a2e; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #333; }
+        h1 { margin: 0; font-size: 1.2rem; color: #fff; }
+        .controls { display: flex; gap: 15px; align-items: center; flex-wrap: wrap; }
+        .control-group { display: flex; flex-direction: column; gap: 5px; }
+        label { font-size: 0.8rem; color: #a0aec0; }
+        select, input[type="range"] { padding: 8px; border-radius: 6px; border: none; background: #2d3748; color: #fff; cursor: pointer; }
+        .btn-group { display: flex; gap: 10px; }
+        button { padding: 10px 20px; border: none; border-radius: 6px; background: var(--btn-bg); color: white; cursor: pointer; font-weight: 600; transition: all 0.2s; }
+        button:hover { background: var(--btn-hover); transform: translateY(-2px); }
+        button.active { background: var(--btn-active); }
+        button#startBtn { background: #38a169; }
+        button#startBtn.paused { background: #e53e3e; }
+        .stats-panel { background: #2d3748; padding: 15px; border-radius: 8px; margin: 15px 20px; display: flex; gap: 20px; flex-wrap: wrap; }
+        .stat-item { display: flex; flex-direction: column; }
+        .stat-label { font-size: 0.75rem; color: #a0aec0; text-transform: uppercase; letter-spacing: 1px; }
+        .stat-value { font-size: 1.1rem; font-weight: bold; color: #fff; }
+        .canvas-container { flex: 1; position: relative; overflow: hidden; padding: 20px; }
+        canvas { display: block; width: 100%; height: 100%; }
+        .legend { position: absolute; bottom: 20px; left: 20px; display: flex; gap: 15px; font-size: 0.8rem; }
+        .legend-item { display: flex; align-items: center; gap: 5px; }
+        .color-box { width: 12px; height: 12px; border-radius: 3px; }
+        @media (max-width: 768px) { .controls { flex-direction: column; align-items: flex-start; } .stats-panel { flex-direction: column; } }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Sorting Algorithm Visualizer</h1>
+        <div class="controls">
+            <div class="control-group">
+                <label>Algorithm</label>
+                <select id="algorithmSelect">
+                    <option value="bubble">Bubble Sort</option>
+                    <option value="insertion">Insertion Sort</option>
+                    <option value="selection">Selection Sort</option>
+                    <option value="merge">Merge Sort</option>
+                    <option value="quick">Quick Sort</option>
+                    <option value="heap">Heap Sort</option>
+                </select>
+            </div>
+            <div class="control-group">
+                <label>Array Size</label>
+                <input type="range" id="sizeSlider" min="10" max="200" value="50">
+                <span id="sizeValue">50</span>
+            </div>
+            <div class="control-group">
+                <label>Speed</label>
+                <input type="range" id="speedSlider" min="1" max="100" value="50">
+                <span id="speedValue">50%</span>
+            </div>
+            <div class="btn-group">
+                <button id="shuffleBtn">Shuffle & Reset</button>
+                <button id="startBtn">Start</button>
+            </div>
+        </div>
+    </header>
+
+    <div class="stats-panel">
+        <div class="stat-item">
+            <span class="stat-label">Algorithm</span>
+            <span class="stat-value" id="statAlgorithm">-</span>
+        </div>
+        <div class="stat-item">
+            <span class="stat-label">Comparisons</span>
+            <span class="stat-value" id="statComparisons">0</span>
+        </div>
+        <div class="stat-item">
+            <span class="stat-label">Swaps</span>
+            <span class="stat-value" id="statSwaps">0</span>
+        </div>
+        <div class="stat-item">
+            <span class="stat-label">Time</span>
+            <span class="stat-value" id="statTime">0ms</span>
+        </div>
+    </div>
+
+    <div class="canvas-container">
+        <canvas id="sortCanvas"></canvas>
+        <div class="legend">
+            <div class="legend-item"><div class="color-box" style="background: var(--bar-default)"></div>Unsorted</div>
+            <div class="legend-item"><div class="color-box" style="background: var(--bar-comp)"></div>Comparing</div>
+            <div class="legend-item"><div class="color-box" style="background: var(--bar-sorted)"></div>Sorted</div>
+            <div class="legend-item"><div class="color-box" style="background: var(--bar-swap)"></div>Swapping</div>
+        </div>
+    </div>
+
+    <script>
+        class SortVisualizer {
+            constructor(canvasId) {
+                this.canvas = document.getElementById(canvasId);
+                this.ctx = this.canvas.getContext('2d');
+                this.array = [];
+                this.colors = { default: '#4a5568', comparing: '#f6e05e', sorted: '#48bb78', swapping: '#fc8181' };
+                this.stats = { comparisons: 0, swaps: 0, startTime: 0, endTime: 0 };
+                this.isRunning = false;
+                this.animationId = null;
+                this.barWidth = 0;
+                this.barGap = 2;
+                this.barHeight = 200;
+                this.resize();
+                window.addEventListener('resize', () => this.resize());
+            }
+
+            resize() {
+                this.canvas.width = this.canvas.parentElement.clientWidth;
+                this.canvas.height = this.canvas.parentElement.clientHeight;
+                this.barWidth = (this.canvas.width - 20) / this.array.length;
+                this.barGap = 2;
+                this.draw();
+            }
+
+            generateArray(size) {
+                this.array = new Array(size).fill(0).map(() => Math.floor(Math.random() * 100) + 1);
+                this.draw();
+            }
+
+            draw() {
+                this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+                this.array.forEach((value, index) => {
+                    const x = index * (this.barWidth + this.barGap);
+                    const height = (value / 100) * this.barHeight;
+                    let color = this.colors.default;
+                    if (index === this.comparingIndex) color = this.colors.comparing;
+                    else if (index === this.swappingIndex) color = this.colors.swapping;
+                    else if (index < this.sortedIndex) color = this.colors.sorted;
+                    
+                    this.ctx.fillStyle = color;
+                    this.ctx.fillRect(x, this.canvas.height - height, this.barWidth, height);
+                });
+            }
+
+            updateStats() {
+                document.getElementById('statAlgorithm').textContent = this.currentAlgorithm.toUpperCase();
+                document.getElementById('statComparisons').textContent = this.stats.comparisons;
+                document.getElementById('statSwaps').textContent = this.stats.swaps;
+                document.getElementById('statTime').textContent = this.stats.time.toFixed(2) + 'ms';
+            }
+
+            async runAlgorithm() {
+                if (this.isRunning) return;
+                this.isRunning = true;
+                this.stats.startTime = Date.now();
+                this.updateStats();
+                await this.executeAlgorithm();
+                this.isRunning = false;
+                this.stats.endTime = Date.now();
+                this.stats.time = this.stats.endTime - this.stats.startTime;
+                this.updateStats();
+                this.array = [];
+                this.draw();
+            }
+
+            async executeAlgorithm() {
+                const algorithm = document.getElementById('algorithmSelect').value;
+                this.currentAlgorithm = algorithm;
+                this.draw();
+                this.updateStats();
+
+                switch (algorithm) {
+                    case 'bubble': await this.bubbleSort(); break;
+                    case 'insertion': await this.insertionSort(); break;
+                    case 'selection': await this.selectionSort(); break;
+                    case 'merge': await this.mergeSort(); break;
+                    case 'quick': await this.quickSort(); break;
+                    case 'heap': await this.heapSort(); break;
+                }
+            }
+
+            async bubbleSort() {
+                let n = this.array.length;
+                for (let i = 0; i < n - 1; i++) {
+                    for (let j = 0; j < n - i - 1; j++) {
+                        this.comparingIndex = j;
+                        this.swappingIndex = j + 1;
+                        this.draw();
+                        await this.sleep(1000 / this.speed);
+                        if (this.array[j] > this.array[j + 1]) {
+                            this.stats.comparisons++;
+                            this.stats.swaps++;
+                            [this.array[j], this.array[j + 1]] = [this.array[j + 1], this.array[j]];
+                            this.draw();
+                            await this.sleep(1000 / this.speed);
+                        }
+                    }
+                    this.array[n - i - 1] = this.colors.sorted;
+                    this.draw();
+                    await this.sleep(1000 / this.speed);
+                }
+            }
+
+            async insertionSort() {
+                let n = this.array.length;
+                for (let i = 1; i < n; i++) {
+                    this.comparingIndex = i;
+                    this.draw();
+                    await this.sleep(1000 / this.speed);
+                    let key = this.array[i];
+                    let j = i - 1;
+                    while (j >= 0) {
+                        this.comparingIndex = j;
+                        this.draw();
+                        await this.sleep(1000 / this.speed);
+                        if (this.array[j] > key) {
+                            this.stats.swaps++;
+                            this.array[j + 1] = this.array[j];
+                            this.draw();
+                            await this.sleep(1000 / this.speed);
+                        }
+                        j--;
+                    }
+                    this.array[j + 1] = key;
+                    this.draw();
+                    await this.sleep(1000 / this.speed);
+                }
+            }
+
+            async selectionSort() {
+                let n = this.array.length;
+                for (let i = 0; i < n - 1; i++) {
+                    let minIndex = i;
+                    for (let j = i + 1; j < n; j++) {
+                        this.comparingIndex = j;
+                        this.draw();
+                        await this.sleep(1000 / this.speed);
+                        if (this.array[j] < this.array[minIndex]) {
+                            this.stats.comparisons++;
+                            minIndex = j;
+                        }
+                    }
+                    if (minIndex !== i) {
+                        this.stats.swaps++;
+                        [this.array[i], this.array[minIndex]] = [this.array[minIndex], this.array[i]];
+                        this.draw();
+                        await this.sleep(1000 / this.speed);
+                    }
+                }
+            }
+
+            async mergeSort() {
+                await this.mergeSortRecursive(0, this.array.length - 1);
+            }
+
+            async mergeSortRecursive(arr, start, end) {
+                if (start >= end) return;
+                let mid = Math.floor((start + end) / 2);
+                await this.mergeSortRecursive(arr, start, mid);
+                await this.mergeSortRecursive(arr, mid + 1, end);
+                await this.merge(arr, start, mid, end);
+            }
+
+            async merge(arr, start, mid, end) {
+                let left = arr.slice(start, mid + 1);
+                let right = arr.slice(mid + 1, end + 1);
+                let i = 0, j = 0, k = start;
+                while (i < left.length && j < right.length) {
+                    this.comparingIndex = k;
+                    this.draw();
+                    await this.sleep(1000 / this.speed);
+                    if (left[i] <= right[j]) {
+                        arr[k] = left[i];
+                        this.draw();
+                        await this.sleep(1000 / this.speed);
+                        i++;
+                    } else {
+                        arr[k] = right[j];
+                        this.draw();
+                        await this.sleep(1000 / this.speed);
+                        j++;
+                    }
+                    this.colors.sorted = this.colors.comparing;
+                }
+                while (i < left.length) {
+                    arr[k] = left[i];
+                    this.draw();
+                    await this.sleep(1000 / this.speed);
+                    i++;
+                }
+                while (j < right.length) {
+                    arr[k] = right[j];
+                    this.draw();
+                    await this.sleep(1000 / this.speed);
+                    j++;
+                }
+            }
+
+            async quickSort() {
+                await this.quickSortRecursive(0, this.array.length - 1);
+            }
+
+            async quickSortRecursive(start, end) {
+                if (start < end) {
+                    let p = await this.quickSortPartition(start, end);
+                    await this.quickSortRecursive(start, p - 1);
+                    await this.quickSortRecursive(p + 1, end);
+                }
+            }
+
+            async quickSortPartition(start, end) {
+                let pivot = this.array[end];
+                let pIndex = start;
+                for (let i = start; i < end; i++) {
+                    this.comparingIndex = i;
+                    this.draw();
+                    await this.sleep(1000 / this.speed);
+                    if (this.array[i] < pivot) {
+                        this.stats.comparisons++;
+                        [this.array[i], this.array[pIndex]] = [this.array[pIndex], this.array[i]];
+                        this.draw();
+                        await this.sleep(1000 / this.speed);
+                        pIndex++;
+                    }
+                }
+                this.array[pIndex], this.array[end] = this.array[end], this.array[pIndex];
+                this.draw();
+                await this.sleep(1000 / this.speed);
+                return pIndex;
+            }
+
+            async heapSort() {
+                let n = this.array.length;
+                for (let i = Math.floor(n / 2); i >= 0; i--) {
+                    await this.heapify(0, n - 1);
+                }
+                for (let i = n - 1; i > 0; i--) {
+                    this.stats.swaps++;
+                    [this.array[0], this.array[i]] = [this.array[i], this.array[0]];
+                    this.draw();
+                    await this.sleep(1000 / this.speed);
+                    await this.heapify(0, i - 1);
+                }
+            }
+
+            async heapify(node, heapSize) {
+                let largest = node;
+                let left = 2 * node + 1;
+                let right = 2 * node + 2;
+                if (left < heapSize && this.array[left] > this.array[largest]) {
+                    this.comparingIndex = left;
+                    this.draw();
+                    await this.sleep(1000 / this.speed);
+                    largest = left;
+                }
+                if (right < heapSize && this.array[right] > this.array[largest]) {
+                    this.comparingIndex = right;
+                    this.draw();
+                    await this.sleep(1000 / this.speed);
+                    largest = right;
+                }
+                if (largest !== node) {
+                    this.stats.swaps++;
+                    [this.array[node], this.array[largest]] = [this.array[largest], this.array[node]];
+                    this.draw();
+                    await this.sleep(1000 / this.speed);
+                }
+                await this.heapify(largest, heapSize);
+            }
+
+            sleep(ms) {
+                return new Promise(resolve => setTimeout(resolve, ms));
+            }
+        }
+
+        const visualizer = new SortVisualizer('sortCanvas');
+
+        document.getElementById('shuffleBtn').addEventListener('click', () => {
+            visualizer.generateArray(parseInt(document.getElementById('sizeSlider').value));
+            visualizer.array = [];
+            visualizer.draw();
+        });
+
+        document.getElementById('startBtn').addEventListener('click', () => {
+            const btn = document.getElementById

@@ -1,0 +1,242 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kanban Board</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #0f1117;
+            --column-bg: rgba(255, 255, 255, 0.03);
+            --card-bg: rgba(255, 255, 255, 0.05);
+            --text-main: #e2e8f0;
+            --text-muted: #94a3b8;
+            --border-color: rgba(255, 255, 255, 0.1);
+            --accent: #3b82f6;
+            --priority-low: #10b981;
+            --priority-med: #f59e0b;
+            --priority-high: #ef4444;
+            --danger: #ef4444;
+            --glass-border: 1px solid rgba(255, 255, 255, 0.08);
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+        }
+
+        * { box-sizing: border-box; }
+        body {
+            margin: 0;
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        /* Header & Search */
+        header {
+            padding: 1rem 1.5rem;
+            background: rgba(15, 17, 23, 0.8);
+            backdrop-filter: blur(10px);
+            border-bottom: var(--glass-border);
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+            z-index: 10;
+        }
+        h1 { margin: 0; font-size: 1.25rem; font-weight: 700; }
+        .search-container { flex-grow: 1; max-width: 400px; position: relative; }
+        input[type="text"] {
+            width: 100%;
+            padding: 0.6rem 1rem;
+            border-radius: 8px;
+            border: var(--glass-border);
+            background: var(--column-bg);
+            color: var(--text-main);
+            font-family: inherit;
+        }
+        select {
+            padding: 0.6rem 1rem;
+            border-radius: 8px;
+            border: var(--glass-border);
+            background: var(--column-bg);
+            color: var(--text-main);
+            cursor: pointer;
+        }
+
+        /* Board Layout */
+        .board {
+            flex: 1;
+            display: flex;
+            overflow-x: auto;
+            padding: 1.5rem;
+            gap: 1.5rem;
+            align-items: flex-start;
+        }
+        .column {
+            min-width: 280px;
+            width: 280px;
+            background: var(--column-bg);
+            border-radius: 12px;
+            border: var(--glass-border);
+            display: flex;
+            flex-direction: column;
+            max-height: 100%;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .column:hover { box-shadow: var(--shadow); }
+        .column-header {
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            user-select: none;
+        }
+        .column-title { font-weight: 600; font-size: 1rem; }
+        .column-actions { display: flex; gap: 0.5rem; opacity: 0; transition: opacity 0.2s; }
+        .column:hover .column-actions { opacity: 1; }
+        .icon-btn {
+            background: none; border: none; color: var(--text-muted); cursor: pointer; padding: 4px; border-radius: 4px;
+        }
+        .icon-btn:hover { background: rgba(255,255,255,0.1); color: var(--text-main); }
+        .add-column-btn {
+            margin-left: auto;
+            background: none; border: none; color: var(--text-muted); cursor: pointer; font-size: 1.5rem;
+        }
+        .add-column-btn:hover { color: var(--text-main); }
+
+        .card-list {
+            flex: 1;
+            padding: 0.5rem;
+            overflow-y: auto;
+            min-height: 100px;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+        .card-list.drag-over { background: rgba(255, 255, 255, 0.05); border-radius: 8px; }
+
+        /* Card Styles */
+        .card {
+            background: var(--card-bg);
+            border: var(--glass-border);
+            border-radius: 8px;
+            padding: 0.8rem;
+            cursor: grab;
+            transition: transform 0.2s, box-shadow 0.2s, opacity 0.2s;
+            position: relative;
+            animation: fadeIn 0.3s ease-out;
+        }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
+        .card:hover { transform: translateY(-2px); box-shadow: var(--shadow); z-index: 2; }
+        .card:active { cursor: grabbing; }
+        .card.dragging { opacity: 0.5; cursor: grabbing; }
+        .card.done { opacity: 0.6; text-decoration: line-through; }
+        .card-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.4rem; }
+        .card-title { font-weight: 500; font-size: 0.95rem; margin: 0; }
+        .priority-badge {
+            font-size: 0.7rem; padding: 2px 8px; border-radius: 12px; color: #fff; font-weight: 600; text-transform: uppercase;
+        }
+        .priority-low { background: var(--priority-low); }
+        .priority-med { background: var(--priority-med); }
+        .priority-high { background: var(--priority-high); }
+        .card-desc {
+            font-size: 0.8rem; color: var(--text-muted); margin-top: 0.5rem;
+            max-height: 0; overflow: hidden; transition: max-height 0.3s ease;
+        }
+        .card-desc.expanded { max-height: 100px; margin-top: 0.5rem; }
+        .card-footer {
+            margin-top: 0.5rem; display: flex; justify-content: space-between; align-items: center; font-size: 0.75rem; color: var(--text-muted);
+        }
+        .due-date { display: flex; align-items: center; gap: 4px; }
+        .due-date.overdue { color: var(--danger); }
+        .delete-card-btn { opacity: 0; transition: opacity 0.2s; background: none; border: none; color: var(--text-muted); cursor: pointer; }
+        .card:hover .delete-card-btn { opacity: 1; }
+        .delete-card-btn:hover { color: var(--danger); }
+
+        /* Add Card Form */
+        .add-card-form {
+            background: var(--card-bg);
+            border: var(--glass-border);
+            border-radius: 8px;
+            padding: 0.8rem;
+            margin-top: 0.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            animation: fadeIn 0.3s ease-out;
+        }
+        .form-row { display: flex; gap: 0.5rem; }
+        .form-input {
+            flex: 1; padding: 0.5rem; border-radius: 4px; border: var(--glass-border); background: rgba(0,0,0,0.2); color: var(--text-main); font-size: 0.9rem;
+        }
+        .form-select { flex: 1; padding: 0.5rem; border-radius: 4px; border: var(--glass-border); background: rgba(0,0,0,0.2); color: var(--text-main); font-size: 0.9rem; }
+        .form-btn {
+            padding: 0.5rem 1rem; border-radius: 4px; border: none; cursor: pointer; font-weight: 500; font-size: 0.9rem; transition: background 0.2s;
+        }
+        .btn-save { background: var(--accent); color: white; }
+        .btn-save:hover { background: #2563eb; }
+        .btn-cancel { background: rgba(255,255,255,0.1); color: var(--text-muted); }
+        .btn-cancel:hover { background: rgba(255,255,255,0.2); color: var(--text-main); }
+
+        /* Stats Bar */
+        .stats-bar {
+            height: 40px;
+            background: #000;
+            border-top: 1px solid #333;
+            display: flex;
+            align-items: center;
+            padding: 0 1.5rem;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            gap: 2rem;
+            z-index: 20;
+        }
+        .stat-item { display: flex; align-items: center; gap: 0.5rem; }
+        .stat-value { font-weight: 600; color: var(--text-main); }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .board { padding: 1rem; gap: 1rem; }
+            .column { min-width: 240px; width: 240px; }
+            header { padding: 0.8rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Kanban</h1>
+        <div class="search-container">
+            <input type="text" id="searchInput" placeholder="Search tasks...">
+        </div>
+        <select id="priorityFilter">
+            <option value="All">All Priorities</option>
+            <option value="Low">Low</option>
+            <option value="Medium">Medium</option>
+            <option value="High">High</option>
+        </select>
+    </header>
+
+    <div class="board" id="board">
+        <!-- Columns will be injected here -->
+    </div>
+
+    <div class="stats-bar">
+        <div class="stat-item">Total: <span class="stat-value" id="stat-total">0</span></div>
+        <div class="stat-item">Overdue: <span class="stat-value" id="stat-overdue">0</span></div>
+        <div class="stat-item">Done: <span class="stat-value" id="stat-done">0</span></div>
+        <div class="stat-item">Rate: <span class="stat-value" id="stat-rate">0%</span></div>
+    </div>
+
+    <script>
+        // --- State Management ---
+        const DEFAULT_COLUMNS = ['Backlog', 'To Do', 'In Progress', 'Done'];
+        const DEFAULT_CARDS = [
+            { id: 'c1', colId: 'To Do', title: 'Design System', priority: 'High', desc: 'Create color palette and typography.', due: '2023-10-25' },
+            { id: 'c2', colId: 'To Do', title: 'User Research', priority: 'Medium', desc: 'Interview 5 users.', due: '2023-11-01' },
+            { id: 'c3', colId: 'In Progress', title: 'API Integration', priority: 'High', desc: 'Connect frontend to backend.', due: '2023-10-20' },
+            { id: 'c4', colId: 'Done', title: 'Project Setup', priority: 'Low', desc: '

@@ -1,0 +1,529 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kanban Board</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #0f1117;
+            --card-bg: rgba(30, 33, 40, 0.7);
+            --card-border: rgba(255, 255, 255, 0.1);
+            --text-primary: #e2e8f0;
+            --text-secondary: #94a3b8;
+            --priority-low: #10b981;
+            --priority-medium: #f59e0b;
+            --priority-high: #ef4444;
+            --column-bg: rgba(30, 33, 40, 0.5);
+            --column-border: rgba(255, 255, 255, 0.05);
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            --font-main: 'Inter', sans-serif;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            font-family: var(--font-main);
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        /* Search & Filter Bar */
+        .controls {
+            padding: 15px 20px;
+            display: flex;
+            gap: 15px;
+            align-items: center;
+            background: rgba(15, 17, 23, 0.95);
+            border-bottom: 1px solid var(--column-border);
+            z-index: 10;
+        }
+
+        .search-input {
+            flex: 1;
+            padding: 10px 15px;
+            border-radius: 8px;
+            border: 1px solid var(--card-border);
+            background: #1e293b;
+            color: var(--text-primary);
+            font-size: 14px;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        .search-input:focus {
+            border-color: var(--priority-medium);
+        }
+
+        .filter-select {
+            padding: 10px 15px;
+            border-radius: 8px;
+            border: 1px solid var(--card-border);
+            background: #1e293b;
+            color: var(--text-primary);
+            font-size: 14px;
+            outline: none;
+            cursor: pointer;
+        }
+
+        /* Board Layout */
+        .board {
+            flex: 1;
+            display: flex;
+            overflow-x: auto;
+            padding: 20px;
+            gap: 15px;
+            align-items: flex-start;
+        }
+
+        .column {
+            flex: 0 0 280px;
+            background: var(--column-bg);
+            border-radius: 12px;
+            padding: 15px;
+            display: flex;
+            flex-direction: column;
+            min-height: 200px;
+            max-height: 60vh;
+            border: 1px solid var(--column-border);
+            transition: all 0.3s ease;
+        }
+
+        .column-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            padding: 0 5px;
+        }
+
+        .column-title {
+            font-weight: 600;
+            font-size: 16px;
+            color: var(--text-primary);
+            border: none;
+            background: transparent;
+            outline: none;
+            cursor: text;
+            width: 100%;
+        }
+
+        .column-actions {
+            display: flex;
+            gap: 5px;
+        }
+
+        .icon-btn {
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            color: var(--text-secondary);
+            transition: color 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .icon-btn:hover {
+            color: var(--text-primary);
+        }
+
+        .card {
+            background: var(--card-bg);
+            border-radius: 8px;
+            padding: 12px;
+            margin-bottom: 10px;
+            cursor: grab;
+            border: 1px solid var(--card-border);
+            transition: transform 0.2s, box-shadow 0.2s;
+            position: relative;
+        }
+
+        .card:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow);
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+
+        .card.dragging {
+            opacity: 0.5;
+            cursor: grabbing;
+        }
+
+        .card-content {
+            margin-bottom: 8px;
+        }
+
+        .card-title {
+            font-weight: 500;
+            font-size: 14px;
+            margin: 0 0 5px 0;
+            word-break: break-word;
+        }
+
+        .card-desc {
+            font-size: 12px;
+            color: var(--text-secondary);
+            max-height: 60px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .card-desc.expanded {
+            max-height: none;
+        }
+
+        .toggle-desc {
+            cursor: pointer;
+            color: var(--text-secondary);
+            font-size: 12px;
+            margin-top: 5px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .priority-badge {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 10px;
+            font-size: 10px;
+            font-weight: 600;
+            text-transform: uppercase;
+            margin-left: 8px;
+            vertical-align: middle;
+        }
+
+        .priority-low { background: rgba(16, 185, 129, 0.2); color: var(--priority-low); }
+        .priority-medium { background: rgba(245, 158, 11, 0.2); color: var(--priority-medium); }
+        .priority-high { background: rgba(239, 68, 68, 0.2); color: var(--priority-high); }
+
+        .card-meta {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            margin-top: 8px;
+            font-size: 12px;
+            color: var(--text-secondary);
+        }
+
+        .card-actions {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            opacity: 0;
+            transition: opacity 0.2s;
+        }
+
+        .card:hover .card-actions {
+            opacity: 1;
+        }
+
+        .card-delete {
+            background: rgba(239, 68, 68, 0.1);
+            color: var(--priority-high);
+            border: none;
+            cursor: pointer;
+            border-radius: 4px;
+            padding: 4px 8px;
+            font-size: 10px;
+        }
+
+        .card-delete:hover {
+            background: var(--priority-high);
+            color: white;
+        }
+
+        /* Add Card Button */
+        .add-card-btn {
+            margin-top: 10px;
+            padding: 8px;
+            background: transparent;
+            border: 1px dashed var(--card-border);
+            color: var(--text-secondary);
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 12px;
+            transition: all 0.2s;
+        }
+
+        .add-card-btn:hover {
+            background: var(--card-bg);
+            color: var(--text-primary);
+            border-color: var(--priority-medium);
+        }
+
+        /* Mini Form */
+        .mini-form {
+            display: none;
+            flex-direction: column;
+            gap: 8px;
+            background: var(--card-bg);
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid var(--card-border);
+            animation: fadeIn 0.3s;
+        }
+
+        .mini-form.active {
+            display: flex;
+        }
+
+        .form-group {
+            display: flex;
+            gap: 8px;
+        }
+
+        .form-input {
+            flex: 1;
+            padding: 8px;
+            border-radius: 4px;
+            border: 1px solid var(--card-border);
+            background: #1e293b;
+            color: var(--text-primary);
+            font-size: 14px;
+            outline: none;
+        }
+
+        .form-select {
+            padding: 8px;
+            border-radius: 4px;
+            border: 1px solid var(--card-border);
+            background: #1e293b;
+            color: var(--text-primary);
+            font-size: 14px;
+            outline: none;
+        }
+
+        .form-textarea {
+            width: 100%;
+            padding: 8px;
+            border-radius: 4px;
+            border: 1px solid var(--card-border);
+            background: #1e293b;
+            color: var(--text-primary);
+            font-size: 14px;
+            resize: none;
+            height: 60px;
+            outline: none;
+        }
+
+        .form-actions {
+            display: flex;
+            gap: 8px;
+            margin-top: 5px;
+        }
+
+        .btn {
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            border: none;
+            transition: all 0.2s;
+        }
+
+        .btn-primary {
+            background: var(--priority-medium);
+            color: white;
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--text-secondary);
+            border: 1px solid var(--card-border);
+        }
+
+        .btn-primary:hover {
+            opacity: 0.9;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        /* Add Column Button */
+        .add-column-btn {
+            padding: 15px 20px;
+            background: transparent;
+            border: 1px dashed var(--card-border);
+            color: var(--text-secondary);
+            border-radius: 12px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.2s;
+            margin: 0 15px 15px 15px;
+            align-self: flex-start;
+        }
+
+        .add-column-btn:hover {
+            background: var(--card-bg);
+            color: var(--text-primary);
+            border-color: var(--priority-medium);
+        }
+
+        /* Drop Zone Indicator */
+        .drop-zone {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(245, 158, 11, 0.2);
+            border: 2px dashed var(--priority-medium);
+            border-radius: 12px;
+            pointer-events: none;
+            z-index: 100;
+            display: none;
+        }
+
+        .column.drag-over .drop-zone {
+            display: block;
+        }
+
+        /* Statistics Bar */
+        .stats-bar {
+            padding: 15px 20px;
+            background: rgba(15, 17, 23, 0.95);
+            border-top: 1px solid var(--column-border);
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            z-index: 10;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .stat-label {
+            font-size: 12px;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            margin-top: 5px;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .column {
+                flex: 1 1 150px;
+            }
+            .stats-bar {
+                flex-direction: column;
+                gap: 10px;
+            }
+            .stat-item {
+                text-align: left;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="controls">
+        <input type="text" class="search-input" id="searchInput" placeholder="Search tasks...">
+        <select class="filter-select" id="priorityFilter">
+            <option value="all">All Priorities</option>
+            <option value="low">Low</option>
+            <option value="medium">Medium</option>
+            <option value="high">High</option>
+        </select>
+    </div>
+
+    <div class="board" id="board">
+        <!-- Columns will be generated here -->
+        <div class="drop-zone" id="dropZone"></div>
+    </div>
+
+    <div class="stats-bar">
+        <div class="stat-item">
+            <div class="stat-value" id="totalCards">0</div>
+            <div class="stat-label">Total Cards</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-value" id="overdueCards">0</div>
+            <div class="stat-label">Overdue</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-value" id="doneCards">0</div>
+            <div class="stat-label">Done</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-value" id="completionRate">0%</div>
+            <div class="stat-label">Completion Rate</div>
+        </div>
+    </div>
+
+    <script>
+        // --- State Management ---
+        const STORAGE_KEY = 'kanban_board_state';
+        
+        let state = {
+            columns: [
+                { id: 'backlog', title: 'Backlog', cards: [] },
+                { id: 'todo', title: 'To Do', cards: [] },
+                { id: 'inprogress', title: 'In Progress', cards: [] },
+                { id: 'done', title: 'Done', cards: [] }
+            ]
+        };
+
+        // --- DOM Elements ---
+        const boardEl = document.getElementById('board');
+        const searchInput = document.getElementById('searchInput');
+        const priorityFilter = document.getElementById('priorityFilter');
+        const dropZone = document.getElementById('dropZone');
+        const dragSrcEl = null; // Will be set dynamically
+
+        // --- Initialization ---
+        function init() {
+            const savedState = localStorage.getItem(STORAGE_KEY);
+            if (savedState) {
+                state = JSON.parse(savedState);
+            } else {
+                // Seed data
+                state.columns[0].cards.push(createCard('Research project requirements', 'high', '2024-01-15'));
+                state.columns[0].cards.push(createCard('Setup development environment', 'medium', null));
+                state.columns[1].cards.push(createCard('Design database schema', 'high', '2024-01-20'));
+                state.columns[1].cards.push(createCard('Create API endpoints', 'medium', null));
+                state.columns[2].cards.push(createCard('Implement user authentication', 'high', '2024-01-25'));
+                state.columns[3].cards.push(createCard('Deploy to production', 'low', '2024-02-01'));
+            }
+            renderBoard();
+            updateStats();
+            setupEventListeners();
+        }
+
+        function createCard(title, priority, dueDate) {
+            return {
+                id: 'card_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9),
+                title: title,
+                description: '',
+                priority: priority || 'medium',
+                dueDate: dueDate || null,
+                isDone: false
+            };
+        }
+
+        // --- Rendering ---
+        function renderBoard() {
+            // Clear existing columns
+            boardEl.innerHTML = '<div class="drop-zone" id="dropZone"></div>';
+            
+            // Rebuild columns
+            state.columns.forEach(column => {

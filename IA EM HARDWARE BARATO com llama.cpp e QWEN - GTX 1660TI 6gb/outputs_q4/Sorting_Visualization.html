@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sorting Algorithm Visualizer</title>
+    <style>
+        :root { --bg: #121212; --panel: #1e1e1e; --text: #e0e0e0; --accent: #00d4ff; --highlight: #ffeb3b; --sorted: #4caf50; --compare: #ff9800; --bar-gap: 4px; }
+        body { margin: 0; font-family: 'Segoe UI', sans-serif; background: var(--bg); color: var(--text); display: flex; flex-direction: column; align-items: center; min-height: 100vh; }
+        .container { width: 95%; max-width: 1200px; padding: 20px; display: flex; flex-direction: column; gap: 20px; }
+        .controls { display: flex; flex-wrap: wrap; gap: 15px; align-items: center; background: var(--panel); padding: 15px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.3); }
+        .control-group { display: flex; flex-direction: column; gap: 5px; }
+        label { font-size: 0.85rem; color: #aaa; }
+        select, input[type="range"] { padding: 8px; border-radius: 4px; border: 1px solid #444; background: #2a2a2a; color: white; }
+        select { width: 150px; }
+        button { padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer; font-weight: bold; transition: 0.2s; }
+        .btn-primary { background: var(--accent); color: #000; }
+        .btn-secondary { background: #444; color: white; }
+        .btn-primary:hover { filter: brightness(1.2); }
+        .stats-panel { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 10px; background: var(--panel); padding: 15px; border-radius: 8px; text-align: center; }
+        .stat-item span { display: block; font-size: 0.8rem; color: #aaa; }
+        .stat-item strong { font-size: 1.2rem; color: var(--accent); }
+        .visualizer { display: flex; align-items: flex-end; height: 400px; gap: var(--bar-gap); padding: 20px; background: #181818; border-radius: 8px; overflow-x: auto; border: 1px solid #333; }
+        .bar { flex: 1; background: var(--accent); border-radius: 2px 2px 0 0; transition: height 0.1s ease; min-width: 4px; }
+        .bar.compare { background: var(--compare); }
+        .bar.sorted { background: var(--sorted); }
+        .bar.swap { background: var(--highlight); }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="controls">
+            <div class="control-group">
+                <label for="algoSelect">Algorithm</label>
+                <select id="algoSelect">
+                    <option value="bubble">Bubble Sort</option>
+                    <option value="insertion">Insertion Sort</option>
+                    <option value="selection">Selection Sort</option>
+                    <option value="merge">Merge Sort</option>
+                    <option value="quick">Quick Sort</option>
+                    <option value="heap">Heap Sort</option>
+                </select>
+            </div>
+            <div class="control-group">
+                <label for="speedRange">Speed</label>
+                <input type="range" id="speedRange" min="1" max="100" value="50">
+            </div>
+            <div class="control-group">
+                <label for="sizeRange">Array Size (10-200)</label>
+                <input type="range" id="sizeRange" min="10" max="200" value="50">
+            </div>
+            <button id="shuffleBtn" class="btn-secondary">Shuffle & Reset</button>
+            <button id="toggleBtn" class="btn-primary">Start</button>
+        </div>
+        <div class="stats-panel">
+            <div class="stat-item"><span>Algorithm</span><strong id="algoName">-</strong></div>
+            <div class="stat-item"><span>Comparisons</span><strong id="compCount">0</strong></div>
+            <div class="stat-item"><span>Swaps</span><strong id="swapCount">0</strong></div>
+            <div class="stat-item"><span>Time (ms)</span><strong id="timeCount">0</strong></div>
+        </div>
+        <div class="visualizer" id="visualizer"></div>
+    </div>
+    <script>
+        const visualizer = document.getElementById('visualizer');
+        const algoSelect = document.getElementById('algoSelect');
+        const speedRange = document.getElementById('speedRange');
+        const sizeRange = document.getElementById('sizeRange');
+        const shuffleBtn = document.getElementById('shuffleBtn');
+        const toggleBtn = document.getElementById('toggleBtn');
+        const algoName = document.getElementById('algoName');
+        const compCount = document.getElementById('compCount');
+        const swapCount = document.getElementById('swapCount');
+        const timeCount = document.getElementById('timeCount');
+
+        let array = [];
+        let bars = [];
+        let isRunning = false;
+        let isPaused = false;
+        let speed = 50;
+        let comparisons = 0;
+        let swaps = 0;
+        let startTime = 0;
+        let timerInterval;
+
+        function init() {
+            array = [];
+            bars = [];
+            visualizer.innerHTML = '';
+            for (let i = 0; i < parseInt(sizeRange.value); i++) {
+                array.push(Math.floor(Math.random() * 100) + 10);
+                const bar = document.createElement('div');
+                bar.className = 'bar';
+                bar.style.height = '10%';
+                visualizer.appendChild(bar);
+                bars.push(bar);
+            }
+            updateStats();
+        }
+
+        function sleep(ms) {
+            return new Promise(resolve => setTimeout(resolve, ms));
+        }
+
+        function getDelay() {
+            return 100 - speed;
+        }
+
+        function updateStats() {
+            algoName.textContent = algoSelect.options[algoSelect.selectedIndex].text;
+            compCount.textContent = comparisons;
+            swapCount.textContent = swaps;
+            timeCount.textContent = Math.floor(Date.now() - startTime);
+        }
+
+        async function runSort() {
+            if (isRunning) return;
+            isRunning = true;
+            isPaused = false;
+            toggleBtn.textContent = 'Pause';
+            toggleBtn.classList.remove('btn-primary');
+            toggleBtn.classList.add('btn-secondary');
+            algoName.textContent = algoSelect.options[algoSelect.selectedIndex].text;
+            comparisons = 0;
+            swaps = 0;
+            startTime = Date.now();
+            updateStats();
+
+            const algo = algoSelect.value;
+            const sortFunc = getSortFunction(algo);
+            await sortFunc();
+
+            isRunning = false;
+            isPaused = true;
+            toggleBtn.textContent = 'Start';
+            toggleBtn.classList.remove('btn-secondary');
+            toggleBtn.classList.add('btn-primary');
+            clearInterval(timerInterval);
+            updateStats();
+        }
+
+        function getSortFunction(algo) {
+            switch (algo) {
+                case 'bubble': return bubbleSort;
+                case 'insertion': return insertionSort;
+                case 'selection': return selectionSort;
+                case 'merge': return mergeSort;
+                case 'quick': return quickSort;
+                case 'heap': return heapSort;
+            }
+        }
+
+        async function bubbleSort() {
+            const n = array.length;
+            for (let i = 0; i < n; i++) {
+                for (let j = 0; j < n - i; j++) {
+                    comparisons++;
+                    await sleep(getDelay());
+                    if (array[j] > array[j + 1]) {
+                        array[j] = [array[j], array[j + 1]][0];
+                        array[j + 1] = [array[j], array[j + 1]][1];
+                        swaps++;
+                        bars[j].classList.add('swap');
+                        bars[j + 1].classList.add('swap');
+                        await sleep(getDelay());
+                        bars[j].classList.remove('swap');
+                        bars[j + 1].classList.remove('swap');
+                    }
+                    bars[j].classList.add('compare');
+                    bars[j + 1].classList.add('compare');
+                    await sleep(getDelay());
+                    bars[j].classList.remove('compare');
+                    bars[j + 1].classList.remove('compare');
+                }
+                bars[n - i - 1].classList.add('sorted');
+            }
+        }
+
+        async function insertionSort() {
+            for (let i = 1; i < array.length; i++) {
+                let key = array[i];
+                let j = i - 1;
+                bars[i].classList.add('compare');
+                await sleep(getDelay());
+                bars[i].classList.remove('compare');
+                while (j >= 0 && array[j] > key) {
+                    comparisons++;
+                    array[j + 1] = array[j];
+                    bars[j + 1].style.height = bars[j].style.height;
+                    swaps++;
+                    bars[j].classList.add('swap');
+                    await sleep(getDelay());
+                    bars[j].classList.remove('swap');
+                    j--;
+                }
+                array[j + 1] = key;
+                bars[j + 1].style.height = '10%';
+            }
+        }
+
+        async function selectionSort() {
+            const n = array.length;
+            for (let i = 0; i < n; i++) {
+                let minIdx = i;
+                bars[i].classList.add('compare');
+                await sleep(getDelay());
+                bars[i].classList.remove('compare');
+                for (let j = i + 1; j < n; j++) {
+                    comparisons++;
+                    bars[j].classList.add('compare');
+                    await sleep(getDelay());
+                    bars[j].classList.remove('compare');
+                    if (array[j] < array[minIdx]) {
+                        minIdx = j;
+                    }
+                }
+                [array[i], array[minIdx]] = [array[minIdx], array[i]];
+                swaps++;
+                bars[i].classList.add('swap');
+                bars[minIdx].classList.add('swap');
+                await sleep(getDelay());
+                bars[i].classList.remove('swap');
+                bars[minIdx].classList.remove('swap');
+                bars[i].classList.add('sorted');
+            }
+        }
+
+        async function mergeSort() {
+            await mergeSortHelper(0, array.length - 1);
+        }
+
+        async function mergeSortHelper(start, end) {
+            if (start >= end) return;
+            const mid = Math.floor((start + end) / 2);
+            await mergeSortHelper(start, mid);
+            await mergeSortHelper(mid + 1, end);
+            await merge(start, mid, end);
+        }
+
+        async function merge(start, mid, end) {
+            let left = array.slice(start, mid + 1);
+            let right = array.slice(mid + 1, end + 1);
+            let i = 0, j = 0, k = start;
+            while (i < left.length && j < right.length) {
+                comparisons++;
+                bars[start + i].classList.add('compare');
+                bars[mid + 1 + j].classList.add('compare');
+                await sleep(getDelay());
+                bars[start + i].classList.remove('compare');
+                bars[mid + 1 + j].classList.remove('compare');
+                if (left[i] <= right[j]) {
+                    array[k] = left[i];
+                    i++;
+                } else {
+                    array[k] = right[j];
+                    j++;
+                }
+                bars[k].style.height = `${(array[k] / 110) * 100}%`;
+                k++;
+            }
+            while (i < left.length) { array[k] = left[i]; i++; k++; }
+            while (j < right.length) { array[k] = right[j]; j++; k++; }
+        }
+
+        async function quickSort() {
+            await quickSortHelper(0, array.length - 1);
+        }
+
+        async function quickSortHelper(start, end) {
+            if (start >= end) return;
+            const pivotIdx = await quickSortPartition(start, end);
+            await quickSortHelper(start, pivotIdx - 1);
+            await quickSortHelper(pivotIdx + 1, end);
+        }
+
+        async function quickSortPartition(start, end) {
+            let pivot = array[end];
+            let i = start - 1;
+            for (let j = start; j < end; j++)
+</script>
+</body>
+</html>
