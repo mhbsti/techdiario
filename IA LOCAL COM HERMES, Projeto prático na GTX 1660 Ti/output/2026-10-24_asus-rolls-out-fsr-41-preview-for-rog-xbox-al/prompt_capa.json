@@ -1,0 +1,22 @@
+{
+  "generated_at": "2026-10-24T14:58:55.696944",
+  "request": {
+    "image_url": "https://www.techpowerup.com/img/BW0GkOOgPPN8s3vH.jpg",
+    "headline_text": "ASUS ROLLS OUT FSR 4.1 PR!",
+    "badge_text": "HARDWARE 2026",
+    "theme_style": "amd_radeon",
+    "output_subfolder": "2026-10-24_asus-rolls-out-fsr-41-preview-for-rog-xbox-al",
+    "output_filename": "capa_youtube_1280x720.png",
+    "overlay_avatar": true,
+    "logo_position": "auto"
+  },
+  "response": {
+    "status": "success",
+    "method": "web_harvester_composite",
+    "elapsed_seconds": 2.87,
+    "theme_style": "amd_radeon",
+    "output_path": "/opt/output/2026-10-24_asus-rolls-out-fsr-41-preview-for-rog-xbox-al/capa_youtube_1280x720.png",
+    "headline_rendered": "ASUS ROLLS OUT FSR 4.1 PR!",
+    "badge_rendered": "HARDWARE 2026"
+  }
+}

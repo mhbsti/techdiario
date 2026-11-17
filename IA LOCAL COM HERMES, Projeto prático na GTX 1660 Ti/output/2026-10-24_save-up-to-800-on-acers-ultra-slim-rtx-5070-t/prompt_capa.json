@@ -1,0 +1,22 @@
+{
+  "generated_at": "2026-10-24T14:58:52.128144",
+  "request": {
+    "image_url": "https://cdn.mos.cms.futurecdn.net/nxPejVNdz8iABWsEJKshM8-1920-80.jpg",
+    "headline_text": "SAVE UP TO $800 ON ACER’S!",
+    "badge_text": "HARDWARE 2026",
+    "theme_style": "nvidia_rtx",
+    "output_subfolder": "2026-10-24_save-up-to-800-on-acers-ultra-slim-rtx-5070-t",
+    "output_filename": "capa_youtube_1280x720.png",
+    "overlay_avatar": true,
+    "logo_position": "auto"
+  },
+  "response": {
+    "status": "success",
+    "method": "web_harvester_composite",
+    "elapsed_seconds": 3.77,
+    "theme_style": "nvidia_rtx",
+    "output_path": "/opt/output/2026-10-24_save-up-to-800-on-acers-ultra-slim-rtx-5070-t/capa_youtube_1280x720.png",
+    "headline_rendered": "SAVE UP TO $800 ON ACER’S!",
+    "badge_rendered": "HARDWARE 2026"
+  }
+}

@@ -1,0 +1,85 @@
+# =============================================================================
+# Git Ignore - Hermes Agent News & Thumbnail Studio (TECH DIARIO)
+# =============================================================================
+
+# Arquivos de Modelos Pesados (GGUF / Safetensors)
+models/*.gguf
+models/*.safetensors
+models/*.bin
+!models/README*
+!models/Modelfile*
+
+# Volumes de Dados em Docker & Chaves SSH Privadas
+ollama_data/
+qdrant_data/
+
+# Caches e Runtime do Container Hermes Agent
+hermes_data/.npm/
+hermes_data/.local/
+hermes_data/cache/
+hermes_data/image_cache/
+hermes_data/audio_cache/
+hermes_data/backups/
+hermes_data/sandboxes/
+hermes_data/sessions/
+hermes_data/terminal-sessions/
+hermes_data/runtime/
+hermes_data/telemetry/
+hermes_data/state/
+hermes_data/cron/
+hermes_data/desktop/
+hermes_data/home/
+hermes_data/hooks/
+hermes_data/installs/
+hermes_data/kanban/
+hermes_data/memories/
+hermes_data/pairing/
+hermes_data/pending_messages/
+hermes_data/plans/
+hermes_data/platforms/
+hermes_data/plugins/
+hermes_data/plugin-data/
+hermes_data/plugin-update-checks/
+hermes_data/skins/
+hermes_data/workspace/
+
+# Bancos SQLite, Locks, Caches e Logs de Gateway do Hermes
+hermes_data/*.db*
+hermes_data/*.lock
+hermes_data/*.log
+hermes_data/*.json
+hermes_data/*.etag
+hermes_data/.clean_shutdown
+hermes_data/install_id
+hermes_data/.hermes_history
+hermes_data/.no-bundled-skills
+hermes_data/.env
+hermes_data/.env.lock
+
+# Excecoes explicitas para manter configuracoes e skills do canal versionadas
+!hermes_data/config.yaml
+!hermes_data/SOUL.md
+!hermes_data/skills/
+!hermes_data/skills/**
+
+# Dependencias Node.js locais
+node_modules/
+**/node_modules/
+package-lock.json
+**/package-lock.json
+
+# Variaveis de Ambiente e Segredos
+.env
+.env.local
+
+# Ambientes Python, Caches e IDEs
+__pycache__/
+*.py[cod]
+.venv/
+env/
+.pytest_cache/
+.vscode/
+.idea/
+Thumbs.db
+Desktop.ini
+.DS_Store

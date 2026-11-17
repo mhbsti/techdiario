@@ -1,0 +1,876 @@
+2026-10-18 20:56:39,443 INFO gateway.control_socket: Gateway control socket listening at /opt/data/gateway.sock
+2026-10-18 20:56:39,966 INFO gateway.run: Starting Hermes Gateway...
+2026-10-18 20:56:39,980 INFO gateway.run: Session storage: /opt/data/sessions
+2026-10-18 20:56:39,997 INFO gateway.run: Agent budget: max_iterations=25 (agent.max_turns from config.yaml, else the HERMES_MAX_ITERATIONS bridge)
+2026-10-18 20:56:39,998 INFO gateway.run: Secret redaction: ENABLED (tool output, logs, and chat responses are scrubbed before delivery)
+2026-10-18 20:56:40,522 INFO gateway.run: Connecting to api_server...
+2026-10-18 20:56:40,563 INFO gateway.platforms.api_server: [Api_Server] API server listening on http://127.0.0.1:8642 (model: hermes-agent)
+2026-10-18 20:56:40,599 INFO gateway.run: ✓ api_server connected
+2026-10-18 20:56:43,760 INFO gateway.run: Gateway running with 1 platform(s)
+2026-10-18 20:56:43,800 INFO gateway.run: Channel directory built: 0 target(s)
+2026-10-18 20:56:47,578 INFO gateway.run: Model context warmed: qwen2.5-7b-instruct -> 4096 tokens (config)
+2026-10-18 20:56:47,579 INFO gateway.run: Turn machinery warmed in 7.1s (21 tool schema(s) materialized)
+2026-10-18 20:56:47,591 INFO gateway.run: Press Ctrl+C to stop
+2026-10-18 20:56:47,604 INFO gateway.run: kanban dispatcher: holding singleton dispatcher lock (/opt/data/kanban/.dispatcher.lock)
+2026-10-18 20:56:47,605 INFO gateway.run: kanban dispatcher: kanban.max_in_progress unset; using memory-derived default max_in_progress=8 (set kanban.max_in_progress in config.yaml to override)
+2026-10-18 20:56:47,617 INFO gateway.run: Cron scheduler will tick 1 profile(s): ['default']
+2026-10-18 20:56:47,629 INFO gateway.run: Gateway housekeeping started (interval=60s)
+2026-10-18 20:56:52,605 INFO gateway.run: kanban dispatcher: embedded in gateway (interval=60.0s)
+2026-10-18 21:33:34,884 INFO gateway.run: Received SIGTERM — initiating shutdown
+2026-10-18 21:33:34,884 WARNING gateway.run: Shutdown context: signal=SIGTERM under_systemd=no parent_pid=175 parent_name=s6-supervise loadavg_1m=0.62
+2026-10-18 21:33:34,904 INFO gateway.run: Received SIGTERM — initiating shutdown
+2026-10-18 21:33:34,904 WARNING gateway.run: Shutdown context: signal=SIGTERM under_systemd=no parent_pid=175 parent_name=s6-supervise loadavg_1m=0.62
+2026-10-18 21:33:34,917 INFO gateway.run: Stopping gateway...
+2026-10-18 21:33:34,921 INFO gateway.run: Shutdown phase: notify_active_sessions done at +0.00s
+2026-10-18 21:33:34,927 INFO gateway.run: Shutdown phase: drain done at +0.01s (drain took 0.01s, timed_out=False, active_at_start=0, active_now=0, cron_at_start=0, cron_now=0, api_at_start=0, api_now=0, deferred_at_start=0, deferred_now=0)
+2026-10-18 21:33:34,948 INFO gateway.platforms.api_server: [Api_Server] API server stopped
+2026-10-18 21:33:34,949 INFO gateway.run: ✓ api_server disconnected (0.02s)
+2026-10-18 21:33:34,951 INFO gateway.run: Shutdown phase: all adapters disconnected at +0.03s
+2026-10-18 21:33:34,971 INFO gateway.run: Gateway housekeeping stopped
+2026-10-18 21:33:34,988 INFO gateway.run: Shutdown phase: final-cleanup tool kill done at +0.07s
+2026-10-18 21:33:34,989 INFO gateway.run: Shutdown phase: executor quiesced at +0.07s
+2026-10-18 21:33:34,996 INFO gateway.run: Shutdown phase: SessionDB close done at +0.08s
+2026-10-18 21:33:35,004 INFO gateway.run: Gateway stopped by an unexpected signal — persisting gateway_state=running so container_boot auto-starts on the next boot (issue #42675)
+2026-10-18 21:33:35,025 INFO gateway.run: Gateway stopped (total teardown 0.11s)
+2026-10-18 21:33:35,072 INFO gateway.run: Exiting with code 1 (signal-initiated shutdown without restart request) so the service manager can revive the gateway.
+2026-10-18 21:34:02,048 INFO gateway.control_socket: Gateway control socket listening at /opt/data/gateway.sock
+2026-10-18 21:34:02,611 INFO gateway.run: Starting Hermes Gateway...
+2026-10-18 21:34:02,614 INFO gateway.run: Session storage: /opt/data/sessions
+2026-10-18 21:34:02,630 INFO gateway.run: Agent budget: max_iterations=25 (agent.max_turns from config.yaml, else the HERMES_MAX_ITERATIONS bridge)
+2026-10-18 21:34:02,631 INFO gateway.run: Secret redaction: ENABLED (tool output, logs, and chat responses are scrubbed before delivery)
+2026-10-18 21:34:02,806 INFO gateway.run: Previous gateway exited cleanly — skipping session suspension
+2026-10-18 21:34:03,245 INFO gateway.run: Connecting to api_server...
+2026-10-18 21:34:03,287 INFO gateway.platforms.api_server: [Api_Server] API server listening on http://127.0.0.1:8642 (model: hermes-agent)
+2026-10-18 21:34:03,326 INFO gateway.run: ✓ api_server connected
+2026-10-18 21:34:06,544 INFO gateway.run: Gateway running with 1 platform(s)
+2026-10-18 21:34:06,647 INFO gateway.run: Channel directory built: 0 target(s)
+2026-10-18 21:34:11,066 INFO gateway.run: Model context warmed: qwen2.5-7b-instruct -> 4096 tokens (config)
+2026-10-18 21:34:11,066 INFO gateway.run: Turn machinery warmed in 7.8s (21 tool schema(s) materialized)
+2026-10-18 21:34:11,077 INFO gateway.run: Press Ctrl+C to stop
+2026-10-18 21:34:11,089 INFO gateway.run: kanban dispatcher: holding singleton dispatcher lock (/opt/data/kanban/.dispatcher.lock)
+2026-10-18 21:34:11,090 INFO gateway.run: kanban dispatcher: kanban.max_in_progress unset; using memory-derived default max_in_progress=8 (set kanban.max_in_progress in config.yaml to override)
+2026-10-18 21:34:11,108 INFO gateway.run: Cron scheduler will tick 1 profile(s): ['default']
+2026-10-18 21:34:11,121 INFO gateway.run: Gateway housekeeping started (interval=60s)
+2026-10-18 21:34:16,091 INFO gateway.run: kanban dispatcher: embedded in gateway (interval=60.0s)
+2026-10-18 22:27:59,557 INFO gateway.run: Received SIGTERM — initiating shutdown
+2026-10-18 22:27:59,557 WARNING gateway.run: Shutdown context: signal=SIGTERM under_systemd=no parent_pid=152 parent_name=s6-supervise loadavg_1m=1.13
+2026-10-18 22:27:59,570 INFO gateway.run: Received SIGTERM — initiating shutdown
+2026-10-18 22:27:59,570 WARNING gateway.run: Shutdown context: signal=SIGTERM under_systemd=no parent_pid=152 parent_name=s6-supervise loadavg_1m=1.13
+2026-10-18 22:27:59,581 INFO gateway.run: Received SIGTERM — initiating shutdown
+2026-10-18 22:27:59,581 WARNING gateway.run: Shutdown context: signal=SIGTERM under_systemd=no parent_pid=152 parent_name=s6-supervise loadavg_1m=1.13
+2026-10-18 22:27:59,595 INFO gateway.run: Stopping gateway...
+2026-10-18 22:27:59,598 INFO gateway.run: Shutdown phase: notify_active_sessions done at +0.00s
+2026-10-18 22:27:59,602 INFO gateway.run: Shutdown phase: drain done at +0.01s (drain took 0.00s, timed_out=False, active_at_start=0, active_now=0, cron_at_start=0, cron_now=0, api_at_start=0, api_now=0, deferred_at_start=0, deferred_now=0)
+2026-10-18 22:27:59,613 INFO gateway.platforms.api_server: [Api_Server] API server stopped
+2026-10-18 22:27:59,614 INFO gateway.run: ✓ api_server disconnected (0.01s)
+2026-10-18 22:27:59,615 INFO gateway.run: Shutdown phase: all adapters disconnected at +0.02s
+2026-10-18 22:27:59,631 INFO gateway.run: Gateway housekeeping stopped
+2026-10-18 22:27:59,640 INFO gateway.run: Shutdown phase: final-cleanup tool kill done at +0.05s
+2026-10-18 22:27:59,641 INFO gateway.run: Shutdown phase: executor quiesced at +0.05s
+2026-10-18 22:27:59,651 INFO gateway.run: Shutdown phase: SessionDB close done at +0.06s
+2026-10-18 22:27:59,659 INFO gateway.run: Gateway stopped by an unexpected signal — persisting gateway_state=running so container_boot auto-starts on the next boot (issue #42675)
+2026-10-18 22:27:59,676 INFO gateway.run: Gateway stopped (total teardown 0.08s)
+2026-10-18 22:27:59,731 INFO gateway.run: Exiting with code 1 (signal-initiated shutdown without restart request) so the service manager can revive the gateway.
+2026-10-18 22:28:25,147 INFO gateway.control_socket: Gateway control socket listening at /opt/data/gateway.sock
+2026-10-18 22:28:26,115 INFO gateway.run: Starting Hermes Gateway...
+2026-10-18 22:28:26,119 INFO gateway.run: Session storage: /opt/data/sessions
+2026-10-18 22:28:26,139 INFO gateway.run: Agent budget: max_iterations=25 (agent.max_turns from config.yaml, else the HERMES_MAX_ITERATIONS bridge)
+2026-10-18 22:28:26,139 INFO gateway.run: Secret redaction: ENABLED (tool output, logs, and chat responses are scrubbed before delivery)
+2026-10-18 22:28:26,245 INFO gateway.run: Previous gateway exited cleanly — skipping session suspension
+2026-10-18 22:28:26,760 INFO gateway.run: Connecting to api_server...
+2026-10-18 22:28:26,801 INFO gateway.platforms.api_server: [Api_Server] API server listening on http://127.0.0.1:8642 (model: hermes-agent)
+2026-10-18 22:28:26,836 INFO gateway.run: ✓ api_server connected
+2026-10-18 22:28:31,787 INFO gateway.run: Gateway running with 1 platform(s)
+2026-10-18 22:28:31,906 INFO gateway.run: Channel directory built: 0 target(s)
+2026-10-18 22:28:42,912 INFO gateway.run: Model context warmed: qwen2.5:3b -> 4096 tokens (config)
+2026-10-18 22:28:42,926 INFO gateway.run: Turn machinery warmed in 16.2s (21 tool schema(s) materialized)
+2026-10-18 22:28:43,063 INFO gateway.run: Press Ctrl+C to stop
+2026-10-18 22:28:43,160 INFO gateway.run: kanban dispatcher: holding singleton dispatcher lock (/opt/data/kanban/.dispatcher.lock)
+2026-10-18 22:28:43,164 INFO gateway.run: kanban dispatcher: kanban.max_in_progress unset; using memory-derived default max_in_progress=8 (set kanban.max_in_progress in config.yaml to override)
+2026-10-18 22:28:43,250 INFO gateway.run: Cron scheduler will tick 1 profile(s): ['default']
+2026-10-18 22:28:43,287 INFO gateway.run: Gateway housekeeping started (interval=60s)
+2026-10-18 22:28:48,168 INFO gateway.run: kanban dispatcher: embedded in gateway (interval=60.0s)
+2026-10-19 00:50:49,787 INFO gateway.run: Received SIGTERM — initiating shutdown
+2026-10-19 00:50:49,787 WARNING gateway.run: Shutdown context: signal=SIGTERM under_systemd=no parent_pid=155 parent_name=s6-supervise loadavg_1m=0.04
+2026-10-19 00:50:49,800 INFO gateway.run: Received SIGTERM — initiating shutdown
+2026-10-19 00:50:49,801 WARNING gateway.run: Shutdown context: signal=SIGTERM under_systemd=no parent_pid=155 parent_name=s6-supervise loadavg_1m=0.04
+2026-10-19 00:50:49,814 INFO gateway.run: Stopping gateway...
+2026-10-19 00:50:49,817 INFO gateway.run: Shutdown phase: notify_active_sessions done at +0.00s
+2026-10-19 00:50:49,820 INFO gateway.run: Shutdown phase: drain done at +0.01s (drain took 0.00s, timed_out=False, active_at_start=0, active_now=0, cron_at_start=0, cron_now=0, api_at_start=0, api_now=0, deferred_at_start=0, deferred_now=0)
+2026-10-19 00:50:49,834 INFO gateway.platforms.api_server: [Api_Server] API server stopped
+2026-10-19 00:50:49,835 INFO gateway.run: ✓ api_server disconnected (0.01s)
+2026-10-19 00:50:49,835 INFO gateway.run: Shutdown phase: all adapters disconnected at +0.02s
+2026-10-19 00:50:49,848 INFO gateway.run: Gateway housekeeping stopped
+2026-10-19 00:50:49,854 INFO gateway.run: Shutdown phase: final-cleanup tool kill done at +0.04s
+2026-10-19 00:50:49,855 INFO gateway.run: Shutdown phase: executor quiesced at +0.04s
+2026-10-19 00:50:49,865 INFO gateway.run: Shutdown phase: SessionDB close done at +0.05s
+2026-10-19 00:50:49,875 INFO gateway.run: Gateway stopped by an unexpected signal — persisting gateway_state=running so container_boot auto-starts on the next boot (issue #42675)
+2026-10-19 00:50:49,897 INFO gateway.run: Gateway stopped (total teardown 0.08s)
+2026-10-19 00:50:49,949 INFO gateway.run: Exiting with code 1 (signal-initiated shutdown without restart request) so the service manager can revive the gateway.
+2026-10-23 13:42:23,605 INFO gateway.control_socket: Gateway control socket listening at /opt/data/gateway.sock
+2026-10-23 13:42:24,046 INFO gateway.run: Starting Hermes Gateway...
+2026-10-23 13:42:24,049 INFO gateway.run: Session storage: /opt/data/sessions
+2026-10-23 13:42:24,066 INFO gateway.run: Agent budget: max_iterations=25 (agent.max_turns from config.yaml, else the HERMES_MAX_ITERATIONS bridge)
+2026-10-23 13:42:24,066 INFO gateway.run: Secret redaction: ENABLED (tool output, logs, and chat responses are scrubbed before delivery)
+2026-10-23 13:42:24,146 INFO gateway.run: Previous gateway exited cleanly — skipping session suspension
+2026-10-23 13:42:24,574 INFO gateway.run: Connecting to api_server...
+2026-10-23 13:42:24,618 INFO gateway.platforms.api_server: [Api_Server] API server listening on http://127.0.0.1:8642 (model: hermes-agent)
+2026-10-23 13:42:24,643 INFO gateway.run: ✓ api_server connected
+2026-10-23 13:42:27,396 INFO gateway.run: Gateway running with 1 platform(s)
+2026-10-23 13:42:27,456 INFO gateway.run: Channel directory built: 0 target(s)
+2026-10-23 13:42:33,885 INFO gateway.run: Model context warmed: qwen2.5:3b -> 4096 tokens (config)
+2026-10-23 13:42:33,886 INFO gateway.run: Turn machinery warmed in 9.3s (20 tool schema(s) materialized)
+2026-10-23 13:42:33,898 INFO gateway.run: Press Ctrl+C to stop
+2026-10-23 13:42:33,911 INFO gateway.run: kanban dispatcher: holding singleton dispatcher lock (/opt/data/kanban/.dispatcher.lock)
+2026-10-23 13:42:33,912 INFO gateway.run: kanban dispatcher: kanban.max_in_progress unset; using memory-derived default max_in_progress=8 (set kanban.max_in_progress in config.yaml to override)
+2026-10-23 13:42:33,926 INFO gateway.run: Cron scheduler will tick 1 profile(s): ['default']
+2026-10-23 13:42:33,940 INFO gateway.run: Gateway housekeeping started (interval=60s)
+2026-10-23 13:42:38,912 INFO gateway.run: kanban dispatcher: embedded in gateway (interval=60.0s)
+2026-10-23 13:46:09,139 INFO gateway.run: Received SIGTERM — initiating shutdown
+2026-10-23 13:46:09,139 WARNING gateway.run: Shutdown context: signal=SIGTERM under_systemd=no parent_pid=155 parent_name=s6-supervise loadavg_1m=0.11
+2026-10-23 13:46:09,150 INFO gateway.run: Received SIGTERM — initiating shutdown
+2026-10-23 13:46:09,150 WARNING gateway.run: Shutdown context: signal=SIGTERM under_systemd=no parent_pid=155 parent_name=s6-supervise loadavg_1m=0.11
+2026-10-23 13:46:09,161 INFO gateway.run: Received SIGTERM — initiating shutdown
+2026-10-23 13:46:09,161 WARNING gateway.run: Shutdown context: signal=SIGTERM under_systemd=no parent_pid=155 parent_name=s6-supervise loadavg_1m=0.11
+2026-10-23 13:46:09,174 INFO gateway.run: Received SIGTERM — initiating shutdown
+2026-10-23 13:46:09,174 WARNING gateway.run: Shutdown context: signal=SIGTERM under_systemd=no parent_pid=155 parent_name=s6-supervise loadavg_1m=0.11
+2026-10-23 13:46:09,188 INFO gateway.run: Stopping gateway...
+2026-10-23 13:46:09,190 INFO gateway.run: Shutdown phase: notify_active_sessions done at +0.00s
+2026-10-23 13:46:09,195 INFO gateway.run: Shutdown phase: drain done at +0.01s (drain took 0.00s, timed_out=False, active_at_start=0, active_now=0, cron_at_start=0, cron_now=0, api_at_start=0, api_now=0, deferred_at_start=0, deferred_now=0)
+2026-10-23 13:46:09,204 INFO gateway.platforms.api_server: [Api_Server] API server stopped
+2026-10-23 13:46:09,205 INFO gateway.run: ✓ api_server disconnected (0.01s)
+2026-10-23 13:46:09,206 INFO gateway.run: Shutdown phase: all adapters disconnected at +0.02s
+2026-10-23 13:46:09,215 INFO gateway.run: Gateway housekeeping stopped
+2026-10-23 13:46:09,224 INFO gateway.run: Shutdown phase: final-cleanup tool kill done at +0.04s
+2026-10-23 13:46:09,224 INFO gateway.run: Shutdown phase: executor quiesced at +0.04s
+2026-10-23 13:46:09,229 INFO gateway.run: Shutdown phase: SessionDB close done at +0.04s
+2026-10-23 13:46:09,236 INFO gateway.run: Gateway stopped by an unexpected signal — persisting gateway_state=running so container_boot auto-starts on the next boot (issue #42675)
+2026-10-23 13:46:09,257 INFO gateway.run: Gateway stopped (total teardown 0.07s)
+2026-10-23 13:46:09,316 INFO gateway.run: Exiting with code 1 (signal-initiated shutdown without restart request) so the service manager can revive the gateway.
+2026-10-23 13:46:27,959 INFO gateway.control_socket: Gateway control socket listening at /opt/data/gateway.sock
+2026-10-23 13:46:28,371 INFO gateway.run: Starting Hermes Gateway...
+2026-10-23 13:46:28,374 INFO gateway.run: Session storage: /opt/data/sessions
+2026-10-23 13:46:28,393 INFO gateway.run: Agent budget: max_iterations=25 (agent.max_turns from config.yaml, else the HERMES_MAX_ITERATIONS bridge)
+2026-10-23 13:46:28,394 INFO gateway.run: Secret redaction: ENABLED (tool output, logs, and chat responses are scrubbed before delivery)
+2026-10-23 13:46:28,482 INFO gateway.run: Previous gateway exited cleanly — skipping session suspension
+2026-10-23 13:46:28,850 INFO gateway.run: Connecting to api_server...
+2026-10-23 13:46:28,894 INFO gateway.platforms.api_server: [Api_Server] API server listening on http://127.0.0.1:8642 (model: hermes-agent)
+2026-10-23 13:46:28,929 INFO gateway.run: ✓ api_server connected
+2026-10-23 13:46:31,590 INFO gateway.run: Gateway running with 1 platform(s)
+2026-10-23 13:46:31,618 INFO gateway.run: Channel directory built: 0 target(s)
+2026-10-23 13:46:36,934 INFO gateway.run: Model context warmed: qwen2.5:3b -> 4096 tokens (config)
+2026-10-23 13:46:36,935 INFO gateway.run: Turn machinery warmed in 8.1s (20 tool schema(s) materialized)
+2026-10-23 13:46:36,945 INFO gateway.run: Press Ctrl+C to stop
+2026-10-23 13:46:36,957 INFO gateway.run: kanban dispatcher: holding singleton dispatcher lock (/opt/data/kanban/.dispatcher.lock)
+2026-10-23 13:46:36,958 INFO gateway.run: kanban dispatcher: kanban.max_in_progress unset; using memory-derived default max_in_progress=8 (set kanban.max_in_progress in config.yaml to override)
+2026-10-23 13:46:36,974 INFO gateway.run: Cron scheduler will tick 1 profile(s): ['default']
+2026-10-23 13:46:36,987 INFO gateway.run: Gateway housekeeping started (interval=60s)
+2026-10-23 13:46:41,960 INFO gateway.run: kanban dispatcher: embedded in gateway (interval=60.0s)
+2026-10-23 13:50:25,718 INFO gateway.run: Received SIGTERM — initiating shutdown
+2026-10-23 13:50:25,718 WARNING gateway.run: Shutdown context: signal=SIGTERM under_systemd=no parent_pid=155 parent_name=s6-supervise loadavg_1m=0.03
+2026-10-23 13:50:25,729 INFO gateway.run: Received SIGTERM — initiating shutdown
+2026-10-23 13:50:25,729 WARNING gateway.run: Shutdown context: signal=SIGTERM under_systemd=no parent_pid=155 parent_name=s6-supervise loadavg_1m=0.03
+2026-10-23 13:50:25,740 INFO gateway.run: Received SIGTERM — initiating shutdown
+2026-10-23 13:50:25,741 WARNING gateway.run: Shutdown context: signal=SIGTERM under_systemd=no parent_pid=155 parent_name=s6-supervise loadavg_1m=0.03
+2026-10-23 13:50:25,754 INFO gateway.run: Stopping gateway...
+2026-10-23 13:50:25,757 INFO gateway.run: Shutdown phase: notify_active_sessions done at +0.00s
+2026-10-23 13:50:25,761 INFO gateway.run: Shutdown phase: drain done at +0.01s (drain took 0.00s, timed_out=False, active_at_start=0, active_now=0, cron_at_start=0, cron_now=0, api_at_start=0, api_now=0, deferred_at_start=0, deferred_now=0)
+2026-10-23 13:50:25,769 INFO gateway.platforms.api_server: [Api_Server] API server stopped
+2026-10-23 13:50:25,770 INFO gateway.run: ✓ api_server disconnected (0.01s)
+2026-10-23 13:50:25,771 INFO gateway.run: Shutdown phase: all adapters disconnected at +0.02s
+2026-10-23 13:50:25,780 INFO gateway.run: Gateway housekeeping stopped
+2026-10-23 13:50:25,790 INFO gateway.run: Shutdown phase: final-cleanup tool kill done at +0.03s
+2026-10-23 13:50:25,790 INFO gateway.run: Shutdown phase: executor quiesced at +0.04s
+2026-10-23 13:50:25,794 INFO gateway.run: Shutdown phase: SessionDB close done at +0.04s
+2026-10-23 13:50:25,803 INFO gateway.run: Gateway stopped by an unexpected signal — persisting gateway_state=running so container_boot auto-starts on the next boot (issue #42675)
+2026-10-23 13:50:25,829 INFO gateway.run: Gateway stopped (total teardown 0.07s)
+2026-10-23 13:50:25,881 INFO gateway.run: Exiting with code 1 (signal-initiated shutdown without restart request) so the service manager can revive the gateway.
+2026-10-23 13:50:43,928 INFO gateway.control_socket: Gateway control socket listening at /opt/data/gateway.sock
+2026-10-23 13:50:44,376 INFO gateway.run: Starting Hermes Gateway...
+2026-10-23 13:50:44,379 INFO gateway.run: Session storage: /opt/data/sessions
+2026-10-23 13:50:44,394 INFO gateway.run: Agent budget: max_iterations=25 (agent.max_turns from config.yaml, else the HERMES_MAX_ITERATIONS bridge)
+2026-10-23 13:50:44,394 INFO gateway.run: Secret redaction: ENABLED (tool output, logs, and chat responses are scrubbed before delivery)
+2026-10-23 13:50:44,478 INFO gateway.run: Previous gateway exited cleanly — skipping session suspension
+2026-10-23 13:50:44,849 INFO gateway.run: Connecting to api_server...
+2026-10-23 13:50:44,892 INFO gateway.platforms.api_server: [Api_Server] API server listening on http://127.0.0.1:8642 (model: hermes-agent)
+2026-10-23 13:50:44,929 INFO gateway.run: ✓ api_server connected
+2026-10-23 13:50:47,734 INFO gateway.run: Gateway running with 1 platform(s)
+2026-10-23 13:50:47,767 INFO gateway.run: Channel directory built: 0 target(s)
+2026-10-23 13:50:53,225 INFO gateway.run: Model context warmed: qwen2.5:3b -> 4096 tokens (config)
+2026-10-23 13:50:53,226 INFO gateway.run: Turn machinery warmed in 8.4s (20 tool schema(s) materialized)
+2026-10-23 13:50:53,236 INFO gateway.run: Press Ctrl+C to stop
+2026-10-23 13:50:53,247 INFO gateway.run: kanban dispatcher: holding singleton dispatcher lock (/opt/data/kanban/.dispatcher.lock)
+2026-10-23 13:50:53,248 INFO gateway.run: kanban dispatcher: kanban.max_in_progress unset; using memory-derived default max_in_progress=8 (set kanban.max_in_progress in config.yaml to override)
+2026-10-23 13:50:53,263 INFO gateway.run: Cron scheduler will tick 1 profile(s): ['default']
+2026-10-23 13:50:53,274 INFO gateway.run: Gateway housekeeping started (interval=60s)
+2026-10-23 13:50:58,249 INFO gateway.run: kanban dispatcher: embedded in gateway (interval=60.0s)
+2026-10-23 14:35:13,374 INFO gateway.run: Received SIGTERM — initiating shutdown
+2026-10-23 14:35:13,374 WARNING gateway.run: Shutdown context: signal=SIGTERM under_systemd=no parent_pid=155 parent_name=s6-supervise loadavg_1m=0.14
+2026-10-23 14:35:13,386 INFO gateway.run: Received SIGTERM — initiating shutdown
+2026-10-23 14:35:13,386 WARNING gateway.run: Shutdown context: signal=SIGTERM under_systemd=no parent_pid=155 parent_name=s6-supervise loadavg_1m=0.14
+2026-10-23 14:35:13,397 INFO gateway.run: Stopping gateway...
+2026-10-23 14:35:13,400 INFO gateway.run: Shutdown phase: notify_active_sessions done at +0.00s
+2026-10-23 14:35:13,402 INFO gateway.run: Shutdown phase: drain done at +0.00s (drain took 0.00s, timed_out=False, active_at_start=0, active_now=0, cron_at_start=0, cron_now=0, api_at_start=0, api_now=0, deferred_at_start=0, deferred_now=0)
+2026-10-23 14:35:13,412 INFO gateway.platforms.api_server: [Api_Server] API server stopped
+2026-10-23 14:35:13,413 INFO gateway.run: ✓ api_server disconnected (0.01s)
+2026-10-23 14:35:13,413 INFO gateway.run: Shutdown phase: all adapters disconnected at +0.02s
+2026-10-23 14:35:13,421 INFO gateway.run: Gateway housekeeping stopped
+2026-10-23 14:35:13,429 INFO gateway.run: Shutdown phase: final-cleanup tool kill done at +0.03s
+2026-10-23 14:35:13,430 INFO gateway.run: Shutdown phase: executor quiesced at +0.03s
+2026-10-23 14:35:13,437 INFO gateway.run: Shutdown phase: SessionDB close done at +0.04s
+2026-10-23 14:35:13,444 INFO gateway.run: Gateway stopped by an unexpected signal — persisting gateway_state=running so container_boot auto-starts on the next boot (issue #42675)
+2026-10-23 14:35:13,459 INFO gateway.run: Gateway stopped (total teardown 0.06s)
+2026-10-23 14:35:13,522 INFO gateway.run: Exiting with code 1 (signal-initiated shutdown without restart request) so the service manager can revive the gateway.
+2026-10-23 14:35:32,564 INFO gateway.control_socket: Gateway control socket listening at /opt/data/gateway.sock
+2026-10-23 14:35:33,066 INFO gateway.run: Starting Hermes Gateway...
+2026-10-23 14:35:33,074 INFO gateway.run: Session storage: /opt/data/sessions
+2026-10-23 14:35:33,106 INFO gateway.run: Agent budget: max_iterations=25 (agent.max_turns from config.yaml, else the HERMES_MAX_ITERATIONS bridge)
+2026-10-23 14:35:33,107 INFO gateway.run: Secret redaction: ENABLED (tool output, logs, and chat responses are scrubbed before delivery)
+2026-10-23 14:35:33,208 INFO gateway.run: Previous gateway exited cleanly — skipping session suspension
+2026-10-23 14:35:33,587 INFO gateway.run: Connecting to api_server...
+2026-10-23 14:35:33,629 INFO gateway.platforms.api_server: [Api_Server] API server listening on http://127.0.0.1:8642 (model: hermes-agent)
+2026-10-23 14:35:33,655 INFO gateway.run: ✓ api_server connected
+2026-10-23 14:35:36,544 INFO gateway.run: Gateway running with 1 platform(s)
+2026-10-23 14:35:36,600 INFO gateway.run: Channel directory built: 0 target(s)
+2026-10-23 14:35:42,220 INFO gateway.run: Model context warmed: qwen2.5:3b -> 8192 tokens (config)
+2026-10-23 14:35:42,221 INFO gateway.run: Turn machinery warmed in 8.6s (20 tool schema(s) materialized)
+2026-10-23 14:35:42,230 INFO gateway.run: Press Ctrl+C to stop
+2026-10-23 14:35:42,242 INFO gateway.run: kanban dispatcher: holding singleton dispatcher lock (/opt/data/kanban/.dispatcher.lock)
+2026-10-23 14:35:42,243 INFO gateway.run: kanban dispatcher: kanban.max_in_progress unset; using memory-derived default max_in_progress=8 (set kanban.max_in_progress in config.yaml to override)
+2026-10-23 14:35:42,256 INFO gateway.run: Cron scheduler will tick 1 profile(s): ['default']
+2026-10-23 14:35:42,270 INFO gateway.run: Gateway housekeeping started (interval=60s)
+2026-10-23 14:35:47,244 INFO gateway.run: kanban dispatcher: embedded in gateway (interval=60.0s)
+2026-10-23 15:13:46,080 INFO gateway.run: Received SIGTERM — initiating shutdown
+2026-10-23 15:13:46,081 WARNING gateway.run: Shutdown context: signal=SIGTERM under_systemd=no parent_pid=155 parent_name=s6-supervise loadavg_1m=0.39
+2026-10-23 15:13:46,100 INFO gateway.run: Received SIGTERM — initiating shutdown
+2026-10-23 15:13:46,101 WARNING gateway.run: Shutdown context: signal=SIGTERM under_systemd=no parent_pid=155 parent_name=s6-supervise loadavg_1m=0.39
+2026-10-23 15:13:46,121 INFO gateway.run: Received SIGTERM — initiating shutdown
+2026-10-23 15:13:46,121 WARNING gateway.run: Shutdown context: signal=SIGTERM under_systemd=no parent_pid=155 parent_name=s6-supervise loadavg_1m=0.39
+2026-10-23 15:13:46,144 INFO gateway.run: Stopping gateway...
+2026-10-23 15:13:46,148 INFO gateway.run: Shutdown phase: notify_active_sessions done at +0.00s
+2026-10-23 15:13:46,152 INFO gateway.run: Shutdown phase: drain done at +0.01s (drain took 0.00s, timed_out=False, active_at_start=0, active_now=0, cron_at_start=0, cron_now=0, api_at_start=0, api_now=0, deferred_at_start=0, deferred_now=0)
+2026-10-23 15:13:46,169 INFO gateway.platforms.api_server: [Api_Server] API server stopped
+2026-10-23 15:13:46,170 INFO gateway.run: ✓ api_server disconnected (0.02s)
+2026-10-23 15:13:46,170 INFO gateway.run: Shutdown phase: all adapters disconnected at +0.03s
+2026-10-23 15:13:46,183 INFO gateway.run: Gateway housekeeping stopped
+2026-10-23 15:13:46,191 INFO gateway.run: Shutdown phase: final-cleanup tool kill done at +0.05s
+2026-10-23 15:13:46,191 INFO gateway.run: Shutdown phase: executor quiesced at +0.05s
+2026-10-23 15:13:46,200 INFO gateway.run: Shutdown phase: SessionDB close done at +0.05s
+2026-10-23 15:13:46,208 INFO gateway.run: Gateway stopped by an unexpected signal — persisting gateway_state=running so container_boot auto-starts on the next boot (issue #42675)
+2026-10-23 15:13:46,223 INFO gateway.run: Gateway stopped (total teardown 0.08s)
+2026-10-23 15:13:46,285 INFO gateway.run: Exiting with code 1 (signal-initiated shutdown without restart request) so the service manager can revive the gateway.
+2026-10-23 15:14:15,595 INFO gateway.control_socket: Gateway control socket listening at /opt/data/gateway.sock
+2026-10-23 15:14:16,026 INFO gateway.run: Starting Hermes Gateway...
+2026-10-23 15:14:16,030 INFO gateway.run: Session storage: /opt/data/sessions
+2026-10-23 15:14:16,045 INFO gateway.run: Agent budget: max_iterations=25 (agent.max_turns from config.yaml, else the HERMES_MAX_ITERATIONS bridge)
+2026-10-23 15:14:16,046 INFO gateway.run: Secret redaction: ENABLED (tool output, logs, and chat responses are scrubbed before delivery)
+2026-10-23 15:14:16,161 INFO gateway.run: Previous gateway exited cleanly — skipping session suspension
+2026-10-23 15:14:16,601 INFO gateway.run: Connecting to api_server...
+2026-10-23 15:14:16,632 INFO gateway.platforms.api_server: [Api_Server] API server listening on http://127.0.0.1:8642 (model: hermes-agent)
+2026-10-23 15:14:16,662 INFO gateway.run: ✓ api_server connected
+2026-10-23 15:14:19,369 INFO gateway.run: Gateway running with 1 platform(s)
+2026-10-23 15:14:19,398 INFO gateway.run: Channel directory built: 0 target(s)
+2026-10-23 15:14:25,653 INFO gateway.run: Model context warmed: qwen2.5:3b -> 8192 tokens (config)
+2026-10-23 15:14:25,653 INFO gateway.run: Turn machinery warmed in 9.1s (20 tool schema(s) materialized)
+2026-10-23 15:14:25,664 INFO gateway.run: Press Ctrl+C to stop
+2026-10-23 15:14:25,682 INFO gateway.run: kanban dispatcher: holding singleton dispatcher lock (/opt/data/kanban/.dispatcher.lock)
+2026-10-23 15:14:25,683 INFO gateway.run: kanban dispatcher: kanban.max_in_progress unset; using memory-derived default max_in_progress=8 (set kanban.max_in_progress in config.yaml to override)
+2026-10-23 15:14:25,696 INFO gateway.run: Cron scheduler will tick 1 profile(s): ['default']
+2026-10-23 15:14:25,707 INFO gateway.run: Gateway housekeeping started (interval=60s)
+2026-10-23 15:14:30,685 INFO gateway.run: kanban dispatcher: embedded in gateway (interval=60.0s)
+2026-10-23 15:16:37,524 INFO gateway.run: Received SIGTERM — initiating shutdown
+2026-10-23 15:16:37,525 WARNING gateway.run: Shutdown context: signal=SIGTERM under_systemd=no parent_pid=154 parent_name=s6-supervise loadavg_1m=0.65
+2026-10-23 15:16:37,536 INFO gateway.run: Received SIGTERM — initiating shutdown
+2026-10-23 15:16:37,536 WARNING gateway.run: Shutdown context: signal=SIGTERM under_systemd=no parent_pid=154 parent_name=s6-supervise loadavg_1m=0.65
+2026-10-23 15:16:37,549 INFO gateway.run: Stopping gateway...
+2026-10-23 15:16:37,551 INFO gateway.run: Shutdown phase: notify_active_sessions done at +0.00s
+2026-10-23 15:16:37,555 INFO gateway.run: Shutdown phase: drain done at +0.00s (drain took 0.00s, timed_out=False, active_at_start=0, active_now=0, cron_at_start=0, cron_now=0, api_at_start=0, api_now=0, deferred_at_start=0, deferred_now=0)
+2026-10-23 15:16:37,563 INFO gateway.platforms.api_server: [Api_Server] API server stopped
+2026-10-23 15:16:37,563 INFO gateway.run: ✓ api_server disconnected (0.01s)
+2026-10-23 15:16:37,564 INFO gateway.run: Shutdown phase: all adapters disconnected at +0.01s
+2026-10-23 15:16:37,571 INFO gateway.run: Gateway housekeeping stopped
+2026-10-23 15:16:37,581 INFO gateway.run: Shutdown phase: final-cleanup tool kill done at +0.03s
+2026-10-23 15:16:37,581 INFO gateway.run: Shutdown phase: executor quiesced at +0.03s
+2026-10-23 15:16:37,585 INFO gateway.run: Shutdown phase: SessionDB close done at +0.04s
+2026-10-23 15:16:37,593 INFO gateway.run: Gateway stopped by an unexpected signal — persisting gateway_state=running so container_boot auto-starts on the next boot (issue #42675)
+2026-10-23 15:16:37,619 INFO gateway.run: Gateway stopped (total teardown 0.07s)
+2026-10-23 15:16:37,674 INFO gateway.run: Exiting with code 1 (signal-initiated shutdown without restart request) so the service manager can revive the gateway.
+2026-10-23 15:35:35,529 INFO gateway.control_socket: Gateway control socket listening at /opt/data/gateway.sock
+2026-10-23 15:35:35,896 INFO gateway.run: Starting Hermes Gateway...
+2026-10-23 15:35:35,899 INFO gateway.run: Session storage: /opt/data/sessions
+2026-10-23 15:35:35,911 INFO gateway.run: Agent budget: max_iterations=25 (agent.max_turns from config.yaml, else the HERMES_MAX_ITERATIONS bridge)
+2026-10-23 15:35:35,912 INFO gateway.run: Secret redaction: ENABLED (tool output, logs, and chat responses are scrubbed before delivery)
+2026-10-23 15:35:35,983 INFO gateway.run: Previous gateway exited cleanly — skipping session suspension
+2026-10-23 15:35:36,370 INFO gateway.run: Connecting to api_server...
+2026-10-23 15:35:36,402 INFO gateway.platforms.api_server: [Api_Server] API server listening on http://127.0.0.1:8642 (model: hermes-agent)
+2026-10-23 15:35:36,427 INFO gateway.run: ✓ api_server connected
+2026-10-23 15:35:38,698 INFO gateway.run: Gateway running with 1 platform(s)
+2026-10-23 15:35:38,746 INFO gateway.run: Channel directory built: 0 target(s)
+2026-10-23 15:35:44,541 INFO gateway.run: Model context warmed: qwen2.5:3b -> 8192 tokens (config)
+2026-10-23 15:35:44,541 INFO gateway.run: Turn machinery warmed in 8.2s (20 tool schema(s) materialized)
+2026-10-23 15:35:44,551 INFO gateway.run: Press Ctrl+C to stop
+2026-10-23 15:35:44,562 INFO gateway.run: kanban dispatcher: holding singleton dispatcher lock (/opt/data/kanban/.dispatcher.lock)
+2026-10-23 15:35:44,563 INFO gateway.run: kanban dispatcher: kanban.max_in_progress unset; using memory-derived default max_in_progress=8 (set kanban.max_in_progress in config.yaml to override)
+2026-10-23 15:35:44,574 INFO gateway.run: Cron scheduler will tick 1 profile(s): ['default']
+2026-10-23 15:35:44,586 INFO gateway.run: Gateway housekeeping started (interval=60s)
+2026-10-23 15:35:49,565 INFO gateway.run: kanban dispatcher: embedded in gateway (interval=60.0s)
+2026-10-23 15:46:09,277 INFO gateway.run: Received SIGTERM — initiating shutdown
+2026-10-23 15:46:09,278 WARNING gateway.run: Shutdown context: signal=SIGTERM under_systemd=no parent_pid=154 parent_name=s6-supervise loadavg_1m=0.19
+2026-10-23 15:46:09,291 INFO gateway.run: Received SIGTERM — initiating shutdown
+2026-10-23 15:46:09,292 WARNING gateway.run: Shutdown context: signal=SIGTERM under_systemd=no parent_pid=154 parent_name=s6-supervise loadavg_1m=0.19
+2026-10-23 15:46:09,305 INFO gateway.run: Stopping gateway...
+2026-10-23 15:46:09,309 INFO gateway.run: Shutdown phase: notify_active_sessions done at +0.00s
+2026-10-23 15:46:09,313 INFO gateway.run: Shutdown phase: drain done at +0.01s (drain took 0.00s, timed_out=False, active_at_start=0, active_now=0, cron_at_start=0, cron_now=0, api_at_start=0, api_now=0, deferred_at_start=0, deferred_now=0)
+2026-10-23 15:46:09,320 INFO gateway.platforms.api_server: [Api_Server] API server stopped
+2026-10-23 15:46:09,321 INFO gateway.run: ✓ api_server disconnected (0.01s)
+2026-10-23 15:46:09,322 INFO gateway.run: Shutdown phase: all adapters disconnected at +0.02s
+2026-10-23 15:46:09,333 INFO gateway.run: Gateway housekeeping stopped
+2026-10-23 15:46:09,348 INFO gateway.run: Shutdown phase: final-cleanup tool kill done at +0.04s
+2026-10-23 15:46:09,348 INFO gateway.run: Shutdown phase: executor quiesced at +0.04s
+2026-10-23 15:46:09,352 INFO gateway.run: Shutdown phase: SessionDB close done at +0.05s
+2026-10-23 15:46:09,358 INFO gateway.run: Gateway stopped by an unexpected signal — persisting gateway_state=running so container_boot auto-starts on the next boot (issue #42675)
+2026-10-23 15:46:09,383 INFO gateway.run: Gateway stopped (total teardown 0.08s)
+2026-10-23 15:46:09,434 INFO gateway.run: Exiting with code 1 (signal-initiated shutdown without restart request) so the service manager can revive the gateway.
+2026-10-23 15:49:05,822 INFO gateway.control_socket: Gateway control socket listening at /opt/data/gateway.sock
+2026-10-23 15:49:06,186 INFO gateway.run: Starting Hermes Gateway...
+2026-10-23 15:49:06,189 INFO gateway.run: Session storage: /opt/data/sessions
+2026-10-23 15:49:06,202 INFO gateway.run: Agent budget: max_iterations=25 (agent.max_turns from config.yaml, else the HERMES_MAX_ITERATIONS bridge)
+2026-10-23 15:49:06,202 INFO gateway.run: Secret redaction: ENABLED (tool output, logs, and chat responses are scrubbed before delivery)
+2026-10-23 15:49:06,270 INFO gateway.run: Previous gateway exited cleanly — skipping session suspension
+2026-10-23 15:49:06,592 INFO gateway.run: Connecting to api_server...
+2026-10-23 15:49:06,622 INFO gateway.platforms.api_server: [Api_Server] API server listening on http://127.0.0.1:8642 (model: hermes-agent)
+2026-10-23 15:49:06,653 INFO gateway.run: ✓ api_server connected
+2026-10-23 15:49:08,852 INFO gateway.run: Gateway running with 1 platform(s)
+2026-10-23 15:49:08,983 INFO gateway.run: Channel directory built: 0 target(s)
+2026-10-23 15:49:14,852 INFO gateway.run: Model context warmed: qwen2.5:3b -> 8192 tokens (config)
+2026-10-23 15:49:14,852 INFO gateway.run: Turn machinery warmed in 8.3s (20 tool schema(s) materialized)
+2026-10-23 15:49:14,863 INFO gateway.run: Press Ctrl+C to stop
+2026-10-23 15:49:14,874 INFO gateway.run: kanban dispatcher: holding singleton dispatcher lock (/opt/data/kanban/.dispatcher.lock)
+2026-10-23 15:49:14,875 INFO gateway.run: kanban dispatcher: kanban.max_in_progress unset; using memory-derived default max_in_progress=8 (set kanban.max_in_progress in config.yaml to override)
+2026-10-23 15:49:14,887 INFO gateway.run: Cron scheduler will tick 1 profile(s): ['default']
+2026-10-23 15:49:14,900 INFO gateway.run: Gateway housekeeping started (interval=60s)
+2026-10-23 15:49:19,876 INFO gateway.run: kanban dispatcher: embedded in gateway (interval=60.0s)
+2026-10-23 16:22:34,714 INFO gateway.run: Received SIGTERM — initiating shutdown
+2026-10-23 16:22:34,714 WARNING gateway.run: Shutdown context: signal=SIGTERM under_systemd=no parent_pid=154 parent_name=s6-supervise loadavg_1m=0.68
+2026-10-23 16:22:34,724 INFO gateway.run: Received SIGTERM — initiating shutdown
+2026-10-23 16:22:34,724 WARNING gateway.run: Shutdown context: signal=SIGTERM under_systemd=no parent_pid=154 parent_name=s6-supervise loadavg_1m=0.68
+2026-10-23 16:22:34,735 INFO gateway.run: Stopping gateway...
+2026-10-23 16:22:34,737 INFO gateway.run: Shutdown phase: notify_active_sessions done at +0.00s
+2026-10-23 16:22:34,740 INFO gateway.run: Shutdown phase: drain done at +0.01s (drain took 0.00s, timed_out=False, active_at_start=0, active_now=0, cron_at_start=0, cron_now=0, api_at_start=0, api_now=0, deferred_at_start=0, deferred_now=0)
+2026-10-23 16:22:34,749 INFO gateway.platforms.api_server: [Api_Server] API server stopped
+2026-10-23 16:22:34,750 INFO gateway.run: ✓ api_server disconnected (0.01s)
+2026-10-23 16:22:34,751 INFO gateway.run: Shutdown phase: all adapters disconnected at +0.02s
+2026-10-23 16:22:34,761 INFO gateway.run: Gateway housekeeping stopped
+2026-10-23 16:22:34,767 INFO gateway.run: Shutdown phase: final-cleanup tool kill done at +0.03s
+2026-10-23 16:22:34,768 INFO gateway.run: Shutdown phase: executor quiesced at +0.03s
+2026-10-23 16:22:34,774 INFO gateway.run: Shutdown phase: SessionDB close done at +0.04s
+2026-10-23 16:22:34,783 INFO gateway.run: Gateway stopped by an unexpected signal — persisting gateway_state=running so container_boot auto-starts on the next boot (issue #42675)
+2026-10-23 16:22:34,800 INFO gateway.run: Gateway stopped (total teardown 0.07s)
+2026-10-23 16:22:34,862 INFO gateway.run: Exiting with code 1 (signal-initiated shutdown without restart request) so the service manager can revive the gateway.
+2026-10-23 16:23:54,530 INFO gateway.control_socket: Gateway control socket listening at /opt/data/gateway.sock
+2026-10-23 16:23:55,029 INFO gateway.run: Starting Hermes Gateway...
+2026-10-23 16:23:55,033 INFO gateway.run: Session storage: /opt/data/sessions
+2026-10-23 16:23:55,050 INFO gateway.run: Agent budget: max_iterations=25 (agent.max_turns from config.yaml, else the HERMES_MAX_ITERATIONS bridge)
+2026-10-23 16:23:55,051 INFO gateway.run: Secret redaction: ENABLED (tool output, logs, and chat responses are scrubbed before delivery)
+2026-10-23 16:23:55,140 INFO gateway.run: Previous gateway exited cleanly — skipping session suspension
+2026-10-23 16:23:55,535 INFO gateway.run: Connecting to api_server...
+2026-10-23 16:23:55,582 INFO gateway.platforms.api_server: [Api_Server] API server listening on http://127.0.0.1:8642 (model: hermes-agent)
+2026-10-23 16:23:55,620 INFO gateway.run: ✓ api_server connected
+2026-10-23 16:23:58,673 INFO gateway.run: Gateway running with 1 platform(s)
+2026-10-23 16:23:58,699 INFO gateway.run: Channel directory built: 0 target(s)
+2026-10-23 16:24:03,143 INFO gateway.run: Model context warmed: qwen2.5:3b -> 65536 tokens (config)
+2026-10-23 16:24:03,143 INFO gateway.run: Turn machinery warmed in 7.6s (20 tool schema(s) materialized)
+2026-10-23 16:24:03,154 INFO gateway.run: Press Ctrl+C to stop
+2026-10-23 16:24:03,167 INFO gateway.run: kanban dispatcher: holding singleton dispatcher lock (/opt/data/kanban/.dispatcher.lock)
+2026-10-23 16:24:03,168 INFO gateway.run: kanban dispatcher: kanban.max_in_progress unset; using memory-derived default max_in_progress=8 (set kanban.max_in_progress in config.yaml to override)
+2026-10-23 16:24:03,180 INFO gateway.run: Cron scheduler will tick 1 profile(s): ['default']
+2026-10-23 16:24:03,190 INFO gateway.run: Gateway housekeeping started (interval=60s)
+2026-10-23 16:24:08,169 INFO gateway.run: kanban dispatcher: embedded in gateway (interval=60.0s)
+2026-10-23 17:11:45,222 INFO gateway.run: Received SIGTERM — initiating shutdown
+2026-10-23 17:11:45,223 WARNING gateway.run: Shutdown context: signal=SIGTERM under_systemd=no parent_pid=155 parent_name=s6-supervise loadavg_1m=0.17
+2026-10-23 17:11:45,238 INFO gateway.run: Received SIGTERM — initiating shutdown
+2026-10-23 17:11:45,238 WARNING gateway.run: Shutdown context: signal=SIGTERM under_systemd=no parent_pid=155 parent_name=s6-supervise loadavg_1m=0.17
+2026-10-23 17:11:45,249 INFO gateway.run: Received SIGTERM — initiating shutdown
+2026-10-23 17:11:45,249 WARNING gateway.run: Shutdown context: signal=SIGTERM under_systemd=no parent_pid=155 parent_name=s6-supervise loadavg_1m=0.17
+2026-10-23 17:11:45,263 INFO gateway.run: Stopping gateway...
+2026-10-23 17:11:45,270 INFO gateway.run: Shutdown phase: notify_active_sessions done at +0.01s
+2026-10-23 17:11:45,274 INFO gateway.run: Shutdown phase: drain done at +0.01s (drain took 0.00s, timed_out=False, active_at_start=0, active_now=0, cron_at_start=0, cron_now=0, api_at_start=0, api_now=0, deferred_at_start=0, deferred_now=0)
+2026-10-23 17:11:45,289 INFO gateway.platforms.api_server: [Api_Server] API server stopped
+2026-10-23 17:11:45,290 INFO gateway.run: ✓ api_server disconnected (0.02s)
+2026-10-23 17:11:45,292 INFO gateway.run: Shutdown phase: all adapters disconnected at +0.03s
+2026-10-23 17:11:45,303 INFO gateway.run: Gateway housekeeping stopped
+2026-10-23 17:11:45,318 INFO gateway.run: Shutdown phase: final-cleanup tool kill done at +0.05s
+2026-10-23 17:11:45,319 INFO gateway.run: Shutdown phase: executor quiesced at +0.05s
+2026-10-23 17:11:45,329 INFO gateway.run: Shutdown phase: SessionDB close done at +0.06s
+2026-10-23 17:11:45,335 INFO gateway.run: Gateway stopped by an unexpected signal — persisting gateway_state=running so container_boot auto-starts on the next boot (issue #42675)
+2026-10-23 17:11:45,351 INFO gateway.run: Gateway stopped (total teardown 0.09s)
+2026-10-23 17:11:45,405 INFO gateway.run: Exiting with code 1 (signal-initiated shutdown without restart request) so the service manager can revive the gateway.
+2026-10-23 17:49:34,408 INFO gateway.control_socket: Gateway control socket listening at /opt/data/gateway.sock
+2026-10-23 17:49:34,981 INFO gateway.run: Starting Hermes Gateway...
+2026-10-23 17:49:34,984 INFO gateway.run: Session storage: /opt/data/sessions
+2026-10-23 17:49:34,998 INFO gateway.run: Agent budget: max_iterations=25 (agent.max_turns from config.yaml, else the HERMES_MAX_ITERATIONS bridge)
+2026-10-23 17:49:34,999 INFO gateway.run: Secret redaction: ENABLED (tool output, logs, and chat responses are scrubbed before delivery)
+2026-10-23 17:49:35,066 INFO gateway.run: Previous gateway exited cleanly — skipping session suspension
+2026-10-23 17:49:35,449 INFO gateway.run: Connecting to api_server...
+2026-10-23 17:49:35,488 INFO gateway.platforms.api_server: [Api_Server] API server listening on http://127.0.0.1:8642 (model: hermes-agent)
+2026-10-23 17:49:35,514 INFO gateway.run: ✓ api_server connected
+2026-10-23 17:49:38,321 INFO gateway.run: Gateway running with 1 platform(s)
+2026-10-23 17:49:38,362 INFO gateway.run: Channel directory built: 0 target(s)
+2026-10-23 17:49:46,443 INFO gateway.run: Model context warmed: qwen2.5:3b -> 65536 tokens (config)
+2026-10-23 17:49:46,444 INFO gateway.run: Turn machinery warmed in 11.0s (32 tool schema(s) materialized)
+2026-10-23 17:49:46,460 INFO gateway.run: Press Ctrl+C to stop
+2026-10-23 17:49:46,477 INFO gateway.run: kanban dispatcher: holding singleton dispatcher lock (/opt/data/kanban/.dispatcher.lock)
+2026-10-23 17:49:46,478 INFO gateway.run: kanban dispatcher: kanban.max_in_progress unset; using memory-derived default max_in_progress=8 (set kanban.max_in_progress in config.yaml to override)
+2026-10-23 17:49:46,493 INFO gateway.run: Cron scheduler will tick 1 profile(s): ['default']
+2026-10-23 17:49:46,509 INFO gateway.run: Gateway housekeeping started (interval=60s)
+2026-10-23 17:49:51,480 INFO gateway.run: kanban dispatcher: embedded in gateway (interval=60.0s)
+2026-10-23 19:34:38,914 INFO gateway.run: Received SIGTERM — initiating shutdown
+2026-10-23 19:34:38,915 WARNING gateway.run: Shutdown context: signal=SIGTERM under_systemd=no parent_pid=154 parent_name=s6-supervise loadavg_1m=2.30
+2026-10-23 19:34:38,940 INFO gateway.run: Received SIGTERM — initiating shutdown
+2026-10-23 19:34:38,941 WARNING gateway.run: Shutdown context: signal=SIGTERM under_systemd=no parent_pid=154 parent_name=s6-supervise loadavg_1m=2.30
+2026-10-23 19:34:38,955 INFO gateway.run: Stopping gateway...
+2026-10-23 19:34:38,959 INFO gateway.run: Shutdown phase: notify_active_sessions done at +0.00s
+2026-10-23 19:34:38,962 INFO gateway.run: Shutdown phase: drain done at +0.01s (drain took 0.00s, timed_out=False, active_at_start=0, active_now=0, cron_at_start=0, cron_now=0, api_at_start=0, api_now=0, deferred_at_start=0, deferred_now=0)
+2026-10-23 19:34:38,976 INFO gateway.platforms.api_server: [Api_Server] API server stopped
+2026-10-23 19:34:38,977 INFO gateway.run: ✓ api_server disconnected (0.01s)
+2026-10-23 19:34:38,978 INFO gateway.run: Shutdown phase: all adapters disconnected at +0.02s
+2026-10-23 19:34:38,990 INFO gateway.run: Gateway housekeeping stopped
+2026-10-23 19:34:39,000 INFO gateway.run: Shutdown phase: final-cleanup tool kill done at +0.04s
+2026-10-23 19:34:39,001 INFO gateway.run: Shutdown phase: executor quiesced at +0.04s
+2026-10-23 19:34:39,024 INFO gateway.run: Shutdown phase: SessionDB close done at +0.07s
+2026-10-23 19:34:39,031 INFO gateway.run: Gateway stopped by an unexpected signal — persisting gateway_state=running so container_boot auto-starts on the next boot (issue #42675)
+2026-10-23 19:34:39,048 INFO gateway.run: Gateway stopped (total teardown 0.09s)
+2026-10-23 19:34:39,092 INFO gateway.run: Exiting with code 1 (signal-initiated shutdown without restart request) so the service manager can revive the gateway.
+2026-10-23 19:35:09,210 INFO gateway.control_socket: Gateway control socket listening at /opt/data/gateway.sock
+2026-10-23 19:35:09,587 INFO gateway.run: Starting Hermes Gateway...
+2026-10-23 19:35:09,589 INFO gateway.run: Session storage: /opt/data/sessions
+2026-10-23 19:35:09,604 INFO gateway.run: Agent budget: max_iterations=25 (agent.max_turns from config.yaml, else the HERMES_MAX_ITERATIONS bridge)
+2026-10-23 19:35:09,604 INFO gateway.run: Secret redaction: ENABLED (tool output, logs, and chat responses are scrubbed before delivery)
+2026-10-23 19:35:09,676 INFO gateway.run: Previous gateway exited cleanly — skipping session suspension
+2026-10-23 19:35:10,090 INFO gateway.run: Connecting to api_server...
+2026-10-23 19:35:10,136 INFO gateway.platforms.api_server: [Api_Server] API server listening on http://127.0.0.1:8642 (model: hermes-agent)
+2026-10-23 19:35:10,161 INFO gateway.run: ✓ api_server connected
+2026-10-23 19:35:12,639 INFO gateway.run: Gateway running with 1 platform(s)
+2026-10-23 19:35:12,698 INFO gateway.run: Channel directory built: 0 target(s)
+2026-10-23 19:35:18,175 INFO gateway.run: Model context warmed: qwen2.5:3b -> 65536 tokens (config)
+2026-10-23 19:35:18,176 INFO gateway.run: Turn machinery warmed in 8.1s (32 tool schema(s) materialized)
+2026-10-23 19:35:18,187 INFO gateway.run: Press Ctrl+C to stop
+2026-10-23 19:35:18,198 INFO gateway.run: kanban dispatcher: holding singleton dispatcher lock (/opt/data/kanban/.dispatcher.lock)
+2026-10-23 19:35:18,199 INFO gateway.run: kanban dispatcher: kanban.max_in_progress unset; using memory-derived default max_in_progress=8 (set kanban.max_in_progress in config.yaml to override)
+2026-10-23 19:35:18,209 INFO gateway.run: Cron scheduler will tick 1 profile(s): ['default']
+2026-10-23 19:35:18,222 INFO gateway.run: Gateway housekeeping started (interval=60s)
+2026-10-23 19:35:23,200 INFO gateway.run: kanban dispatcher: embedded in gateway (interval=60.0s)
+2026-10-23 19:36:48,908 INFO gateway.run: Received SIGTERM — initiating shutdown
+2026-10-23 19:36:48,908 WARNING gateway.run: Shutdown context: signal=SIGTERM under_systemd=no parent_pid=155 parent_name=s6-supervise loadavg_1m=1.20
+2026-10-23 19:36:48,919 INFO gateway.run: Received SIGTERM — initiating shutdown
+2026-10-23 19:36:48,920 WARNING gateway.run: Shutdown context: signal=SIGTERM under_systemd=no parent_pid=155 parent_name=s6-supervise loadavg_1m=1.20
+2026-10-23 19:36:48,932 INFO gateway.run: Stopping gateway...
+2026-10-23 19:36:48,934 INFO gateway.run: Shutdown phase: notify_active_sessions done at +0.00s
+2026-10-23 19:36:48,937 INFO gateway.run: Shutdown phase: drain done at +0.00s (drain took 0.00s, timed_out=False, active_at_start=0, active_now=0, cron_at_start=0, cron_now=0, api_at_start=0, api_now=0, deferred_at_start=0, deferred_now=0)
+2026-10-23 19:36:48,945 INFO gateway.platforms.api_server: [Api_Server] API server stopped
+2026-10-23 19:36:48,946 INFO gateway.run: ✓ api_server disconnected (0.01s)
+2026-10-23 19:36:48,946 INFO gateway.run: Shutdown phase: all adapters disconnected at +0.01s
+2026-10-23 19:36:48,955 INFO gateway.run: Gateway housekeeping stopped
+2026-10-23 19:36:48,963 INFO gateway.run: Shutdown phase: final-cleanup tool kill done at +0.03s
+2026-10-23 19:36:48,963 INFO gateway.run: Shutdown phase: executor quiesced at +0.03s
+2026-10-23 19:36:48,967 INFO gateway.run: Shutdown phase: SessionDB close done at +0.03s
+2026-10-23 19:36:48,975 INFO gateway.run: Gateway stopped by an unexpected signal — persisting gateway_state=running so container_boot auto-starts on the next boot (issue #42675)
+2026-10-23 19:36:49,000 INFO gateway.run: Gateway stopped (total teardown 0.07s)
+2026-10-23 19:36:49,056 INFO gateway.run: Exiting with code 1 (signal-initiated shutdown without restart request) so the service manager can revive the gateway.
+2026-10-23 19:37:33,098 INFO gateway.control_socket: Gateway control socket listening at /opt/data/gateway.sock
+2026-10-23 19:37:33,570 INFO gateway.run: Starting Hermes Gateway...
+2026-10-23 19:37:33,573 INFO gateway.run: Session storage: /opt/data/sessions
+2026-10-23 19:37:33,591 INFO gateway.run: Agent budget: max_iterations=25 (agent.max_turns from config.yaml, else the HERMES_MAX_ITERATIONS bridge)
+2026-10-23 19:37:33,592 INFO gateway.run: Secret redaction: ENABLED (tool output, logs, and chat responses are scrubbed before delivery)
+2026-10-23 19:37:33,676 INFO gateway.run: Previous gateway exited cleanly — skipping session suspension
+2026-10-23 19:37:34,073 INFO gateway.run: Connecting to api_server...
+2026-10-23 19:37:34,108 INFO gateway.platforms.api_server: [Api_Server] API server listening on http://127.0.0.1:8642 (model: hermes-agent)
+2026-10-23 19:37:34,134 INFO gateway.run: ✓ api_server connected
+2026-10-23 19:37:36,739 INFO gateway.run: Gateway running with 1 platform(s)
+2026-10-23 19:37:36,769 INFO gateway.run: Channel directory built: 0 target(s)
+2026-10-23 19:37:41,514 INFO gateway.run: Model context warmed: qwen2.5:3b -> 65536 tokens (config)
+2026-10-23 19:37:41,515 INFO gateway.run: Turn machinery warmed in 7.4s (32 tool schema(s) materialized)
+2026-10-23 19:37:41,528 INFO gateway.run: Press Ctrl+C to stop
+2026-10-23 19:37:41,555 INFO gateway.run: kanban dispatcher: holding singleton dispatcher lock (/opt/data/kanban/.dispatcher.lock)
+2026-10-23 19:37:41,557 INFO gateway.run: kanban dispatcher: kanban.max_in_progress unset; using memory-derived default max_in_progress=8 (set kanban.max_in_progress in config.yaml to override)
+2026-10-23 19:37:41,576 INFO gateway.run: Cron scheduler will tick 1 profile(s): ['default']
+2026-10-23 19:37:41,595 INFO gateway.run: Gateway housekeeping started (interval=60s)
+2026-10-23 19:37:46,558 INFO gateway.run: kanban dispatcher: embedded in gateway (interval=60.0s)
+2026-10-23 20:03:36,436 INFO gateway.run: Received SIGTERM — initiating shutdown
+2026-10-23 20:03:36,436 WARNING gateway.run: Shutdown context: signal=SIGTERM under_systemd=no parent_pid=155 parent_name=s6-supervise loadavg_1m=0.14
+2026-10-23 20:03:36,448 INFO gateway.run: Received SIGTERM — initiating shutdown
+2026-10-23 20:03:36,448 WARNING gateway.run: Shutdown context: signal=SIGTERM under_systemd=no parent_pid=155 parent_name=s6-supervise loadavg_1m=0.14
+2026-10-23 20:03:36,463 INFO gateway.run: Stopping gateway...
+2026-10-23 20:03:36,466 INFO gateway.run: Shutdown phase: notify_active_sessions done at +0.00s
+2026-10-23 20:03:36,470 INFO gateway.run: Shutdown phase: drain done at +0.01s (drain took 0.00s, timed_out=False, active_at_start=0, active_now=0, cron_at_start=0, cron_now=0, api_at_start=0, api_now=0, deferred_at_start=0, deferred_now=0)
+2026-10-23 20:03:36,479 INFO gateway.platforms.api_server: [Api_Server] API server stopped
+2026-10-23 20:03:36,480 INFO gateway.run: ✓ api_server disconnected (0.01s)
+2026-10-23 20:03:36,481 INFO gateway.run: Shutdown phase: all adapters disconnected at +0.02s
+2026-10-23 20:03:36,491 INFO gateway.run: Gateway housekeeping stopped
+2026-10-23 20:03:36,501 INFO gateway.run: Shutdown phase: final-cleanup tool kill done at +0.04s
+2026-10-23 20:03:36,501 INFO gateway.run: Shutdown phase: executor quiesced at +0.04s
+2026-10-23 20:03:36,506 INFO gateway.run: Shutdown phase: SessionDB close done at +0.04s
+2026-10-23 20:03:36,517 INFO gateway.run: Gateway stopped by an unexpected signal — persisting gateway_state=running so container_boot auto-starts on the next boot (issue #42675)
+2026-10-23 20:03:36,544 INFO gateway.run: Gateway stopped (total teardown 0.08s)
+2026-10-23 20:03:36,593 INFO gateway.run: Exiting with code 1 (signal-initiated shutdown without restart request) so the service manager can revive the gateway.
+2026-10-23 20:04:15,504 INFO gateway.control_socket: Gateway control socket listening at /opt/data/gateway.sock
+2026-10-23 20:04:15,916 INFO gateway.run: Starting Hermes Gateway...
+2026-10-23 20:04:15,919 INFO gateway.run: Session storage: /opt/data/sessions
+2026-10-23 20:04:15,934 INFO gateway.run: Agent budget: max_iterations=25 (agent.max_turns from config.yaml, else the HERMES_MAX_ITERATIONS bridge)
+2026-10-23 20:04:15,935 INFO gateway.run: Secret redaction: ENABLED (tool output, logs, and chat responses are scrubbed before delivery)
+2026-10-23 20:04:16,101 INFO gateway.run: Previous gateway exited cleanly — skipping session suspension
+2026-10-23 20:04:16,441 INFO gateway.run: Connecting to api_server...
+2026-10-23 20:04:16,482 INFO gateway.platforms.api_server: [Api_Server] API server listening on http://127.0.0.1:8642 (model: hermes-agent)
+2026-10-23 20:04:16,519 INFO gateway.run: ✓ api_server connected
+2026-10-23 20:04:19,146 INFO gateway.run: Gateway running with 1 platform(s)
+2026-10-23 20:04:19,196 INFO gateway.run: Channel directory built: 0 target(s)
+2026-10-23 20:04:24,304 INFO gateway.run: Model context warmed: qwen2.5:3b -> 65536 tokens (config)
+2026-10-23 20:04:24,304 INFO gateway.run: Turn machinery warmed in 7.9s (32 tool schema(s) materialized)
+2026-10-23 20:04:24,313 INFO gateway.run: Press Ctrl+C to stop
+2026-10-23 20:04:24,324 INFO gateway.run: kanban dispatcher: holding singleton dispatcher lock (/opt/data/kanban/.dispatcher.lock)
+2026-10-23 20:04:24,325 INFO gateway.run: kanban dispatcher: kanban.max_in_progress unset; using memory-derived default max_in_progress=8 (set kanban.max_in_progress in config.yaml to override)
+2026-10-23 20:04:24,335 INFO gateway.run: Cron scheduler will tick 1 profile(s): ['default']
+2026-10-23 20:04:24,346 INFO gateway.run: Gateway housekeeping started (interval=60s)
+2026-10-23 20:04:29,326 INFO gateway.run: kanban dispatcher: embedded in gateway (interval=60.0s)
+2026-10-23 20:13:12,646 INFO gateway.run: Received SIGTERM — initiating shutdown
+2026-10-23 20:13:12,646 WARNING gateway.run: Shutdown context: signal=SIGTERM under_systemd=no parent_pid=155 parent_name=s6-supervise loadavg_1m=2.45
+2026-10-23 20:13:12,670 INFO gateway.run: Received SIGTERM — initiating shutdown
+2026-10-23 20:13:12,671 WARNING gateway.run: Shutdown context: signal=SIGTERM under_systemd=no parent_pid=155 parent_name=s6-supervise loadavg_1m=2.45
+2026-10-23 20:13:12,685 INFO gateway.run: Received SIGTERM — initiating shutdown
+2026-10-23 20:13:12,685 WARNING gateway.run: Shutdown context: signal=SIGTERM under_systemd=no parent_pid=155 parent_name=s6-supervise loadavg_1m=2.45
+2026-10-23 20:13:12,696 INFO gateway.run: Stopping gateway...
+2026-10-23 20:13:12,698 INFO gateway.run: Shutdown phase: notify_active_sessions done at +0.00s
+2026-10-23 20:13:12,702 INFO gateway.run: Shutdown phase: drain done at +0.01s (drain took 0.00s, timed_out=False, active_at_start=0, active_now=0, cron_at_start=0, cron_now=0, api_at_start=0, api_now=0, deferred_at_start=0, deferred_now=0)
+2026-10-23 20:13:12,711 INFO gateway.platforms.api_server: [Api_Server] API server stopped
+2026-10-23 20:13:12,712 INFO gateway.run: ✓ api_server disconnected (0.01s)
+2026-10-23 20:13:12,713 INFO gateway.run: Shutdown phase: all adapters disconnected at +0.02s
+2026-10-23 20:13:12,720 INFO gateway.run: Gateway housekeeping stopped
+2026-10-23 20:13:12,728 INFO gateway.run: Shutdown phase: final-cleanup tool kill done at +0.03s
+2026-10-23 20:13:12,729 INFO gateway.run: Shutdown phase: executor quiesced at +0.03s
+2026-10-23 20:13:12,733 INFO gateway.run: Shutdown phase: SessionDB close done at +0.04s
+2026-10-23 20:13:12,739 INFO gateway.run: Gateway stopped by an unexpected signal — persisting gateway_state=running so container_boot auto-starts on the next boot (issue #42675)
+2026-10-23 20:13:12,761 INFO gateway.run: Gateway stopped (total teardown 0.06s)
+2026-10-23 20:13:12,821 INFO gateway.run: Exiting with code 1 (signal-initiated shutdown without restart request) so the service manager can revive the gateway.
+2026-10-23 20:16:21,644 INFO gateway.control_socket: Gateway control socket listening at /opt/data/gateway.sock
+2026-10-23 20:16:22,099 INFO gateway.run: Starting Hermes Gateway...
+2026-10-23 20:16:22,102 INFO gateway.run: Session storage: /opt/data/sessions
+2026-10-23 20:16:22,120 INFO gateway.run: Agent budget: max_iterations=25 (agent.max_turns from config.yaml, else the HERMES_MAX_ITERATIONS bridge)
+2026-10-23 20:16:22,121 INFO gateway.run: Secret redaction: ENABLED (tool output, logs, and chat responses are scrubbed before delivery)
+2026-10-23 20:16:22,221 INFO gateway.run: Previous gateway exited cleanly — skipping session suspension
+2026-10-23 20:16:22,608 INFO gateway.run: Connecting to api_server...
+2026-10-23 20:16:22,650 INFO gateway.platforms.api_server: [Api_Server] API server listening on http://127.0.0.1:8642 (model: hermes-agent)
+2026-10-23 20:16:22,687 INFO gateway.run: ✓ api_server connected
+2026-10-23 20:16:25,437 INFO gateway.run: Gateway running with 1 platform(s)
+2026-10-23 20:16:25,492 INFO gateway.run: Channel directory built: 0 target(s)
+2026-10-23 20:16:32,113 INFO gateway.run: Model context warmed: qwen2.5:3b -> 65536 tokens (config)
+2026-10-23 20:16:32,114 INFO gateway.run: Turn machinery warmed in 9.5s (32 tool schema(s) materialized)
+2026-10-23 20:16:32,126 INFO gateway.run: Press Ctrl+C to stop
+2026-10-23 20:16:32,140 INFO gateway.run: kanban dispatcher: holding singleton dispatcher lock (/opt/data/kanban/.dispatcher.lock)
+2026-10-23 20:16:32,141 INFO gateway.run: kanban dispatcher: kanban.max_in_progress unset; using memory-derived default max_in_progress=8 (set kanban.max_in_progress in config.yaml to override)
+2026-10-23 20:16:32,157 INFO gateway.run: Cron scheduler will tick 1 profile(s): ['default']
+2026-10-23 20:16:32,174 INFO gateway.run: Gateway housekeeping started (interval=60s)
+2026-10-23 20:16:37,143 INFO gateway.run: kanban dispatcher: embedded in gateway (interval=60.0s)
+2026-10-23 20:47:19,357 INFO gateway.run: Received SIGTERM — initiating shutdown
+2026-10-23 20:47:19,357 WARNING gateway.run: Shutdown context: signal=SIGTERM under_systemd=no parent_pid=156 parent_name=s6-supervise loadavg_1m=1.62
+2026-10-23 20:47:19,375 INFO gateway.run: Received SIGTERM — initiating shutdown
+2026-10-23 20:47:19,375 WARNING gateway.run: Shutdown context: signal=SIGTERM under_systemd=no parent_pid=156 parent_name=s6-supervise loadavg_1m=1.62
+2026-10-23 20:47:19,391 INFO gateway.run: Received SIGTERM — initiating shutdown
+2026-10-23 20:47:19,391 WARNING gateway.run: Shutdown context: signal=SIGTERM under_systemd=no parent_pid=156 parent_name=s6-supervise loadavg_1m=1.62
+2026-10-23 20:47:19,410 INFO gateway.run: Stopping gateway...
+2026-10-23 20:47:19,416 INFO gateway.run: Shutdown phase: notify_active_sessions done at +0.00s
+2026-10-23 20:47:19,423 INFO gateway.run: Shutdown phase: drain done at +0.01s (drain took 0.01s, timed_out=False, active_at_start=0, active_now=0, cron_at_start=0, cron_now=0, api_at_start=0, api_now=0, deferred_at_start=0, deferred_now=0)
+2026-10-23 20:47:19,443 INFO gateway.platforms.api_server: [Api_Server] API server stopped
+2026-10-23 20:47:19,444 INFO gateway.run: ✓ api_server disconnected (0.02s)
+2026-10-23 20:47:19,445 INFO gateway.run: Shutdown phase: all adapters disconnected at +0.03s
+2026-10-23 20:47:19,457 INFO gateway.run: Gateway housekeeping stopped
+2026-10-23 20:47:19,466 INFO gateway.run: Shutdown phase: final-cleanup tool kill done at +0.05s
+2026-10-23 20:47:19,467 INFO gateway.run: Shutdown phase: executor quiesced at +0.06s
+2026-10-23 20:47:19,489 INFO gateway.run: Shutdown phase: SessionDB close done at +0.08s
+2026-10-23 20:47:19,497 INFO gateway.run: Gateway stopped by an unexpected signal — persisting gateway_state=running so container_boot auto-starts on the next boot (issue #42675)
+2026-10-23 20:47:19,519 INFO gateway.run: Gateway stopped (total teardown 0.11s)
+2026-10-23 20:47:19,559 INFO gateway.run: Exiting with code 1 (signal-initiated shutdown without restart request) so the service manager can revive the gateway.
+2026-10-23 20:47:45,822 INFO gateway.control_socket: Gateway control socket listening at /opt/data/gateway.sock
+2026-10-23 20:47:46,400 INFO gateway.run: Starting Hermes Gateway...
+2026-10-23 20:47:46,403 INFO gateway.run: Session storage: /opt/data/sessions
+2026-10-23 20:47:46,420 INFO gateway.run: Agent budget: max_iterations=25 (agent.max_turns from config.yaml, else the HERMES_MAX_ITERATIONS bridge)
+2026-10-23 20:47:46,421 INFO gateway.run: Secret redaction: ENABLED (tool output, logs, and chat responses are scrubbed before delivery)
+2026-10-23 20:47:46,518 INFO gateway.run: Previous gateway exited cleanly — skipping session suspension
+2026-10-23 20:47:47,016 INFO gateway.run: Connecting to api_server...
+2026-10-23 20:47:47,103 INFO gateway.platforms.api_server: [Api_Server] API server listening on http://127.0.0.1:8642 (model: hermes-agent)
+2026-10-23 20:47:47,122 INFO gateway.run: ✓ api_server connected
+2026-10-23 20:47:50,864 INFO gateway.run: Gateway running with 1 platform(s)
+2026-10-23 20:47:50,949 INFO gateway.run: Channel directory built: 0 target(s)
+2026-10-23 20:47:57,961 INFO gateway.run: Model context warmed: qwen3.5:9b -> 4096 tokens (config)
+2026-10-23 20:47:57,961 INFO gateway.run: Turn machinery warmed in 10.9s (34 tool schema(s) materialized)
+2026-10-23 20:47:57,975 INFO gateway.run: Press Ctrl+C to stop
+2026-10-23 20:47:57,991 INFO gateway.run: kanban dispatcher: holding singleton dispatcher lock (/opt/data/kanban/.dispatcher.lock)
+2026-10-23 20:47:57,993 INFO gateway.run: kanban dispatcher: kanban.max_in_progress unset; using memory-derived default max_in_progress=8 (set kanban.max_in_progress in config.yaml to override)
+2026-10-23 20:47:58,006 INFO gateway.run: Cron scheduler will tick 1 profile(s): ['default']
+2026-10-23 20:47:58,023 INFO gateway.run: Gateway housekeeping started (interval=60s)
+2026-10-23 20:48:02,992 INFO gateway.run: kanban dispatcher: embedded in gateway (interval=60.0s)
+2026-10-23 21:37:56,118 INFO gateway.run: Received SIGTERM — initiating shutdown
+2026-10-23 21:37:56,119 WARNING gateway.run: Shutdown context: signal=SIGTERM under_systemd=no parent_pid=155 parent_name=s6-supervise loadavg_1m=0.05
+2026-10-23 21:37:56,131 INFO gateway.run: Received SIGTERM — initiating shutdown
+2026-10-23 21:37:56,132 WARNING gateway.run: Shutdown context: signal=SIGTERM under_systemd=no parent_pid=155 parent_name=s6-supervise loadavg_1m=0.05
+2026-10-23 21:37:56,140 INFO gateway.run: Received SIGTERM — initiating shutdown
+2026-10-23 21:37:56,141 WARNING gateway.run: Shutdown context: signal=SIGTERM under_systemd=no parent_pid=155 parent_name=s6-supervise loadavg_1m=0.05
+2026-10-23 21:37:56,155 INFO gateway.run: Stopping gateway...
+2026-10-23 21:37:56,158 INFO gateway.run: Shutdown phase: notify_active_sessions done at +0.00s
+2026-10-23 21:37:56,162 INFO gateway.run: Shutdown phase: drain done at +0.01s (drain took 0.00s, timed_out=False, active_at_start=0, active_now=0, cron_at_start=0, cron_now=0, api_at_start=0, api_now=0, deferred_at_start=0, deferred_now=0)
+2026-10-23 21:37:56,171 INFO gateway.platforms.api_server: [Api_Server] API server stopped
+2026-10-23 21:37:56,172 INFO gateway.run: ✓ api_server disconnected (0.01s)
+2026-10-23 21:37:56,173 INFO gateway.run: Shutdown phase: all adapters disconnected at +0.02s
+2026-10-23 21:37:56,183 INFO gateway.run: Gateway housekeeping stopped
+2026-10-23 21:37:56,203 INFO gateway.run: Shutdown phase: final-cleanup tool kill done at +0.05s
+2026-10-23 21:37:56,203 INFO gateway.run: Shutdown phase: executor quiesced at +0.05s
+2026-10-23 21:37:56,210 INFO gateway.run: Shutdown phase: SessionDB close done at +0.05s
+2026-10-23 21:37:56,218 INFO gateway.run: Gateway stopped by an unexpected signal — persisting gateway_state=running so container_boot auto-starts on the next boot (issue #42675)
+2026-10-23 21:37:56,233 INFO gateway.run: Gateway stopped (total teardown 0.08s)
+2026-10-23 21:37:56,284 INFO gateway.run: Exiting with code 1 (signal-initiated shutdown without restart request) so the service manager can revive the gateway.
+2026-10-23 21:41:02,417 INFO gateway.control_socket: Gateway control socket listening at /opt/data/gateway.sock
+2026-10-23 21:41:02,861 INFO gateway.run: Starting Hermes Gateway...
+2026-10-23 21:41:02,865 INFO gateway.run: Session storage: /opt/data/sessions
+2026-10-23 21:41:02,890 INFO gateway.run: Agent budget: max_iterations=25 (agent.max_turns from config.yaml, else the HERMES_MAX_ITERATIONS bridge)
+2026-10-23 21:41:02,890 INFO gateway.run: Secret redaction: ENABLED (tool output, logs, and chat responses are scrubbed before delivery)
+2026-10-23 21:41:02,961 INFO gateway.run: Previous gateway exited cleanly — skipping session suspension
+2026-10-23 21:41:03,294 INFO gateway.run: Connecting to api_server...
+2026-10-23 21:41:03,329 INFO gateway.platforms.api_server: [Api_Server] API server listening on http://127.0.0.1:8642 (model: hermes-agent)
+2026-10-23 21:41:03,359 INFO gateway.run: ✓ api_server connected
+2026-10-23 21:41:05,821 INFO gateway.run: Gateway running with 1 platform(s)
+2026-10-23 21:41:05,874 INFO gateway.run: Channel directory built: 0 target(s)
+2026-10-23 21:41:11,841 INFO gateway.run: Model context warmed: qwen3.5:9b -> 4096 tokens (config)
+2026-10-23 21:41:11,842 INFO gateway.run: Turn machinery warmed in 8.5s (32 tool schema(s) materialized)
+2026-10-23 21:41:11,852 INFO gateway.run: Press Ctrl+C to stop
+2026-10-23 21:41:11,863 INFO gateway.run: kanban dispatcher: holding singleton dispatcher lock (/opt/data/kanban/.dispatcher.lock)
+2026-10-23 21:41:11,864 INFO gateway.run: kanban dispatcher: kanban.max_in_progress unset; using memory-derived default max_in_progress=8 (set kanban.max_in_progress in config.yaml to override)
+2026-10-23 21:41:11,874 INFO gateway.run: Cron scheduler will tick 1 profile(s): ['default']
+2026-10-23 21:41:11,891 INFO gateway.run: Gateway housekeeping started (interval=60s)
+2026-10-23 21:41:16,864 INFO gateway.run: kanban dispatcher: embedded in gateway (interval=60.0s)
+2026-10-23 22:03:11,334 INFO gateway.run: Received SIGTERM — initiating shutdown
+2026-10-23 22:03:11,334 WARNING gateway.run: Shutdown context: signal=SIGTERM under_systemd=no parent_pid=154 parent_name=s6-supervise loadavg_1m=0.35
+2026-10-23 22:03:11,349 INFO gateway.run: Received SIGTERM — initiating shutdown
+2026-10-23 22:03:11,350 WARNING gateway.run: Shutdown context: signal=SIGTERM under_systemd=no parent_pid=154 parent_name=s6-supervise loadavg_1m=0.35
+2026-10-23 22:03:11,361 INFO gateway.run: Stopping gateway...
+2026-10-23 22:03:11,363 INFO gateway.run: Shutdown phase: notify_active_sessions done at +0.00s
+2026-10-23 22:03:11,367 INFO gateway.run: Shutdown phase: drain done at +0.01s (drain took 0.00s, timed_out=False, active_at_start=0, active_now=0, cron_at_start=0, cron_now=0, api_at_start=0, api_now=0, deferred_at_start=0, deferred_now=0)
+2026-10-23 22:03:11,377 INFO gateway.platforms.api_server: [Api_Server] API server stopped
+2026-10-23 22:03:11,377 INFO gateway.run: ✓ api_server disconnected (0.01s)
+2026-10-23 22:03:11,378 INFO gateway.run: Shutdown phase: all adapters disconnected at +0.02s
+2026-10-23 22:03:11,387 INFO gateway.run: Gateway housekeeping stopped
+2026-10-23 22:03:11,399 INFO gateway.run: Shutdown phase: final-cleanup tool kill done at +0.04s
+2026-10-23 22:03:11,400 INFO gateway.run: Shutdown phase: executor quiesced at +0.04s
+2026-10-23 22:03:11,408 INFO gateway.run: Shutdown phase: SessionDB close done at +0.05s
+2026-10-23 22:03:11,421 INFO gateway.run: Gateway stopped by an unexpected signal — persisting gateway_state=running so container_boot auto-starts on the next boot (issue #42675)
+2026-10-23 22:03:11,439 INFO gateway.run: Gateway stopped (total teardown 0.08s)
+2026-10-23 22:03:11,502 INFO gateway.run: Exiting with code 1 (signal-initiated shutdown without restart request) so the service manager can revive the gateway.
+2026-10-23 22:03:32,417 INFO gateway.control_socket: Gateway control socket listening at /opt/data/gateway.sock
+2026-10-23 22:03:32,972 INFO gateway.run: Starting Hermes Gateway...
+2026-10-23 22:03:32,975 INFO gateway.run: Session storage: /opt/data/sessions
+2026-10-23 22:03:32,995 INFO gateway.run: Agent budget: max_iterations=25 (agent.max_turns from config.yaml, else the HERMES_MAX_ITERATIONS bridge)
+2026-10-23 22:03:32,995 INFO gateway.run: Secret redaction: ENABLED (tool output, logs, and chat responses are scrubbed before delivery)
+2026-10-23 22:03:33,080 INFO gateway.run: Previous gateway exited cleanly — skipping session suspension
+2026-10-23 22:03:33,591 INFO gateway.run: Connecting to api_server...
+2026-10-23 22:03:33,636 INFO gateway.platforms.api_server: [Api_Server] API server listening on http://127.0.0.1:8642 (model: hermes-agent)
+2026-10-23 22:03:33,668 INFO gateway.run: ✓ api_server connected
+2026-10-23 22:03:36,350 INFO gateway.run: Gateway running with 1 platform(s)
+2026-10-23 22:03:36,412 INFO gateway.run: Channel directory built: 0 target(s)
+2026-10-23 22:03:42,296 INFO gateway.run: Model context warmed: qwen3.5:9b -> 4096 tokens (config)
+2026-10-23 22:03:42,296 INFO gateway.run: Turn machinery warmed in 8.7s (32 tool schema(s) materialized)
+2026-10-23 22:03:42,308 INFO gateway.run: Press Ctrl+C to stop
+2026-10-23 22:03:42,320 INFO gateway.run: kanban dispatcher: holding singleton dispatcher lock (/opt/data/kanban/.dispatcher.lock)
+2026-10-23 22:03:42,321 INFO gateway.run: kanban dispatcher: kanban.max_in_progress unset; using memory-derived default max_in_progress=8 (set kanban.max_in_progress in config.yaml to override)
+2026-10-23 22:03:42,332 INFO gateway.run: Cron scheduler will tick 1 profile(s): ['default']
+2026-10-23 22:03:42,350 INFO gateway.run: Gateway housekeeping started (interval=60s)
+2026-10-23 22:03:47,322 INFO gateway.run: kanban dispatcher: embedded in gateway (interval=60.0s)
+2026-10-23 22:20:01,531 INFO gateway.run: Received SIGTERM — initiating shutdown
+2026-10-23 22:20:01,532 WARNING gateway.run: Shutdown context: signal=SIGTERM under_systemd=no parent_pid=155 parent_name=s6-supervise loadavg_1m=0.67
+2026-10-23 22:20:01,543 INFO gateway.run: Received SIGTERM — initiating shutdown
+2026-10-23 22:20:01,543 WARNING gateway.run: Shutdown context: signal=SIGTERM under_systemd=no parent_pid=155 parent_name=s6-supervise loadavg_1m=0.67
+2026-10-23 22:20:01,555 INFO gateway.run: Stopping gateway...
+2026-10-23 22:20:01,558 INFO gateway.run: Shutdown phase: notify_active_sessions done at +0.00s
+2026-10-23 22:20:01,560 INFO gateway.run: Shutdown phase: drain done at +0.00s (drain took 0.00s, timed_out=False, active_at_start=0, active_now=0, cron_at_start=0, cron_now=0, api_at_start=0, api_now=0, deferred_at_start=0, deferred_now=0)
+2026-10-23 22:20:01,568 INFO gateway.platforms.api_server: [Api_Server] API server stopped
+2026-10-23 22:20:01,569 INFO gateway.run: ✓ api_server disconnected (0.01s)
+2026-10-23 22:20:01,570 INFO gateway.run: Shutdown phase: all adapters disconnected at +0.01s
+2026-10-23 22:20:01,579 INFO gateway.run: Gateway housekeeping stopped
+2026-10-23 22:20:01,587 INFO gateway.run: Shutdown phase: final-cleanup tool kill done at +0.03s
+2026-10-23 22:20:01,588 INFO gateway.run: Shutdown phase: executor quiesced at +0.03s
+2026-10-23 22:20:01,591 INFO gateway.run: Shutdown phase: SessionDB close done at +0.04s
+2026-10-23 22:20:01,598 INFO gateway.run: Gateway stopped by an unexpected signal — persisting gateway_state=running so container_boot auto-starts on the next boot (issue #42675)
+2026-10-23 22:20:01,625 INFO gateway.run: Gateway stopped (total teardown 0.07s)
+2026-10-23 22:20:01,679 INFO gateway.run: Exiting with code 1 (signal-initiated shutdown without restart request) so the service manager can revive the gateway.
+2026-10-23 22:20:33,854 INFO gateway.control_socket: Gateway control socket listening at /opt/data/gateway.sock
+2026-10-23 22:20:34,235 INFO gateway.run: Starting Hermes Gateway...
+2026-10-23 22:20:34,237 INFO gateway.run: Session storage: /opt/data/sessions
+2026-10-23 22:20:34,251 INFO gateway.run: Agent budget: max_iterations=25 (agent.max_turns from config.yaml, else the HERMES_MAX_ITERATIONS bridge)
+2026-10-23 22:20:34,252 INFO gateway.run: Secret redaction: ENABLED (tool output, logs, and chat responses are scrubbed before delivery)
+2026-10-23 22:20:34,326 INFO gateway.run: Previous gateway exited cleanly — skipping session suspension
+2026-10-23 22:20:34,678 INFO gateway.run: Connecting to api_server...
+2026-10-23 22:20:34,710 INFO gateway.platforms.api_server: [Api_Server] API server listening on http://127.0.0.1:8642 (model: hermes-agent)
+2026-10-23 22:20:34,733 INFO gateway.run: ✓ api_server connected
+2026-10-23 22:20:37,175 INFO gateway.run: Gateway running with 1 platform(s)
+2026-10-23 22:20:37,223 INFO gateway.run: Channel directory built: 0 target(s)
+2026-10-23 22:20:42,684 INFO gateway.run: Model context warmed: qwen3.5:9b -> 4096 tokens (config)
+2026-10-23 22:20:42,685 INFO gateway.run: Turn machinery warmed in 8.0s (32 tool schema(s) materialized)
+2026-10-23 22:20:42,693 INFO gateway.run: Press Ctrl+C to stop
+2026-10-23 22:20:42,702 INFO gateway.run: kanban dispatcher: holding singleton dispatcher lock (/opt/data/kanban/.dispatcher.lock)
+2026-10-23 22:20:42,702 INFO gateway.run: kanban dispatcher: kanban.max_in_progress unset; using memory-derived default max_in_progress=8 (set kanban.max_in_progress in config.yaml to override)
+2026-10-23 22:20:42,711 INFO gateway.run: Cron scheduler will tick 1 profile(s): ['default']
+2026-10-23 22:20:42,721 INFO gateway.run: Gateway housekeeping started (interval=60s)
+2026-10-23 22:20:47,703 INFO gateway.run: kanban dispatcher: embedded in gateway (interval=60.0s)
+2026-10-23 22:38:05,030 INFO gateway.run: Received SIGTERM — initiating shutdown
+2026-10-23 22:38:05,030 WARNING gateway.run: Shutdown context: signal=SIGTERM under_systemd=no parent_pid=154 parent_name=s6-supervise loadavg_1m=1.91
+2026-10-23 22:38:05,044 INFO gateway.run: Received SIGTERM — initiating shutdown
+2026-10-23 22:38:05,044 WARNING gateway.run: Shutdown context: signal=SIGTERM under_systemd=no parent_pid=154 parent_name=s6-supervise loadavg_1m=1.91
+2026-10-23 22:38:05,055 INFO gateway.run: Stopping gateway...
+2026-10-23 22:38:05,058 INFO gateway.run: Shutdown phase: notify_active_sessions done at +0.00s
+2026-10-23 22:38:05,060 INFO gateway.run: Shutdown phase: drain done at +0.01s (drain took 0.00s, timed_out=False, active_at_start=0, active_now=0, cron_at_start=0, cron_now=0, api_at_start=0, api_now=0, deferred_at_start=0, deferred_now=0)
+2026-10-23 22:38:05,069 INFO gateway.platforms.api_server: [Api_Server] API server stopped
+2026-10-23 22:38:05,070 INFO gateway.run: ✓ api_server disconnected (0.01s)
+2026-10-23 22:38:05,071 INFO gateway.run: Shutdown phase: all adapters disconnected at +0.02s
+2026-10-23 22:38:05,079 INFO gateway.run: Gateway housekeeping stopped
+2026-10-23 22:38:05,089 INFO gateway.run: Shutdown phase: final-cleanup tool kill done at +0.03s
+2026-10-23 22:38:05,089 INFO gateway.run: Shutdown phase: executor quiesced at +0.03s
+2026-10-23 22:38:05,094 INFO gateway.run: Shutdown phase: SessionDB close done at +0.04s
+2026-10-23 22:38:05,101 INFO gateway.run: Gateway stopped by an unexpected signal — persisting gateway_state=running so container_boot auto-starts on the next boot (issue #42675)
+2026-10-23 22:38:05,124 INFO gateway.run: Gateway stopped (total teardown 0.07s)
+2026-10-23 22:38:05,180 INFO gateway.run: Exiting with code 1 (signal-initiated shutdown without restart request) so the service manager can revive the gateway.
+2026-10-23 22:39:01,494 INFO gateway.control_socket: Gateway control socket listening at /opt/data/gateway.sock
+2026-10-23 22:39:01,914 INFO gateway.run: Starting Hermes Gateway...
+2026-10-23 22:39:01,922 INFO gateway.run: Session storage: /opt/data/sessions
+2026-10-23 22:39:22,388 INFO gateway.control_socket: Gateway control socket listening at /opt/data/gateway.sock
+2026-10-23 22:39:22,535 WARNING gateway.lifecycle_ledger: Previous gateway life (pid=157, started_at=2026-10-24T01:39:01.512513+00:00) exited UNCLEANLY (no exit path ran — SIGKILL / OOM / VM death, or a process kill issued by the agent or one of its descendants, e.g. a pkill/taskkill of the host interpreter image; see #113667). last_heartbeat_at=2026-10-24T01:37:37.664213+00:00 last_mem={'rss_kib': 293104, 'mem_total_kib': 8109760, 'mem_available_kib': 4234972, 'swap_used_kib': 152384} suspected_oom=False
+2026-10-23 22:39:22,969 INFO gateway.run: Starting Hermes Gateway...
+2026-10-23 22:39:22,972 INFO gateway.run: Session storage: /opt/data/sessions
+2026-10-23 22:39:22,990 INFO gateway.run: Agent budget: max_iterations=25 (agent.max_turns from config.yaml, else the HERMES_MAX_ITERATIONS bridge)
+2026-10-23 22:39:22,991 INFO gateway.run: Secret redaction: ENABLED (tool output, logs, and chat responses are scrubbed before delivery)
+2026-10-23 22:39:23,065 INFO gateway.run: Previous gateway exited cleanly — skipping session suspension
+2026-10-23 22:39:23,399 INFO gateway.run: Connecting to api_server...
+2026-10-23 22:39:23,437 INFO gateway.platforms.api_server: [Api_Server] API server listening on http://127.0.0.1:8642 (model: hermes-agent)
+2026-10-23 22:39:23,469 INFO gateway.run: ✓ api_server connected
+2026-10-23 22:39:25,972 INFO gateway.run: Gateway running with 1 platform(s)
+2026-10-23 22:39:26,006 INFO gateway.run: Channel directory built: 0 target(s)
+2026-10-23 22:39:31,539 INFO gateway.run: Model context warmed: qwen3.5:9b -> 4096 tokens (config)
+2026-10-23 22:39:31,540 INFO gateway.run: Turn machinery warmed in 8.1s (32 tool schema(s) materialized)
+2026-10-23 22:39:31,549 INFO gateway.run: Press Ctrl+C to stop
+2026-10-23 22:39:31,559 INFO gateway.run: kanban dispatcher: holding singleton dispatcher lock (/opt/data/kanban/.dispatcher.lock)
+2026-10-23 22:39:31,559 INFO gateway.run: kanban dispatcher: kanban.max_in_progress unset; using memory-derived default max_in_progress=8 (set kanban.max_in_progress in config.yaml to override)
+2026-10-23 22:39:31,570 INFO gateway.run: Cron scheduler will tick 1 profile(s): ['default']
+2026-10-23 22:39:31,585 INFO gateway.run: Gateway housekeeping started (interval=60s)
+2026-10-23 22:39:36,560 INFO gateway.run: kanban dispatcher: embedded in gateway (interval=60.0s)
+2026-10-23 23:35:15,703 INFO gateway.run: Received SIGTERM — initiating shutdown
+2026-10-23 23:35:15,703 WARNING gateway.run: Shutdown context: signal=SIGTERM under_systemd=no parent_pid=157 parent_name=s6-supervise loadavg_1m=0.10
+2026-10-23 23:35:15,720 INFO gateway.run: Received SIGTERM — initiating shutdown
+2026-10-23 23:35:15,720 WARNING gateway.run: Shutdown context: signal=SIGTERM under_systemd=no parent_pid=157 parent_name=s6-supervise loadavg_1m=0.10
+2026-10-23 23:35:15,732 INFO gateway.run: Received SIGTERM — initiating shutdown
+2026-10-23 23:35:15,732 WARNING gateway.run: Shutdown context: signal=SIGTERM under_systemd=no parent_pid=157 parent_name=s6-supervise loadavg_1m=0.10
+2026-10-23 23:35:15,746 INFO gateway.run: Stopping gateway...
+2026-10-23 23:35:15,750 INFO gateway.run: Shutdown phase: notify_active_sessions done at +0.00s
+2026-10-23 23:35:15,754 INFO gateway.run: Shutdown phase: drain done at +0.01s (drain took 0.00s, timed_out=False, active_at_start=0, active_now=0, cron_at_start=0, cron_now=0, api_at_start=0, api_now=0, deferred_at_start=0, deferred_now=0)
+2026-10-23 23:35:15,767 INFO gateway.platforms.api_server: [Api_Server] API server stopped
+2026-10-23 23:35:15,767 INFO gateway.run: ✓ api_server disconnected (0.01s)
+2026-10-23 23:35:15,768 INFO gateway.run: Shutdown phase: all adapters disconnected at +0.02s
+2026-10-23 23:35:15,780 INFO gateway.run: Gateway housekeeping stopped
+2026-10-23 23:35:15,796 INFO gateway.run: Shutdown phase: final-cleanup tool kill done at +0.05s
+2026-10-23 23:35:15,797 INFO gateway.run: Shutdown phase: executor quiesced at +0.05s
+2026-10-23 23:35:15,804 INFO gateway.run: Shutdown phase: SessionDB close done at +0.06s
+2026-10-23 23:35:15,811 INFO gateway.run: Gateway stopped by an unexpected signal — persisting gateway_state=running so container_boot auto-starts on the next boot (issue #42675)
+2026-10-23 23:35:15,830 INFO gateway.run: Gateway stopped (total teardown 0.08s)
+2026-10-23 23:35:15,881 INFO gateway.run: Exiting with code 1 (signal-initiated shutdown without restart request) so the service manager can revive the gateway.
+2026-10-23 23:36:05,761 INFO gateway.control_socket: Gateway control socket listening at /opt/data/gateway.sock
+2026-10-23 23:36:06,220 INFO gateway.run: Starting Hermes Gateway...
+2026-10-23 23:36:06,223 INFO gateway.run: Session storage: /opt/data/sessions
+2026-10-23 23:36:06,237 INFO gateway.run: Agent budget: max_iterations=25 (agent.max_turns from config.yaml, else the HERMES_MAX_ITERATIONS bridge)
+2026-10-23 23:36:06,237 INFO gateway.run: Secret redaction: ENABLED (tool output, logs, and chat responses are scrubbed before delivery)
+2026-10-23 23:36:06,306 INFO gateway.run: Previous gateway exited cleanly — skipping session suspension
+2026-10-23 23:36:06,660 INFO gateway.run: Connecting to api_server...
+2026-10-23 23:36:06,705 INFO gateway.platforms.api_server: [Api_Server] API server listening on http://127.0.0.1:8642 (model: hermes-agent)
+2026-10-23 23:36:06,742 INFO gateway.run: ✓ api_server connected
+2026-10-23 23:36:09,360 INFO gateway.run: Gateway running with 1 platform(s)
+2026-10-23 23:36:09,423 INFO gateway.run: Channel directory built: 0 target(s)
+2026-10-23 23:36:15,885 INFO gateway.run: Model context warmed: qwen3.5:9b -> 4096 tokens (config)
+2026-10-23 23:36:15,886 INFO gateway.run: Turn machinery warmed in 9.2s (32 tool schema(s) materialized)
+2026-10-23 23:36:15,897 INFO gateway.run: Press Ctrl+C to stop
+2026-10-23 23:36:15,909 INFO gateway.run: kanban dispatcher: holding singleton dispatcher lock (/opt/data/kanban/.dispatcher.lock)
+2026-10-23 23:36:15,910 INFO gateway.run: kanban dispatcher: kanban.max_in_progress unset; using memory-derived default max_in_progress=8 (set kanban.max_in_progress in config.yaml to override)
+2026-10-23 23:36:15,922 INFO gateway.run: Cron scheduler will tick 1 profile(s): ['default']
+2026-10-23 23:36:15,941 INFO gateway.run: Gateway housekeeping started (interval=60s)
+2026-10-23 23:36:20,911 INFO gateway.run: kanban dispatcher: embedded in gateway (interval=60.0s)
+2026-10-23 23:48:16,818 INFO gateway.run: Received SIGTERM — initiating shutdown
+2026-10-23 23:48:16,819 WARNING gateway.run: Shutdown context: signal=SIGTERM under_systemd=no parent_pid=155 parent_name=s6-supervise loadavg_1m=1.81
+2026-10-23 23:48:16,830 INFO gateway.run: Received SIGTERM — initiating shutdown
+2026-10-23 23:48:16,830 WARNING gateway.run: Shutdown context: signal=SIGTERM under_systemd=no parent_pid=155 parent_name=s6-supervise loadavg_1m=1.81
+2026-10-23 23:48:16,840 INFO gateway.run: Received SIGTERM — initiating shutdown
+2026-10-23 23:48:16,840 WARNING gateway.run: Shutdown context: signal=SIGTERM under_systemd=no parent_pid=155 parent_name=s6-supervise loadavg_1m=1.81
+2026-10-23 23:48:16,851 INFO gateway.run: Received SIGTERM — initiating shutdown
+2026-10-23 23:48:16,852 WARNING gateway.run: Shutdown context: signal=SIGTERM under_systemd=no parent_pid=155 parent_name=s6-supervise loadavg_1m=1.81
+2026-10-23 23:48:16,865 INFO gateway.run: Stopping gateway...
+2026-10-23 23:48:16,868 INFO gateway.run: Shutdown phase: notify_active_sessions done at +0.00s
+2026-10-23 23:48:16,872 INFO gateway.run: Shutdown phase: drain done at +0.01s (drain took 0.00s, timed_out=False, active_at_start=0, active_now=0, cron_at_start=0, cron_now=0, api_at_start=0, api_now=0, deferred_at_start=0, deferred_now=0)
+2026-10-23 23:48:16,882 INFO gateway.platforms.api_server: [Api_Server] API server stopped
+2026-10-23 23:48:16,882 INFO gateway.run: ✓ api_server disconnected (0.01s)
+2026-10-23 23:48:16,883 INFO gateway.run: Shutdown phase: all adapters disconnected at +0.02s
+2026-10-23 23:48:16,890 INFO gateway.run: Gateway housekeeping stopped
+2026-10-23 23:48:16,899 INFO gateway.run: Shutdown phase: final-cleanup tool kill done at +0.03s
+2026-10-23 23:48:16,900 INFO gateway.run: Shutdown phase: executor quiesced at +0.03s
+2026-10-23 23:48:16,904 INFO gateway.run: Shutdown phase: SessionDB close done at +0.04s
+2026-10-23 23:48:16,911 INFO gateway.run: Gateway stopped by an unexpected signal — persisting gateway_state=running so container_boot auto-starts on the next boot (issue #42675)
+2026-10-23 23:48:16,932 INFO gateway.run: Gateway stopped (total teardown 0.07s)
+2026-10-23 23:48:16,991 INFO gateway.run: Exiting with code 1 (signal-initiated shutdown without restart request) so the service manager can revive the gateway.
+2026-10-23 23:48:45,992 INFO gateway.control_socket: Gateway control socket listening at /opt/data/gateway.sock
+2026-10-23 23:48:46,613 INFO gateway.run: Starting Hermes Gateway...
+2026-10-23 23:48:46,616 INFO gateway.run: Session storage: /opt/data/sessions
+2026-10-23 23:48:46,642 INFO gateway.run: Agent budget: max_iterations=25 (agent.max_turns from config.yaml, else the HERMES_MAX_ITERATIONS bridge)
+2026-10-23 23:48:46,642 INFO gateway.run: Secret redaction: ENABLED (tool output, logs, and chat responses are scrubbed before delivery)
+2026-10-23 23:48:46,712 INFO gateway.run: Previous gateway exited cleanly — skipping session suspension
+2026-10-23 23:48:47,111 INFO gateway.run: Connecting to api_server...
+2026-10-23 23:48:47,194 INFO gateway.platforms.api_server: [Api_Server] API server listening on http://127.0.0.1:8642 (model: hermes-agent)
+2026-10-23 23:48:47,265 INFO gateway.run: ✓ api_server connected
+2026-10-23 23:48:49,978 INFO gateway.run: Gateway running with 1 platform(s)
+2026-10-23 23:48:50,027 INFO gateway.run: Channel directory built: 0 target(s)
+2026-10-23 23:48:55,671 INFO gateway.run: Model context warmed: qwen3.5:9b -> 4096 tokens (config)
+2026-10-23 23:48:55,672 INFO gateway.run: Turn machinery warmed in 8.6s (32 tool schema(s) materialized)
+2026-10-23 23:48:55,681 INFO gateway.run: Press Ctrl+C to stop
+2026-10-23 23:48:55,692 INFO gateway.run: kanban dispatcher: holding singleton dispatcher lock (/opt/data/kanban/.dispatcher.lock)
+2026-10-23 23:48:55,693 INFO gateway.run: kanban dispatcher: kanban.max_in_progress unset; using memory-derived default max_in_progress=8 (set kanban.max_in_progress in config.yaml to override)
+2026-10-23 23:48:55,703 INFO gateway.run: Cron scheduler will tick 1 profile(s): ['default']
+2026-10-23 23:48:55,717 INFO gateway.run: Gateway housekeeping started (interval=60s)
+2026-10-23 23:49:00,694 INFO gateway.run: kanban dispatcher: embedded in gateway (interval=60.0s)
+2026-10-24 14:45:33,718 INFO gateway.control_socket: Gateway control socket listening at /opt/data/gateway.sock
+2026-10-24 14:45:33,816 WARNING gateway.lifecycle_ledger: Previous gateway life (pid=158, started_at=2026-10-24T02:48:46.011307+00:00) exited UNCLEANLY (no exit path ran — SIGKILL / OOM / VM death, or a process kill issued by the agent or one of its descendants, e.g. a pkill/taskkill of the host interpreter image; see #113667). last_heartbeat_at=2026-10-24T03:02:50.623027+00:00 last_mem={'rss_kib': 293684, 'mem_total_kib': 8109760, 'mem_available_kib': 6679904, 'swap_used_kib': 151388} suspected_oom=False
+2026-10-24 14:45:34,234 INFO gateway.run: Starting Hermes Gateway...
+2026-10-24 14:45:34,237 INFO gateway.run: Session storage: /opt/data/sessions
+2026-10-24 14:45:34,256 INFO gateway.run: Agent budget: max_iterations=25 (agent.max_turns from config.yaml, else the HERMES_MAX_ITERATIONS bridge)
+2026-10-24 14:45:34,257 INFO gateway.run: Secret redaction: ENABLED (tool output, logs, and chat responses are scrubbed before delivery)
+2026-10-24 14:45:34,691 INFO gateway.run: Connecting to api_server...
+2026-10-24 14:45:34,725 INFO gateway.platforms.api_server: [Api_Server] API server listening on http://127.0.0.1:8642 (model: hermes-agent)
+2026-10-24 14:45:34,757 INFO gateway.run: ✓ api_server connected
+2026-10-24 14:45:37,387 INFO gateway.run: Gateway running with 1 platform(s)
+2026-10-24 14:45:37,441 INFO gateway.run: Channel directory built: 0 target(s)
+2026-10-24 14:45:43,752 INFO gateway.run: Model context warmed: qwen3.5:9b -> 4096 tokens (config)
+2026-10-24 14:45:43,753 INFO gateway.run: Turn machinery warmed in 9.1s (32 tool schema(s) materialized)
+2026-10-24 14:45:43,763 INFO gateway.run: Press Ctrl+C to stop
+2026-10-24 14:45:43,774 INFO gateway.run: kanban dispatcher: holding singleton dispatcher lock (/opt/data/kanban/.dispatcher.lock)
+2026-10-24 14:45:43,775 INFO gateway.run: kanban dispatcher: kanban.max_in_progress unset; using memory-derived default max_in_progress=8 (set kanban.max_in_progress in config.yaml to override)
+2026-10-24 14:45:43,792 INFO gateway.run: Cron scheduler will tick 1 profile(s): ['default']
+2026-10-24 14:45:43,803 INFO gateway.run: Gateway housekeeping started (interval=60s)
+2026-10-24 14:45:48,776 INFO gateway.run: kanban dispatcher: embedded in gateway (interval=60.0s)
+2026-10-24 15:07:09,035 INFO gateway.run: Received SIGTERM — initiating shutdown
+2026-10-24 15:07:09,036 WARNING gateway.run: Shutdown context: signal=SIGTERM under_systemd=no parent_pid=154 parent_name=s6-supervise loadavg_1m=0.27
+2026-10-24 15:07:09,046 INFO gateway.run: Received SIGTERM — initiating shutdown
+2026-10-24 15:07:09,046 WARNING gateway.run: Shutdown context: signal=SIGTERM under_systemd=no parent_pid=154 parent_name=s6-supervise loadavg_1m=0.27
+2026-10-24 15:07:09,056 INFO gateway.run: Received SIGTERM — initiating shutdown
+2026-10-24 15:07:09,056 WARNING gateway.run: Shutdown context: signal=SIGTERM under_systemd=no parent_pid=154 parent_name=s6-supervise loadavg_1m=0.27
+2026-10-24 15:07:09,068 INFO gateway.run: Stopping gateway...
+2026-10-24 15:07:09,070 INFO gateway.run: Shutdown phase: notify_active_sessions done at +0.00s
+2026-10-24 15:07:09,075 INFO gateway.run: Shutdown phase: drain done at +0.01s (drain took 0.00s, timed_out=False, active_at_start=0, active_now=0, cron_at_start=0, cron_now=0, api_at_start=0, api_now=0, deferred_at_start=0, deferred_now=0)
+2026-10-24 15:07:09,085 INFO gateway.platforms.api_server: [Api_Server] API server stopped
+2026-10-24 15:07:09,086 INFO gateway.run: ✓ api_server disconnected (0.01s)
+2026-10-24 15:07:09,086 INFO gateway.run: Shutdown phase: all adapters disconnected at +0.02s
+2026-10-24 15:07:09,094 INFO gateway.run: Gateway housekeeping stopped
+2026-10-24 15:07:09,104 INFO gateway.run: Shutdown phase: final-cleanup tool kill done at +0.04s
+2026-10-24 15:07:09,104 INFO gateway.run: Shutdown phase: executor quiesced at +0.04s
+2026-10-24 15:07:09,108 INFO gateway.run: Shutdown phase: SessionDB close done at +0.04s
+2026-10-24 15:07:09,114 INFO gateway.run: Gateway stopped by an unexpected signal — persisting gateway_state=running so container_boot auto-starts on the next boot (issue #42675)
+2026-10-24 15:07:09,136 INFO gateway.run: Gateway stopped (total teardown 0.07s)
+2026-10-24 15:07:09,195 INFO gateway.run: Exiting with code 1 (signal-initiated shutdown without restart request) so the service manager can revive the gateway.

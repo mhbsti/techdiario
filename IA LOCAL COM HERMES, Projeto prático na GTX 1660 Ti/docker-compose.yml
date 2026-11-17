@@ -1,0 +1,129 @@
+name: hermes-techdiario-studio
+
+services:
+  # ===========================================================================
+  # 1. Banco de Vetores (Qdrant) - Deduplicação Cross-Site & Memória Histórica
+  # ===========================================================================
+  qdrant:
+    image: qdrant/qdrant:latest
+    container_name: techdiario-qdrant
+    restart: unless-stopped
+    ports:
+      - "${QDRANT_PORT:-6333}:6333"
+    volumes:
+      - ./qdrant_data:/qdrant/storage
+    environment:
+      - TZ=${TZ:-America/Sao_Paulo}
+    networks:
+      - hermes-net
+
+  # ===========================================================================
+  # 2. Servidor de Inferência e Embeddings Leves (Ollama CUDA)
+  #    nomic-embed-text (~300MB) + qwen2.5:1.5b (~1.1GB) + qwen2.5:3b (~2.1GB)
+  #    OLLAMA_KEEP_ALIVE=5m garante liberação rápida da VRAM para o Qwen-Image
+  # ===========================================================================
+  ollama:
+    image: ollama/ollama:latest
+    container_name: techdiario-ollama
+    restart: unless-stopped
+    ports:
+      - "${OLLAMA_PORT:-11434}:11434"
+    volumes:
+      - ./ollama_data:/root/.ollama
+      - ./models:/models:ro
+    environment:
+      - TZ=${TZ:-America/Sao_Paulo}
+      - OLLAMA_KEEP_ALIVE=15m
+      - OLLAMA_MAX_LOADED_MODELS=3
+      - OLLAMA_FLASH_ATTENTION=1
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+    networks:
+      - hermes-net
+
+  # ===========================================================================
+  # 3. Motor Qwen-Image-2.1-GGUF (stable-diffusion.cpp + Pillow Studio)
+  # ===========================================================================
+  qwen-image:
+    build:
+      context: ./services/qwen-image
+      dockerfile: Dockerfile
+    image: techdiario/qwen-image-engine:latest
+    container_name: techdiario-qwen-image
+    restart: unless-stopped
+    ports:
+      - "${QWEN_IMAGE_PORT:-8090}:8090"
+    volumes:
+      - ./models:/models:ro
+      - "./CANAL TECH DIARIO:/opt/assets:ro"
+      - ./output:/opt/output
+      - ./services/qwen-image:/app
+    environment:
+      - TZ=${TZ:-America/Sao_Paulo}
+      - MODELS_DIR=/models
+      - ASSETS_DIR=/opt/assets
+      - OUTPUT_DIR=/opt/output
+      - DIFFUSION_MODEL=${QWEN_DIFFUSION_MODEL:-qwen-image-2.1-Q3_K_XL.gguf}
+      - VAE_MODEL=${QWEN_VAE_MODEL:-qwen_image_2.1_vae_bf16.safetensors}
+      - TEXT_ENCODER=${QWEN_TEXT_ENCODER:-Qwen3-VL-8B-Instruct-UD-Q3_K_XL.gguf}
+      - MMPROJ_MODEL=${QWEN_MMPROJ_MODEL:-mmproj-F16.gguf}
+      - DEFAULT_STEPS=${QWEN_DEFAULT_STEPS:-20}
+      - DEFAULT_CFG=${QWEN_DEFAULT_CFG:-4.5}
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+    networks:
+      - hermes-net
+
+  # ===========================================================================
+  # 4. Hermes Agent (Skills + Aprendizados + s6-overlay oficial)
+  # ===========================================================================
+  hermes-agent:
+    image: nousresearch/hermes-agent:latest
+    container_name: techdiario-hermes-agent
+    restart: unless-stopped
+    depends_on:
+      - qdrant
+      - ollama
+      - qwen-image
+    ports:
+      - "9119:9119"
+    volumes:
+      - ./hermes_data:/opt/data
+      - "./CANAL TECH DIARIO:/opt/assets:ro"
+      - ./output:/opt/output
+    environment:
+      - TZ=${TZ:-America/Sao_Paulo}
+      - HERMES_HOME=/opt/data
+      - HERMES_UID=10000
+      - HERMES_GID=10000
+      - HERMES_GATEWAY_BOOTSTRAP_STATE=running
+      - HERMES_DASHBOARD=true
+      - HERMES_DASHBOARD_HOST=0.0.0.0
+      - HERMES_DASHBOARD_PORT=9119
+      - HERMES_DASHBOARD_BASIC_AUTH_USERNAME=techdiario
+      - HERMES_DASHBOARD_BASIC_AUTH_PASSWORD=techdiario
+      - OPENAI_BASE_URL=http://ollama:11434/v1
+      - OPENAI_API_KEY=ollama
+      - OLLAMA_URL=http://ollama:11434
+      - QDRANT_URL=http://qdrant:6333
+      - QWEN_IMAGE_API_URL=http://qwen-image:8090
+      - WRITER_MODEL=${WRITER_MODEL:-qwen3.5:9b}
+      - ASSETS_DIR=/opt/assets
+      - OUTPUT_DIR=/opt/output
+    command: ["gateway", "run"]
+    networks:
+      - hermes-net
+
+networks:
+  hermes-net:
+    driver: bridge

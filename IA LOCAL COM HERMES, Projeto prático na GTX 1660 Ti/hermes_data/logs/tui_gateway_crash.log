@@ -1,0 +1,1547 @@
+[tui-parent] 2026-10-19T00:40:05.304Z [lifecycle] spawned gateway child pid=525 killed=false exitCode=null signal=null python=/opt/hermes/.venv/bin/python cwd=/opt/data
+[tui-parent] 2026-10-19T01:26:58.940Z graceful-exit received signal=SIGHUP → killing gateway
+[tui-parent] 2026-10-19T01:26:58.961Z [lifecycle] GatewayClient.kill reason=graceful-exit-cleanup pid=525 killed=true exitCode=null signal=null killResult=true
+
+=== SIGTERM received · 2026-10-18 22:26:58 ===
+main-thread stack at signal delivery:
+  File "<frozen runpy>", line 203, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/opt/hermes/tui_gateway/entry.py", line 365, in <module>
+    main()
+  File "/opt/hermes/tui_gateway/entry.py", line 328, in main
+    raw = sys.stdin.readline()
+  File "/opt/hermes/tui_gateway/entry.py", line 134, in _log_signal
+    _append_crash_log(f"{name} received · {time.strftime('%Y-%m-%d %H:%M:%S')}", _dump)
+  File "/opt/hermes/tui_gateway/entry.py", line 100, in _append_crash_log
+    dump(f)
+  File "/opt/hermes/tui_gateway/entry.py", line 131, in _dump
+    f.write(f"\n--- thread {th.name} (id={tid}) ---\n")
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1135, in name
+    @property
+
+--- thread MainThread (id=136179268458368) ---
+  File "<frozen runpy>", line 203, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/opt/hermes/tui_gateway/entry.py", line 365, in <module>
+    main()
+  File "/opt/hermes/tui_gateway/entry.py", line 328, in main
+    raw = sys.stdin.readline()
+  File "/opt/hermes/tui_gateway/entry.py", line 134, in _log_signal
+    _append_crash_log(f"{name} received · {time.strftime('%Y-%m-%d %H:%M:%S')}", _dump)
+  File "/opt/hermes/tui_gateway/entry.py", line 100, in _append_crash_log
+    dump(f)
+  File "/opt/hermes/tui_gateway/entry.py", line 131, in _dump
+    f.write(f"\n--- thread {th.name} (id={tid}) ---\n")
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1135, in name
+    @property
+  File "/opt/hermes/tui_gateway/entry.py", line 134, in _log_signal
+    _append_crash_log(f"{name} received · {time.strftime('%Y-%m-%d %H:%M:%S')}", _dump)
+  File "/opt/hermes/tui_gateway/entry.py", line 100, in _append_crash_log
+    dump(f)
+  File "/opt/hermes/tui_gateway/entry.py", line 132, in _dump
+    f.write("".join(traceback.format_stack(sys._current_frames().get(tid))))
+
+--- thread Thread-2 (_loop) (id=136179215025856) ---
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1044, in _bootstrap
+    self._bootstrap_inner()
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1082, in _bootstrap_inner
+    self._context.run(self.run)
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1024, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/hermes/tui_gateway/server.py", line 418, in _loop
+    time.sleep(_REAPER_SCAN_S)
+
+--- thread Thread-3 (recv_events) (id=136179200341696) ---
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1044, in _bootstrap
+    self._bootstrap_inner()
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1082, in _bootstrap_inner
+    self._context.run(self.run)
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1024, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/hermes/.venv/lib/python3.14/site-packages/websockets/sync/client.py", line 123, in recv_events
+    super().recv_events()
+  File "/opt/hermes/.venv/lib/python3.14/site-packages/websockets/sync/connection.py", line 814, in recv_events
+    data = self.socket.recv(self.recv_bufsize)
+
+--- thread Thread-4 (keepalive) (id=136179118765760) ---
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1044, in _bootstrap
+    self._bootstrap_inner()
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1082, in _bootstrap_inner
+    self._context.run(self.run)
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1024, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/hermes/.venv/lib/python3.14/site-packages/websockets/sync/connection.py", line 758, in keepalive
+    self.recv_events_thread.join(self.ping_interval - self.latency)
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1133, in join
+    self._os_thread_handle.join(timeout)
+
+--- thread hermes-ws-pub (id=136179110373056) ---
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1044, in _bootstrap
+    self._bootstrap_inner()
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1082, in _bootstrap_inner
+    self._context.run(self.run)
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1024, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/hermes/tui_gateway/event_publisher.py", line 54, in _drain
+    item = self._q.get()
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/queue.py", line 199, in get
+    self.not_empty.wait()
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 369, in wait
+    waiter.acquire()
+
+--- thread hermes-gateway-heartbeat (id=136179096737472) ---
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1044, in _bootstrap
+    self._bootstrap_inner()
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1082, in _bootstrap_inner
+    self._context.run(self.run)
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1024, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/hermes/tui_gateway/session_reaper.py", line 498, in _loop
+    stop_event.wait(_HEARTBEAT_REFRESH_S)
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 670, in wait
+    signaled = self._cond.wait(timeout)
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 373, in wait
+    gotit = waiter.acquire(True, timeout)
+
+--- thread hermes-change-watcher (id=136179079952064) ---
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1044, in _bootstrap
+    self._bootstrap_inner()
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1082, in _bootstrap_inner
+    self._context.run(self.run)
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1024, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/hermes/tui_gateway/change_watcher.py", line 348, in _loop
+    time.sleep(0.5)
+
+--- thread tui-rpc_0 (id=136179063166656) ---
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1044, in _bootstrap
+    self._bootstrap_inner()
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1082, in _bootstrap_inner
+    self._context.run(self.run)
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1024, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/concurrent/futures/thread.py", line 116, in _worker
+    work_item = work_queue.get(block=True)
+
+--- thread Thread-7 (_monitor) (id=136178497042112) ---
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1044, in _bootstrap
+    self._bootstrap_inner()
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1082, in _bootstrap_inner
+    self._context.run(self.run)
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1024, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/logging/handlers.py", line 1613, in _monitor
+    record = self.dequeue(True)
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/logging/handlers.py", line 1559, in dequeue
+    return self.queue.get(block)
+
+--- thread tui-readiness_0 (id=136178379519680) ---
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1044, in _bootstrap
+    self._bootstrap_inner()
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1082, in _bootstrap_inner
+    self._context.run(self.run)
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1024, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/concurrent/futures/thread.py", line 116, in _worker
+    work_item = work_queue.get(block=True)
+
+--- thread tui-rpc_1 (id=136178361685696) ---
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1044, in _bootstrap
+    self._bootstrap_inner()
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1082, in _bootstrap_inner
+    self._context.run(self.run)
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1024, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/concurrent/futures/thread.py", line 116, in _worker
+    work_item = work_queue.get(block=True)
+
+--- thread tui-rpc_2 (id=136178370078400) ---
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1044, in _bootstrap
+    self._bootstrap_inner()
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1082, in _bootstrap_inner
+    self._context.run(self.run)
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1024, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/concurrent/futures/thread.py", line 116, in _worker
+    work_item = work_queue.get(block=True)
+
+--- thread tui-rpc_3 (id=136179071559360) ---
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1044, in _bootstrap
+    self._bootstrap_inner()
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1082, in _bootstrap_inner
+    self._context.run(self.run)
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1024, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/concurrent/futures/thread.py", line 116, in _worker
+    work_item = work_queue.get(block=True)
+
+=== SIGHUP received · 2026-10-18 22:26:59 ===
+main-thread stack at signal delivery:
+  File "<frozen runpy>", line 203, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/opt/hermes/tui_gateway/entry.py", line 365, in <module>
+    main()
+  File "/opt/hermes/tui_gateway/entry.py", line 328, in main
+    raw = sys.stdin.readline()
+  File "/opt/hermes/tui_gateway/entry.py", line 134, in _log_signal
+    _append_crash_log(f"{name} received · {time.strftime('%Y-%m-%d %H:%M:%S')}", _dump)
+  File "/opt/hermes/tui_gateway/entry.py", line 100, in _append_crash_log
+    dump(f)
+  File "/opt/hermes/tui_gateway/entry.py", line 131, in _dump
+    f.write(f"\n--- thread {th.name} (id={tid}) ---\n")
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1135, in name
+    @property
+  File "/opt/hermes/tui_gateway/entry.py", line 144, in _log_signal
+    _shutdown_sessions()
+  File "/opt/hermes/tui_gateway/server.py", line 401, in _shutdown_sessions
+    _close_session_by_id(sid, end_reason="tui_shutdown")
+  File "/opt/hermes/tui_gateway/session_lifecycle.py", line 674, in _close_session_by_id
+    return _teardown_popped_session(session, end_reason=end_reason)
+  File "/opt/hermes/tui_gateway/session_lifecycle.py", line 584, in _teardown_popped_session
+    _teardown_session(session, end_reason=end_reason)
+  File "/opt/hermes/tui_gateway/session_lifecycle.py", line 521, in _teardown_session
+    _finalize_session(session, end_reason=end_reason)
+  File "/opt/hermes/tui_gateway/session_lifecycle.py", line 359, in _finalize_session
+    _lock_vault_managers(session)
+  File "/opt/hermes/tui_gateway/session_lifecycle.py", line 345, in _lock_vault_managers
+    from agent.vault_backends import unlock
+  File "<frozen importlib._bootstrap>", line 1371, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1342, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 938, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 759, in exec_module
+  File "<frozen importlib._bootstrap>", line 491, in _call_with_frames_removed
+  File "/opt/hermes/agent/vault_backends/__init__.py", line 16, in <module>
+    from agent.vault_backends.base import LoginBackend, UnlockRequired, backend_for_handle, enabled_backends
+  File "<frozen importlib._bootstrap>", line 1371, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1342, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 938, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 759, in exec_module
+  File "<frozen importlib._bootstrap>", line 491, in _call_with_frames_removed
+  File "/opt/hermes/agent/vault_backends/base.py", line 17, in <module>
+    from agent.vault_store import VaultItemMeta
+  File "<frozen importlib._bootstrap>", line 1371, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1342, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 938, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 755, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 893, in get_code
+  File "<frozen importlib._bootstrap_external>", line 823, in source_to_code
+  File "<frozen importlib._bootstrap>", line 491, in _call_with_frames_removed
+
+--- thread MainThread (id=136179268458368) ---
+  File "<frozen runpy>", line 203, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/opt/hermes/tui_gateway/entry.py", line 365, in <module>
+    main()
+  File "/opt/hermes/tui_gateway/entry.py", line 328, in main
+    raw = sys.stdin.readline()
+  File "/opt/hermes/tui_gateway/entry.py", line 134, in _log_signal
+    _append_crash_log(f"{name} received · {time.strftime('%Y-%m-%d %H:%M:%S')}", _dump)
+  File "/opt/hermes/tui_gateway/entry.py", line 100, in _append_crash_log
+    dump(f)
+  File "/opt/hermes/tui_gateway/entry.py", line 131, in _dump
+    f.write(f"\n--- thread {th.name} (id={tid}) ---\n")
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1135, in name
+    @property
+  File "/opt/hermes/tui_gateway/entry.py", line 144, in _log_signal
+    _shutdown_sessions()
+  File "/opt/hermes/tui_gateway/server.py", line 401, in _shutdown_sessions
+    _close_session_by_id(sid, end_reason="tui_shutdown")
+  File "/opt/hermes/tui_gateway/session_lifecycle.py", line 674, in _close_session_by_id
+    return _teardown_popped_session(session, end_reason=end_reason)
+  File "/opt/hermes/tui_gateway/session_lifecycle.py", line 584, in _teardown_popped_session
+    _teardown_session(session, end_reason=end_reason)
+  File "/opt/hermes/tui_gateway/session_lifecycle.py", line 521, in _teardown_session
+    _finalize_session(session, end_reason=end_reason)
+  File "/opt/hermes/tui_gateway/session_lifecycle.py", line 359, in _finalize_session
+    _lock_vault_managers(session)
+  File "/opt/hermes/tui_gateway/session_lifecycle.py", line 345, in _lock_vault_managers
+    from agent.vault_backends import unlock
+  File "<frozen importlib._bootstrap>", line 1371, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1342, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 938, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 759, in exec_module
+  File "<frozen importlib._bootstrap>", line 491, in _call_with_frames_removed
+  File "/opt/hermes/agent/vault_backends/__init__.py", line 16, in <module>
+    from agent.vault_backends.base import LoginBackend, UnlockRequired, backend_for_handle, enabled_backends
+  File "<frozen importlib._bootstrap>", line 1371, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1342, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 938, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 759, in exec_module
+  File "<frozen importlib._bootstrap>", line 491, in _call_with_frames_removed
+  File "/opt/hermes/agent/vault_backends/base.py", line 17, in <module>
+    from agent.vault_store import VaultItemMeta
+  File "<frozen importlib._bootstrap>", line 1371, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1342, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 938, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 755, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 893, in get_code
+  File "<frozen importlib._bootstrap_external>", line 823, in source_to_code
+  File "<frozen importlib._bootstrap>", line 491, in _call_with_frames_removed
+  File "/opt/hermes/tui_gateway/entry.py", line 134, in _log_signal
+    _append_crash_log(f"{name} received · {time.strftime('%Y-%m-%d %H:%M:%S')}", _dump)
+  File "/opt/hermes/tui_gateway/entry.py", line 100, in _append_crash_log
+    dump(f)
+  File "/opt/hermes/tui_gateway/entry.py", line 132, in _dump
+    f.write("".join(traceback.format_stack(sys._current_frames().get(tid))))
+
+--- thread Thread-2 (_loop) (id=136179215025856) ---
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1044, in _bootstrap
+    self._bootstrap_inner()
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1082, in _bootstrap_inner
+    self._context.run(self.run)
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1024, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/hermes/tui_gateway/server.py", line 418, in _loop
+    time.sleep(_REAPER_SCAN_S)
+
+--- thread Thread-3 (recv_events) (id=136179200341696) ---
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1044, in _bootstrap
+    self._bootstrap_inner()
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1082, in _bootstrap_inner
+    self._context.run(self.run)
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1024, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/hermes/.venv/lib/python3.14/site-packages/websockets/sync/client.py", line 123, in recv_events
+    super().recv_events()
+  File "/opt/hermes/.venv/lib/python3.14/site-packages/websockets/sync/connection.py", line 814, in recv_events
+    data = self.socket.recv(self.recv_bufsize)
+
+--- thread Thread-4 (keepalive) (id=136179118765760) ---
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1044, in _bootstrap
+    self._bootstrap_inner()
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1082, in _bootstrap_inner
+    self._context.run(self.run)
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1024, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/hermes/.venv/lib/python3.14/site-packages/websockets/sync/connection.py", line 758, in keepalive
+    self.recv_events_thread.join(self.ping_interval - self.latency)
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1133, in join
+    self._os_thread_handle.join(timeout)
+
+--- thread hermes-ws-pub (id=136179110373056) ---
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1044, in _bootstrap
+    self._bootstrap_inner()
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1082, in _bootstrap_inner
+    self._context.run(self.run)
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1024, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/hermes/tui_gateway/event_publisher.py", line 54, in _drain
+    item = self._q.get()
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/queue.py", line 199, in get
+    self.not_empty.wait()
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 369, in wait
+    waiter.acquire()
+
+--- thread hermes-gateway-heartbeat (id=136179096737472) ---
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1044, in _bootstrap
+    self._bootstrap_inner()
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1082, in _bootstrap_inner
+    self._context.run(self.run)
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1024, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/hermes/tui_gateway/session_reaper.py", line 498, in _loop
+    stop_event.wait(_HEARTBEAT_REFRESH_S)
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 670, in wait
+    signaled = self._cond.wait(timeout)
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 373, in wait
+    gotit = waiter.acquire(True, timeout)
+
+--- thread hermes-change-watcher (id=136179079952064) ---
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1044, in _bootstrap
+    self._bootstrap_inner()
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1082, in _bootstrap_inner
+    self._context.run(self.run)
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1024, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/hermes/tui_gateway/change_watcher.py", line 348, in _loop
+    time.sleep(0.5)
+
+--- thread tui-rpc_0 (id=136179063166656) ---
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1044, in _bootstrap
+    self._bootstrap_inner()
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1082, in _bootstrap_inner
+    self._context.run(self.run)
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1024, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/concurrent/futures/thread.py", line 116, in _worker
+    work_item = work_queue.get(block=True)
+
+--- thread Thread-7 (_monitor) (id=136178497042112) ---
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1044, in _bootstrap
+    self._bootstrap_inner()
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1082, in _bootstrap_inner
+    self._context.run(self.run)
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1024, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/logging/handlers.py", line 1613, in _monitor
+    record = self.dequeue(True)
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/logging/handlers.py", line 1559, in dequeue
+    return self.queue.get(block)
+
+--- thread tui-readiness_0 (id=136178379519680) ---
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1044, in _bootstrap
+    self._bootstrap_inner()
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1082, in _bootstrap_inner
+    self._context.run(self.run)
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1024, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/concurrent/futures/thread.py", line 116, in _worker
+    work_item = work_queue.get(block=True)
+
+--- thread tui-rpc_1 (id=136178361685696) ---
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1044, in _bootstrap
+    self._bootstrap_inner()
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1082, in _bootstrap_inner
+    self._context.run(self.run)
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1024, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/concurrent/futures/thread.py", line 116, in _worker
+    work_item = work_queue.get(block=True)
+
+--- thread tui-rpc_2 (id=136178370078400) ---
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1044, in _bootstrap
+    self._bootstrap_inner()
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1082, in _bootstrap_inner
+    self._context.run(self.run)
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1024, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/concurrent/futures/thread.py", line 116, in _worker
+    work_item = work_queue.get(block=True)
+
+--- thread tui-rpc_3 (id=136179071559360) ---
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1044, in _bootstrap
+    self._bootstrap_inner()
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1082, in _bootstrap_inner
+    self._context.run(self.run)
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1024, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/concurrent/futures/thread.py", line 116, in _worker
+    work_item = work_queue.get(block=True)
+
+--- thread Thread-11 (id=136179088344768) ---
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1044, in _bootstrap
+    self._bootstrap_inner()
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1082, in _bootstrap_inner
+    self._context.run(self.run)
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1383, in run
+    self.finished.wait(self.interval)
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 670, in wait
+    signaled = self._cond.wait(timeout)
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 373, in wait
+    gotit = waiter.acquire(True, timeout)
+
+=== SIGHUP received · 2026-10-18 22:26:58 ===
+main-thread stack at signal delivery:
+  File "<frozen runpy>", line 203, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/opt/hermes/tui_gateway/entry.py", line 365, in <module>
+    main()
+  File "/opt/hermes/tui_gateway/entry.py", line 328, in main
+    raw = sys.stdin.readline()
+
+--- thread MainThread (id=136179268458368) ---
+  File "<frozen runpy>", line 203, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/opt/hermes/tui_gateway/entry.py", line 365, in <module>
+    main()
+  File "/opt/hermes/tui_gateway/entry.py", line 328, in main
+    raw = sys.stdin.readline()
+  File "/opt/hermes/tui_gateway/entry.py", line 134, in _log_signal
+    _append_crash_log(f"{name} received · {time.strftime('%Y-%m-%d %H:%M:%S')}", _dump)
+  File "/opt/hermes/tui_gateway/entry.py", line 100, in _append_crash_log
+    dump(f)
+  File "/opt/hermes/tui_gateway/entry.py", line 132, in _dump
+    f.write("".join(traceback.format_stack(sys._current_frames().get(tid))))
+
+--- thread Thread-2 (_loop) (id=136179215025856) ---
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1044, in _bootstrap
+    self._bootstrap_inner()
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1082, in _bootstrap_inner
+    self._context.run(self.run)
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1024, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/hermes/tui_gateway/server.py", line 418, in _loop
+    time.sleep(_REAPER_SCAN_S)
+
+--- thread Thread-3 (recv_events) (id=136179200341696) ---
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1044, in _bootstrap
+    self._bootstrap_inner()
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1082, in _bootstrap_inner
+    self._context.run(self.run)
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1024, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/hermes/.venv/lib/python3.14/site-packages/websockets/sync/client.py", line 123, in recv_events
+    super().recv_events()
+  File "/opt/hermes/.venv/lib/python3.14/site-packages/websockets/sync/connection.py", line 814, in recv_events
+    data = self.socket.recv(self.recv_bufsize)
+
+--- thread Thread-4 (keepalive) (id=136179118765760) ---
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1044, in _bootstrap
+    self._bootstrap_inner()
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1082, in _bootstrap_inner
+    self._context.run(self.run)
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1024, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/hermes/.venv/lib/python3.14/site-packages/websockets/sync/connection.py", line 758, in keepalive
+    self.recv_events_thread.join(self.ping_interval - self.latency)
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1133, in join
+    self._os_thread_handle.join(timeout)
+
+--- thread hermes-ws-pub (id=136179110373056) ---
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1044, in _bootstrap
+    self._bootstrap_inner()
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1082, in _bootstrap_inner
+    self._context.run(self.run)
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1024, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/hermes/tui_gateway/event_publisher.py", line 54, in _drain
+    item = self._q.get()
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/queue.py", line 199, in get
+    self.not_empty.wait()
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 369, in wait
+    waiter.acquire()
+
+--- thread hermes-gateway-heartbeat (id=136179096737472) ---
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1044, in _bootstrap
+    self._bootstrap_inner()
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1082, in _bootstrap_inner
+    self._context.run(self.run)
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1024, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/hermes/tui_gateway/session_reaper.py", line 498, in _loop
+    stop_event.wait(_HEARTBEAT_REFRESH_S)
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 670, in wait
+    signaled = self._cond.wait(timeout)
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 373, in wait
+    gotit = waiter.acquire(True, timeout)
+[tui-parent] 2026-10-23T19:27:07.486Z [lifecycle] spawned gateway child pid=633 killed=false exitCode=null signal=null python=/opt/hermes/.venv/bin/python cwd=/opt/data
+[tui-parent] 2026-10-23T19:30:59.084Z graceful-exit received signal=SIGHUP → killing gateway
+[tui-parent] 2026-10-23T19:30:59.086Z [lifecycle] GatewayClient.kill reason=graceful-exit-cleanup pid=633 killed=true exitCode=null signal=null killResult=true
+
+=== SIGTERM received · 2026-10-23 16:30:59 ===
+main-thread stack at signal delivery:
+  File "<frozen runpy>", line 203, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/opt/hermes/tui_gateway/entry.py", line 365, in <module>
+    main()
+  File "/opt/hermes/tui_gateway/entry.py", line 328, in main
+    raw = sys.stdin.readline()
+  File "/opt/hermes/tui_gateway/entry.py", line 134, in _log_signal
+    _append_crash_log(f"{name} received · {time.strftime('%Y-%m-%d %H:%M:%S')}", _dump)
+  File "/opt/hermes/tui_gateway/entry.py", line 100, in _append_crash_log
+    dump(f)
+  File "/opt/hermes/tui_gateway/entry.py", line 128, in _dump
+    traceback.print_stack(frame, file=f)
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/traceback.py", line 241, in print_stack
+    print_list(extract_stack(f, limit=limit), file=file)
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/traceback.py", line 34, in print_list
+    for item in StackSummary.from_list(extracted_list).format():
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/traceback.py", line 763, in format
+    formatted_frame = self.format_frame_summary(frame_summary, colorize=colorize)
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/traceback.py", line 561, in format_frame_summary
+    row.append(textwrap.indent(frame_summary.line, '    ') + "\n")
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/traceback.py", line 378, in line
+    return self._lines.partition("\n")[0].strip()
+
+--- thread MainThread (id=129867378325376) ---
+  File "<frozen runpy>", line 203, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/opt/hermes/tui_gateway/entry.py", line 365, in <module>
+    main()
+  File "/opt/hermes/tui_gateway/entry.py", line 328, in main
+    raw = sys.stdin.readline()
+  File "/opt/hermes/tui_gateway/entry.py", line 134, in _log_signal
+    _append_crash_log(f"{name} received · {time.strftime('%Y-%m-%d %H:%M:%S')}", _dump)
+  File "/opt/hermes/tui_gateway/entry.py", line 100, in _append_crash_log
+    dump(f)
+  File "/opt/hermes/tui_gateway/entry.py", line 128, in _dump
+    traceback.print_stack(frame, file=f)
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/traceback.py", line 241, in print_stack
+    print_list(extract_stack(f, limit=limit), file=file)
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/traceback.py", line 34, in print_list
+    for item in StackSummary.from_list(extracted_list).format():
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/traceback.py", line 763, in format
+    formatted_frame = self.format_frame_summary(frame_summary, colorize=colorize)
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/traceback.py", line 561, in format_frame_summary
+    row.append(textwrap.indent(frame_summary.line, '    ') + "\n")
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/traceback.py", line 378, in line
+    return self._lines.partition("\n")[0].strip()
+  File "/opt/hermes/tui_gateway/entry.py", line 134, in _log_signal
+    _append_crash_log(f"{name} received · {time.strftime('%Y-%m-%d %H:%M:%S')}", _dump)
+  File "/opt/hermes/tui_gateway/entry.py", line 100, in _append_crash_log
+    dump(f)
+  File "/opt/hermes/tui_gateway/entry.py", line 132, in _dump
+    f.write("".join(traceback.format_stack(sys._current_frames().get(tid))))
+
+--- thread Thread-2 (_loop) (id=129867323844288) ---
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1044, in _bootstrap
+    self._bootstrap_inner()
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1082, in _bootstrap_inner
+    self._context.run(self.run)
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1024, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/hermes/tui_gateway/server.py", line 418, in _loop
+    time.sleep(_REAPER_SCAN_S)
+
+--- thread Thread-3 (recv_events) (id=129867310208704) ---
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1044, in _bootstrap
+    self._bootstrap_inner()
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1082, in _bootstrap_inner
+    self._context.run(self.run)
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1024, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/hermes/.venv/lib/python3.14/site-packages/websockets/sync/client.py", line 123, in recv_events
+    super().recv_events()
+  File "/opt/hermes/.venv/lib/python3.14/site-packages/websockets/sync/connection.py", line 814, in recv_events
+    data = self.socket.recv(self.recv_bufsize)
+
+--- thread Thread-4 (keepalive) (id=129867301816000) ---
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1044, in _bootstrap
+    self._bootstrap_inner()
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1082, in _bootstrap_inner
+    self._context.run(self.run)
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1024, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/hermes/.venv/lib/python3.14/site-packages/websockets/sync/connection.py", line 758, in keepalive
+    self.recv_events_thread.join(self.ping_interval - self.latency)
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1133, in join
+    self._os_thread_handle.join(timeout)
+
+--- thread hermes-ws-pub (id=129867293423296) ---
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1044, in _bootstrap
+    self._bootstrap_inner()
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1082, in _bootstrap_inner
+    self._context.run(self.run)
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1024, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/hermes/tui_gateway/event_publisher.py", line 54, in _drain
+    item = self._q.get()
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/queue.py", line 199, in get
+    self.not_empty.wait()
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 369, in wait
+    waiter.acquire()
+
+--- thread hermes-gateway-heartbeat (id=129867273795264) ---
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1044, in _bootstrap
+    self._bootstrap_inner()
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1082, in _bootstrap_inner
+    self._context.run(self.run)
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1024, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/hermes/tui_gateway/session_reaper.py", line 498, in _loop
+    stop_event.wait(_HEARTBEAT_REFRESH_S)
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 670, in wait
+    signaled = self._cond.wait(timeout)
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 373, in wait
+    gotit = waiter.acquire(True, timeout)
+
+--- thread hermes-change-watcher (id=129866917734080) ---
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1044, in _bootstrap
+    self._bootstrap_inner()
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1082, in _bootstrap_inner
+    self._context.run(self.run)
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1024, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/hermes/tui_gateway/change_watcher.py", line 348, in _loop
+    time.sleep(0.5)
+
+--- thread tui-rpc_0 (id=129866895058624) ---
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1044, in _bootstrap
+    self._bootstrap_inner()
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1082, in _bootstrap_inner
+    self._context.run(self.run)
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1024, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/concurrent/futures/thread.py", line 116, in _worker
+    work_item = work_queue.get(block=True)
+
+--- thread Thread-7 (_monitor) (id=129866640914112) ---
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1044, in _bootstrap
+    self._bootstrap_inner()
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1082, in _bootstrap_inner
+    self._context.run(self.run)
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1024, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/logging/handlers.py", line 1613, in _monitor
+    record = self.dequeue(True)
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/logging/handlers.py", line 1559, in dequeue
+    return self.queue.get(block)
+
+--- thread tui-readiness_0 (id=129866620933824) ---
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1044, in _bootstrap
+    self._bootstrap_inner()
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1082, in _bootstrap_inner
+    self._context.run(self.run)
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1024, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/concurrent/futures/thread.py", line 116, in _worker
+    work_item = work_queue.get(block=True)
+
+--- thread tui-rpc_1 (id=129866604148416) ---
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1044, in _bootstrap
+    self._bootstrap_inner()
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1082, in _bootstrap_inner
+    self._context.run(self.run)
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1024, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/concurrent/futures/thread.py", line 116, in _worker
+    work_item = work_queue.get(block=True)
+
+--- thread tui-rpc_2 (id=129866612541120) ---
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1044, in _bootstrap
+    self._bootstrap_inner()
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1082, in _bootstrap_inner
+    self._context.run(self.run)
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1024, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/concurrent/futures/thread.py", line 116, in _worker
+    work_item = work_queue.get(block=True)
+
+--- thread tui-rpc_3 (id=129866280195776) ---
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1044, in _bootstrap
+    self._bootstrap_inner()
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1082, in _bootstrap_inner
+    self._context.run(self.run)
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1024, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/concurrent/futures/thread.py", line 116, in _worker
+    work_item = work_queue.get(block=True)
+
+--- thread tui-rpc_4 (id=129866909341376) ---
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1044, in _bootstrap
+    self._bootstrap_inner()
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1082, in _bootstrap_inner
+    self._context.run(self.run)
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1024, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/concurrent/futures/thread.py", line 116, in _worker
+    work_item = work_queue.get(block=True)
+
+--- thread tui-notif-poller-8f280db6 (id=129865983456960) ---
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1044, in _bootstrap
+    self._bootstrap_inner()
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1082, in _bootstrap_inner
+    self._context.run(self.run)
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1024, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/hermes/tui_gateway/session_notifications.py", line 734, in _notification_poller_loop
+    _notification_poller_scoped_loop(stop_event, sid, session)
+  File "/opt/hermes/tui_gateway/session_notifications.py", line 775, in _notification_poller_scoped_loop
+    evt = queue.get(timeout=0.5)
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/queue.py", line 210, in get
+    self.not_empty.wait(remaining)
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 373, in wait
+    gotit = waiter.acquire(True, timeout)
+
+--- thread relay-scope-op_0 (id=129865244202688) ---
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1044, in _bootstrap
+    self._bootstrap_inner()
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1082, in _bootstrap_inner
+    self._context.run(self.run)
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1024, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/concurrent/futures/thread.py", line 116, in _worker
+    work_item = work_queue.get(block=True)
+
+--- thread hermes-periodic-scheduler (id=129865235809984) ---
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1044, in _bootstrap
+    self._bootstrap_inner()
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1082, in _bootstrap_inner
+    self._context.run(self.run)
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1024, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/hermes/agent/periodic_scheduler.py", line 136, in _run
+    self._cond.wait()
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 369, in wait
+    waiter.acquire()
+
+=== SIGHUP received · 2026-10-23 16:30:59 ===
+main-thread stack at signal delivery:
+  File "<frozen runpy>", line 203, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/opt/hermes/tui_gateway/entry.py", line 365, in <module>
+    main()
+  File "/opt/hermes/tui_gateway/entry.py", line 328, in main
+    raw = sys.stdin.readline()
+  File "/opt/hermes/tui_gateway/entry.py", line 134, in _log_signal
+    _append_crash_log(f"{name} received · {time.strftime('%Y-%m-%d %H:%M:%S')}", _dump)
+  File "/opt/hermes/tui_gateway/entry.py", line 100, in _append_crash_log
+    dump(f)
+  File "/opt/hermes/tui_gateway/entry.py", line 128, in _dump
+    traceback.print_stack(frame, file=f)
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/traceback.py", line 241, in print_stack
+    print_list(extract_stack(f, limit=limit), file=file)
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/traceback.py", line 34, in print_list
+    for item in StackSummary.from_list(extracted_list).format():
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/traceback.py", line 763, in format
+    formatted_frame = self.format_frame_summary(frame_summary, colorize=colorize)
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/traceback.py", line 561, in format_frame_summary
+    row.append(textwrap.indent(frame_summary.line, '    ') + "\n")
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/traceback.py", line 378, in line
+    return self._lines.partition("\n")[0].strip()
+  File "/opt/hermes/tui_gateway/entry.py", line 144, in _log_signal
+    _shutdown_sessions()
+  File "/opt/hermes/tui_gateway/server.py", line 401, in _shutdown_sessions
+    _close_session_by_id(sid, end_reason="tui_shutdown")
+  File "/opt/hermes/tui_gateway/session_lifecycle.py", line 674, in _close_session_by_id
+    return _teardown_popped_session(session, end_reason=end_reason)
+  File "/opt/hermes/tui_gateway/session_lifecycle.py", line 584, in _teardown_popped_session
+    _teardown_session(session, end_reason=end_reason)
+  File "/opt/hermes/tui_gateway/session_lifecycle.py", line 521, in _teardown_session
+    _finalize_session(session, end_reason=end_reason)
+  File "/opt/hermes/tui_gateway/session_lifecycle.py", line 367, in _finalize_session
+    _release_active_session_slot(session)
+  File "/opt/hermes/tui_gateway/session_lifecycle.py", line 208, in _release_active_session_slot
+    if (err := _lease_retry(3 if getattr(lease, "track_liveness", False) else 1, lambda: lease.release())) is not None:
+  File "/opt/hermes/tui_gateway/session_lifecycle.py", line 194, in _lease_retry
+    fn()
+  File "/opt/hermes/tui_gateway/session_lifecycle.py", line 208, in <lambda>
+    if (err := _lease_retry(3 if getattr(lease, "track_liveness", False) else 1, lambda: lease.release())) is not None:
+  File "/opt/hermes/hermes_cli/active_sessions.py", line 415, in release
+    release_active_session(self)
+  File "/opt/hermes/hermes_cli/active_sessions.py", line 592, in release_active_session
+    _drop_lease(state_path, loaded[1], lease.lease_id)
+  File "/opt/hermes/hermes_cli/active_sessions.py", line 428, in _drop_lease
+    _write_entries(state_path, kept)
+  File "/opt/hermes/hermes_cli/active_sessions.py", line 298, in _write_entries
+    atomic_json_write(path, {"entries": entries}, indent=None, sort_keys=True)
+  File "/opt/hermes/utils.py", line 392, in atomic_json_write
+    _atomic_write(path, lambda f: _dump_json(data, f, indent=indent, ensure_ascii=ensure_ascii, dump_kwargs=dump_kwargs),
+  File "/opt/hermes/utils.py", line 311, in _atomic_write
+    mkdir_under_hermes_home(path.parent)
+  File "/opt/hermes/hermes_constants.py", line 387, in mkdir_under_hermes_home
+    target.mkdir(parents=True, exist_ok=True)
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/pathlib/__init__.py", line 1020, in mkdir
+    if not exist_ok or not self.is_dir():
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/pathlib/__init__.py", line 679, in is_dir
+    return os.path.isdir(self)
+  File "<frozen genericpath>", line 51, in isdir
+
+--- thread MainThread (id=129867378325376) ---
+  File "<frozen runpy>", line 203, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/opt/hermes/tui_gateway/entry.py", line 365, in <module>
+    main()
+  File "/opt/hermes/tui_gateway/entry.py", line 328, in main
+    raw = sys.stdin.readline()
+  File "/opt/hermes/tui_gateway/entry.py", line 134, in _log_signal
+    _append_crash_log(f"{name} received · {time.strftime('%Y-%m-%d %H:%M:%S')}", _dump)
+  File "/opt/hermes/tui_gateway/entry.py", line 100, in _append_crash_log
+    dump(f)
+  File "/opt/hermes/tui_gateway/entry.py", line 128, in _dump
+    traceback.print_stack(frame, file=f)
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/traceback.py", line 241, in print_stack
+    print_list(extract_stack(f, limit=limit), file=file)
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/traceback.py", line 34, in print_list
+    for item in StackSummary.from_list(extracted_list).format():
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/traceback.py", line 763, in format
+    formatted_frame = self.format_frame_summary(frame_summary, colorize=colorize)
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/traceback.py", line 561, in format_frame_summary
+    row.append(textwrap.indent(frame_summary.line, '    ') + "\n")
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/traceback.py", line 378, in line
+    return self._lines.partition("\n")[0].strip()
+  File "/opt/hermes/tui_gateway/entry.py", line 144, in _log_signal
+    _shutdown_sessions()
+  File "/opt/hermes/tui_gateway/server.py", line 401, in _shutdown_sessions
+    _close_session_by_id(sid, end_reason="tui_shutdown")
+  File "/opt/hermes/tui_gateway/session_lifecycle.py", line 674, in _close_session_by_id
+    return _teardown_popped_session(session, end_reason=end_reason)
+  File "/opt/hermes/tui_gateway/session_lifecycle.py", line 584, in _teardown_popped_session
+    _teardown_session(session, end_reason=end_reason)
+  File "/opt/hermes/tui_gateway/session_lifecycle.py", line 521, in _teardown_session
+    _finalize_session(session, end_reason=end_reason)
+  File "/opt/hermes/tui_gateway/session_lifecycle.py", line 367, in _finalize_session
+    _release_active_session_slot(session)
+  File "/opt/hermes/tui_gateway/session_lifecycle.py", line 208, in _release_active_session_slot
+    if (err := _lease_retry(3 if getattr(lease, "track_liveness", False) else 1, lambda: lease.release())) is not None:
+  File "/opt/hermes/tui_gateway/session_lifecycle.py", line 194, in _lease_retry
+    fn()
+  File "/opt/hermes/tui_gateway/session_lifecycle.py", line 208, in <lambda>
+    if (err := _lease_retry(3 if getattr(lease, "track_liveness", False) else 1, lambda: lease.release())) is not None:
+  File "/opt/hermes/hermes_cli/active_sessions.py", line 415, in release
+    release_active_session(self)
+  File "/opt/hermes/hermes_cli/active_sessions.py", line 592, in release_active_session
+    _drop_lease(state_path, loaded[1], lease.lease_id)
+  File "/opt/hermes/hermes_cli/active_sessions.py", line 428, in _drop_lease
+    _write_entries(state_path, kept)
+  File "/opt/hermes/hermes_cli/active_sessions.py", line 298, in _write_entries
+    atomic_json_write(path, {"entries": entries}, indent=None, sort_keys=True)
+  File "/opt/hermes/utils.py", line 392, in atomic_json_write
+    _atomic_write(path, lambda f: _dump_json(data, f, indent=indent, ensure_ascii=ensure_ascii, dump_kwargs=dump_kwargs),
+  File "/opt/hermes/utils.py", line 311, in _atomic_write
+    mkdir_under_hermes_home(path.parent)
+  File "/opt/hermes/hermes_constants.py", line 387, in mkdir_under_hermes_home
+    target.mkdir(parents=True, exist_ok=True)
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/pathlib/__init__.py", line 1020, in mkdir
+    if not exist_ok or not self.is_dir():
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/pathlib/__init__.py", line 679, in is_dir
+    return os.path.isdir(self)
+  File "<frozen genericpath>", line 51, in isdir
+  File "/opt/hermes/tui_gateway/entry.py", line 134, in _log_signal
+    _append_crash_log(f"{name} received · {time.strftime('%Y-%m-%d %H:%M:%S')}", _dump)
+  File "/opt/hermes/tui_gateway/entry.py", line 100, in _append_crash_log
+    dump(f)
+  File "/opt/hermes/tui_gateway/entry.py", line 132, in _dump
+    f.write("".join(traceback.format_stack(sys._current_frames().get(tid))))
+
+--- thread Thread-2 (_loop) (id=129867323844288) ---
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1044, in _bootstrap
+    self._bootstrap_inner()
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1082, in _bootstrap_inner
+    self._context.run(self.run)
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1024, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/hermes/tui_gateway/server.py", line 418, in _loop
+    time.sleep(_REAPER_SCAN_S)
+
+--- thread Thread-3 (recv_events) (id=129867310208704) ---
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1044, in _bootstrap
+    self._bootstrap_inner()
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1082, in _bootstrap_inner
+    self._context.run(self.run)
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1024, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/hermes/.venv/lib/python3.14/site-packages/websockets/sync/client.py", line 123, in recv_events
+    super().recv_events()
+  File "/opt/hermes/.venv/lib/python3.14/site-packages/websockets/sync/connection.py", line 814, in recv_events
+    data = self.socket.recv(self.recv_bufsize)
+
+--- thread Thread-4 (keepalive) (id=129867301816000) ---
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1044, in _bootstrap
+    self._bootstrap_inner()
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1082, in _bootstrap_inner
+    self._context.run(self.run)
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1024, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/hermes/.venv/lib/python3.14/site-packages/websockets/sync/connection.py", line 758, in keepalive
+    self.recv_events_thread.join(self.ping_interval - self.latency)
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1133, in join
+    self._os_thread_handle.join(timeout)
+
+--- thread hermes-ws-pub (id=129867293423296) ---
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1044, in _bootstrap
+    self._bootstrap_inner()
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1082, in _bootstrap_inner
+    self._context.run(self.run)
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1024, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/hermes/tui_gateway/event_publisher.py", line 54, in _drain
+    item = self._q.get()
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/queue.py", line 199, in get
+    self.not_empty.wait()
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 369, in wait
+    waiter.acquire()
+
+--- thread hermes-gateway-heartbeat (id=129867273795264) ---
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1044, in _bootstrap
+    self._bootstrap_inner()
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1082, in _bootstrap_inner
+    self._context.run(self.run)
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1024, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/hermes/tui_gateway/session_reaper.py", line 498, in _loop
+    stop_event.wait(_HEARTBEAT_REFRESH_S)
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 670, in wait
+    signaled = self._cond.wait(timeout)
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 373, in wait
+    gotit = waiter.acquire(True, timeout)
+
+--- thread hermes-change-watcher (id=129866917734080) ---
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1044, in _bootstrap
+    self._bootstrap_inner()
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1082, in _bootstrap_inner
+    self._context.run(self.run)
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1024, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/hermes/tui_gateway/change_watcher.py", line 348, in _loop
+    time.sleep(0.5)
+
+--- thread tui-rpc_0 (id=129866895058624) ---
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1044, in _bootstrap
+    self._bootstrap_inner()
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1082, in _bootstrap_inner
+    self._context.run(self.run)
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1024, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/concurrent/futures/thread.py", line 116, in _worker
+    work_item = work_queue.get(block=True)
+
+--- thread Thread-7 (_monitor) (id=129866640914112) ---
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1044, in _bootstrap
+    self._bootstrap_inner()
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1082, in _bootstrap_inner
+    self._context.run(self.run)
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1024, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/logging/handlers.py", line 1613, in _monitor
+    record = self.dequeue(True)
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/logging/handlers.py", line 1559, in dequeue
+    return self.queue.get(block)
+
+--- thread tui-readiness_0 (id=129866620933824) ---
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1044, in _bootstrap
+    self._bootstrap_inner()
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1082, in _bootstrap_inner
+    self._context.run(self.run)
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1024, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/concurrent/futures/thread.py", line 116, in _worker
+    work_item = work_queue.get(block=True)
+
+--- thread tui-rpc_1 (id=129866604148416) ---
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1044, in _bootstrap
+    self._bootstrap_inner()
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1082, in _bootstrap_inner
+    self._context.run(self.run)
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1024, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/concurrent/futures/thread.py", line 116, in _worker
+    work_item = work_queue.get(block=True)
+
+--- thread tui-rpc_2 (id=129866612541120) ---
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1044, in _bootstrap
+    self._bootstrap_inner()
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1082, in _bootstrap_inner
+    self._context.run(self.run)
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1024, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/concurrent/futures/thread.py", line 116, in _worker
+    work_item = work_queue.get(block=True)
+
+--- thread tui-rpc_3 (id=129866280195776) ---
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1044, in _bootstrap
+    self._bootstrap_inner()
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1082, in _bootstrap_inner
+    self._context.run(self.run)
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1024, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/concurrent/futures/thread.py", line 116, in _worker
+    work_item = work_queue.get(block=True)
+
+--- thread tui-rpc_4 (id=129866909341376) ---
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1044, in _bootstrap
+    self._bootstrap_inner()
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1082, in _bootstrap_inner
+    self._context.run(self.run)
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1024, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/concurrent/futures/thread.py", line 116, in _worker
+    work_item = work_queue.get(block=True)
+
+--- thread tui-notif-poller-8f280db6 (id=129865983456960) ---
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1044, in _bootstrap
+    self._bootstrap_inner()
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1082, in _bootstrap_inner
+    self._context.run(self.run)
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1024, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/hermes/tui_gateway/session_notifications.py", line 734, in _notification_poller_loop
+    _notification_poller_scoped_loop(stop_event, sid, session)
+  File "/opt/hermes/tui_gateway/session_notifications.py", line 775, in _notification_poller_scoped_loop
+    evt = queue.get(timeout=0.5)
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/queue.py", line 210, in get
+    self.not_empty.wait(remaining)
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 373, in wait
+    gotit = waiter.acquire(True, timeout)
+
+--- thread relay-scope-op_0 (id=129865244202688) ---
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1044, in _bootstrap
+    self._bootstrap_inner()
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1082, in _bootstrap_inner
+    self._context.run(self.run)
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1024, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/concurrent/futures/thread.py", line 116, in _worker
+    work_item = work_queue.get(block=True)
+
+--- thread hermes-periodic-scheduler (id=129865235809984) ---
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1044, in _bootstrap
+    self._bootstrap_inner()
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1082, in _bootstrap_inner
+    self._context.run(self.run)
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1024, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/hermes/agent/periodic_scheduler.py", line 136, in _run
+    self._cond.wait()
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 369, in wait
+    waiter.acquire()
+
+--- thread Thread-21 (id=129865225320128) ---
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1044, in _bootstrap
+    self._bootstrap_inner()
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1082, in _bootstrap_inner
+    self._context.run(self.run)
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1383, in run
+    self.finished.wait(self.interval)
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 670, in wait
+    signaled = self._cond.wait(timeout)
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 373, in wait
+    gotit = waiter.acquire(True, timeout)
+
+=== SIGHUP received · 2026-10-23 16:30:59 ===
+main-thread stack at signal delivery:
+[tui-parent] 2026-10-23T19:31:00.747Z [lifecycle] spawned gateway child pid=883 killed=false exitCode=null signal=null python=/opt/hermes/.venv/bin/python cwd=/opt/data
+[tui-parent] 2026-10-23T20:03:00.983Z graceful-exit received signal=SIGHUP → killing gateway
+[tui-parent] 2026-10-23T20:03:01.008Z [lifecycle] GatewayClient.kill reason=graceful-exit-cleanup pid=883 killed=true exitCode=null signal=null killResult=true
+
+=== SIGTERM received · 2026-10-23 17:03:01 ===
+main-thread stack at signal delivery:
+  File "<frozen runpy>", line 203, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/opt/hermes/tui_gateway/entry.py", line 365, in <module>
+    main()
+  File "/opt/hermes/tui_gateway/entry.py", line 328, in main
+    raw = sys.stdin.readline()
+  File "/opt/hermes/tui_gateway/entry.py", line 134, in _log_signal
+    _append_crash_log(f"{name} received · {time.strftime('%Y-%m-%d %H:%M:%S')}", _dump)
+  File "/opt/hermes/tui_gateway/entry.py", line 100, in _append_crash_log
+    dump(f)
+  File "/opt/hermes/tui_gateway/entry.py", line 128, in _dump
+    traceback.print_stack(frame, file=f)
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/traceback.py", line 241, in print_stack
+    print_list(extract_stack(f, limit=limit), file=file)
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/traceback.py", line 261, in extract_stack
+    stack = StackSummary.extract(walk_stack(f), limit=limit)
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/traceback.py", line 454, in extract
+    return klass._extract_from_extended_frame_gen(
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/traceback.py", line 486, in _extract_from_extended_frame_gen
+    linecache.lazycache(filename, f.f_globals)
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/linecache.py", line 217, in lazycache
+    lazy_entry = _make_lazycache_entry(filename, module_globals)
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/linecache.py", line 230, in _make_lazycache_entry
+    name = getattr(spec, 'name', None) or module_globals['__name__']
+
+--- thread MainThread (id=133459456948096) ---
+  File "<frozen runpy>", line 203, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/opt/hermes/tui_gateway/entry.py", line 365, in <module>
+    main()
+  File "/opt/hermes/tui_gateway/entry.py", line 328, in main
+    raw = sys.stdin.readline()
+  File "/opt/hermes/tui_gateway/entry.py", line 134, in _log_signal
+    _append_crash_log(f"{name} received · {time.strftime('%Y-%m-%d %H:%M:%S')}", _dump)
+  File "/opt/hermes/tui_gateway/entry.py", line 100, in _append_crash_log
+    dump(f)
+  File "/opt/hermes/tui_gateway/entry.py", line 128, in _dump
+    traceback.print_stack(frame, file=f)
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/traceback.py", line 241, in print_stack
+    print_list(extract_stack(f, limit=limit), file=file)
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/traceback.py", line 261, in extract_stack
+    stack = StackSummary.extract(walk_stack(f), limit=limit)
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/traceback.py", line 454, in extract
+    return klass._extract_from_extended_frame_gen(
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/traceback.py", line 486, in _extract_from_extended_frame_gen
+    linecache.lazycache(filename, f.f_globals)
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/linecache.py", line 217, in lazycache
+    lazy_entry = _make_lazycache_entry(filename, module_globals)
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/linecache.py", line 230, in _make_lazycache_entry
+    name = getattr(spec, 'name', None) or module_globals['__name__']
+  File "/opt/hermes/tui_gateway/entry.py", line 134, in _log_signal
+    _append_crash_log(f"{name} received · {time.strftime('%Y-%m-%d %H:%M:%S')}", _dump)
+  File "/opt/hermes/tui_gateway/entry.py", line 100, in _append_crash_log
+    dump(f)
+  File "/opt/hermes/tui_gateway/entry.py", line 132, in _dump
+    f.write("".join(traceback.format_stack(sys._current_frames().get(tid))))
+
+--- thread Thread-2 (_loop) (id=133459402467008) ---
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1044, in _bootstrap
+    self._bootstrap_inner()
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1082, in _bootstrap_inner
+    self._context.run(self.run)
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1024, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/hermes/tui_gateway/server.py", line 418, in _loop
+    time.sleep(_REAPER_SCAN_S)
+
+--- thread Thread-3 (recv_events) (id=133459388831424) ---
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1044, in _bootstrap
+    self._bootstrap_inner()
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1082, in _bootstrap_inner
+    self._context.run(self.run)
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1024, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/hermes/.venv/lib/python3.14/site-packages/websockets/sync/client.py", line 123, in recv_events
+    super().recv_events()
+  File "/opt/hermes/.venv/lib/python3.14/site-packages/websockets/sync/connection.py", line 814, in recv_events
+    data = self.socket.recv(self.recv_bufsize)
+
+--- thread Thread-4 (keepalive) (id=133459380438720) ---
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1044, in _bootstrap
+    self._bootstrap_inner()
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1082, in _bootstrap_inner
+    self._context.run(self.run)
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1024, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/hermes/.venv/lib/python3.14/site-packages/websockets/sync/connection.py", line 758, in keepalive
+    self.recv_events_thread.join(self.ping_interval - self.latency)
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1133, in join
+    self._os_thread_handle.join(timeout)
+
+--- thread hermes-ws-pub (id=133459372046016) ---
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1044, in _bootstrap
+    self._bootstrap_inner()
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1082, in _bootstrap_inner
+    self._context.run(self.run)
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1024, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/hermes/tui_gateway/event_publisher.py", line 54, in _drain
+    item = self._q.get()
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/queue.py", line 199, in get
+    self.not_empty.wait()
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 369, in wait
+    waiter.acquire()
+
+--- thread hermes-gateway-heartbeat (id=133459352417984) ---
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1044, in _bootstrap
+    self._bootstrap_inner()
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1082, in _bootstrap_inner
+    self._context.run(self.run)
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1024, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/hermes/tui_gateway/session_reaper.py", line 498, in _loop
+    stop_event.wait(_HEARTBEAT_REFRESH_S)
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 670, in wait
+    signaled = self._cond.wait(timeout)
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 373, in wait
+    gotit = waiter.acquire(True, timeout)
+
+--- thread hermes-change-watcher (id=133458995181248) ---
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1044, in _bootstrap
+    self._bootstrap_inner()
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1082, in _bootstrap_inner
+    self._context.run(self.run)
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1024, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/hermes/tui_gateway/change_watcher.py", line 348, in _loop
+    time.sleep(0.5)
+
+--- thread tui-rpc_0 (id=133458972505792) ---
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1044, in _bootstrap
+    self._bootstrap_inner()
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1082, in _bootstrap_inner
+    self._context.run(self.run)
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1024, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/concurrent/futures/thread.py", line 116, in _worker
+    work_item = work_queue.get(block=True)
+
+--- thread Thread-7 (_monitor) (id=133458653345472) ---
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1044, in _bootstrap
+    self._bootstrap_inner()
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1082, in _bootstrap_inner
+    self._context.run(self.run)
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1024, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/logging/handlers.py", line 1613, in _monitor
+    record = self.dequeue(True)
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/logging/handlers.py", line 1559, in dequeue
+    return self.queue.get(block)
+
+--- thread tui-readiness_0 (id=133458633365184) ---
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1044, in _bootstrap
+    self._bootstrap_inner()
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1082, in _bootstrap_inner
+    self._context.run(self.run)
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1024, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/concurrent/futures/thread.py", line 116, in _worker
+    work_item = work_queue.get(block=True)
+
+--- thread tui-rpc_1 (id=133458615531200) ---
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1044, in _bootstrap
+    self._bootstrap_inner()
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1082, in _bootstrap_inner
+    self._context.run(self.run)
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1024, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/concurrent/futures/thread.py", line 116, in _worker
+    work_item = work_queue.get(block=True)
+
+--- thread tui-rpc_2 (id=133458623923904) ---
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1044, in _bootstrap
+    self._bootstrap_inner()
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1082, in _bootstrap_inner
+    self._context.run(self.run)
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1024, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/concurrent/futures/thread.py", line 116, in _worker
+    work_item = work_queue.get(block=True)
+
+--- thread tui-rpc_3 (id=133458986788544) ---
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1044, in _bootstrap
+    self._bootstrap_inner()
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1082, in _bootstrap_inner
+    self._context.run(self.run)
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1024, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/concurrent/futures/thread.py", line 116, in _worker
+    work_item = work_queue.get(block=True)
+
+--- thread tui-notif-poller-8ba816bf (id=133458222376640) ---
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1044, in _bootstrap
+    self._bootstrap_inner()
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1082, in _bootstrap_inner
+    self._context.run(self.run)
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1024, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/hermes/tui_gateway/session_notifications.py", line 734, in _notification_poller_loop
+    _notification_poller_scoped_loop(stop_event, sid, session)
+  File "/opt/hermes/tui_gateway/session_notifications.py", line 775, in _notification_poller_scoped_loop
+    evt = queue.get(timeout=0.5)
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/queue.py", line 210, in get
+    self.not_empty.wait(remaining)
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 373, in wait
+    gotit = waiter.acquire(True, timeout)
+
+--- thread tui-rpc_4 (id=133458213983936) ---
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1044, in _bootstrap
+    self._bootstrap_inner()
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1082, in _bootstrap_inner
+    self._context.run(self.run)
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1024, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/concurrent/futures/thread.py", line 116, in _worker
+    work_item = work_queue.get(block=True)
+
+=== SIGHUP received · 2026-10-23 17:03:01 ===
+main-thread stack at signal delivery:
+  File "<frozen runpy>", line 203, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/opt/hermes/tui_gateway/entry.py", line 365, in <module>
+    main()
+  File "/opt/hermes/tui_gateway/entry.py", line 328, in main
+    raw = sys.stdin.readline()
+  File "/opt/hermes/tui_gateway/entry.py", line 134, in _log_signal
+    _append_crash_log(f"{name} received · {time.strftime('%Y-%m-%d %H:%M:%S')}", _dump)
+  File "/opt/hermes/tui_gateway/entry.py", line 100, in _append_crash_log
+    dump(f)
+  File "/opt/hermes/tui_gateway/entry.py", line 128, in _dump
+    traceback.print_stack(frame, file=f)
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/traceback.py", line 241, in print_stack
+    print_list(extract_stack(f, limit=limit), file=file)
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/traceback.py", line 261, in extract_stack
+    stack = StackSummary.extract(walk_stack(f), limit=limit)
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/traceback.py", line 454, in extract
+    return klass._extract_from_extended_frame_gen(
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/traceback.py", line 486, in _extract_from_extended_frame_gen
+    linecache.lazycache(filename, f.f_globals)
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/linecache.py", line 217, in lazycache
+    lazy_entry = _make_lazycache_entry(filename, module_globals)
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/linecache.py", line 230, in _make_lazycache_entry
+    name = getattr(spec, 'name', None) or module_globals['__name__']
+  File "/opt/hermes/tui_gateway/entry.py", line 144, in _log_signal
+    _shutdown_sessions()
+  File "/opt/hermes/tui_gateway/server.py", line 397, in _shutdown_sessions
+    step()
+  File "/opt/hermes/tui_gateway/session_reaper.py", line 126, in _stop_turns_before_exit
+    with _sessions_lock:
+
+--- thread MainThread (id=133459456948096) ---
+  File "<frozen runpy>", line 203, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/opt/hermes/tui_gateway/entry.py", line 365, in <module>
+    main()
+  File "/opt/hermes/tui_gateway/entry.py", line 328, in main
+    raw = sys.stdin.readline()
+  File "/opt/hermes/tui_gateway/entry.py", line 134, in _log_signal
+    _append_crash_log(f"{name} received · {time.strftime('%Y-%m-%d %H:%M:%S')}", _dump)
+  File "/opt/hermes/tui_gateway/entry.py", line 100, in _append_crash_log
+    dump(f)
+  File "/opt/hermes/tui_gateway/entry.py", line 128, in _dump
+    traceback.print_stack(frame, file=f)
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/traceback.py", line 241, in print_stack
+    print_list(extract_stack(f, limit=limit), file=file)
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/traceback.py", line 261, in extract_stack
+    stack = StackSummary.extract(walk_stack(f), limit=limit)
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/traceback.py", line 454, in extract
+    return klass._extract_from_extended_frame_gen(
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/traceback.py", line 486, in _extract_from_extended_frame_gen
+    linecache.lazycache(filename, f.f_globals)
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/linecache.py", line 217, in lazycache
+    lazy_entry = _make_lazycache_entry(filename, module_globals)
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/linecache.py", line 230, in _make_lazycache_entry
+    name = getattr(spec, 'name', None) or module_globals['__name__']
+  File "/opt/hermes/tui_gateway/entry.py", line 144, in _log_signal
+    _shutdown_sessions()
+  File "/opt/hermes/tui_gateway/server.py", line 397, in _shutdown_sessions
+    step()
+  File "/opt/hermes/tui_gateway/session_reaper.py", line 126, in _stop_turns_before_exit
+    with _sessions_lock:
+  File "/opt/hermes/tui_gateway/entry.py", line 134, in _log_signal
+    _append_crash_log(f"{name} received · {time.strftime('%Y-%m-%d %H:%M:%S')}", _dump)
+  File "/opt/hermes/tui_gateway/entry.py", line 100, in _append_crash_log
+    dump(f)
+  File "/opt/hermes/tui_gateway/entry.py", line 132, in _dump
+    f.write("".join(traceback.format_stack(sys._current_frames().get(tid))))
+
+--- thread Thread-2 (_loop) (id=133459402467008) ---
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1044, in _bootstrap
+    self._bootstrap_inner()
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1082, in _bootstrap_inner
+    self._context.run(self.run)
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1024, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/hermes/tui_gateway/server.py", line 418, in _loop
+    time.sleep(_REAPER_SCAN_S)
+
+--- thread Thread-3 (recv_events) (id=133459388831424) ---
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1044, in _bootstrap
+    self._bootstrap_inner()
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1082, in _bootstrap_inner
+    self._context.run(self.run)
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1024, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/hermes/.venv/lib/python3.14/site-packages/websockets/sync/client.py", line 123, in recv_events
+    super().recv_events()
+  File "/opt/hermes/.venv/lib/python3.14/site-packages/websockets/sync/connection.py", line 814, in recv_events
+    data = self.socket.recv(self.recv_bufsize)
+
+--- thread Thread-4 (keepalive) (id=133459380438720) ---
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1044, in _bootstrap
+    self._bootstrap_inner()
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1082, in _bootstrap_inner
+    self._context.run(self.run)
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1024, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/hermes/.venv/lib/python3.14/site-packages/websockets/sync/connection.py", line 758, in keepalive
+    self.recv_events_thread.join(self.ping_interval - self.latency)
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1133, in join
+    self._os_thread_handle.join(timeout)
+
+--- thread hermes-ws-pub (id=133459372046016) ---
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1044, in _bootstrap
+    self._bootstrap_inner()
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1082, in _bootstrap_inner
+    self._context.run(self.run)
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1024, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/hermes/tui_gateway/event_publisher.py", line 54, in _drain
+    item = self._q.get()
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/queue.py", line 199, in get
+    self.not_empty.wait()
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 369, in wait
+    waiter.acquire()
+
+--- thread hermes-gateway-heartbeat (id=133459352417984) ---
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1044, in _bootstrap
+    self._bootstrap_inner()
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1082, in _bootstrap_inner
+    self._context.run(self.run)
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1024, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/hermes/tui_gateway/session_reaper.py", line 498, in _loop
+    stop_event.wait(_HEARTBEAT_REFRESH_S)
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 670, in wait
+    signaled = self._cond.wait(timeout)
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 373, in wait
+    gotit = waiter.acquire(True, timeout)
+
+--- thread hermes-change-watcher (id=133458995181248) ---
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1044, in _bootstrap
+    self._bootstrap_inner()
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1082, in _bootstrap_inner
+    self._context.run(self.run)
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1024, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/hermes/tui_gateway/change_watcher.py", line 348, in _loop
+    time.sleep(0.5)
+
+--- thread tui-rpc_0 (id=133458972505792) ---
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1044, in _bootstrap
+    self._bootstrap_inner()
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1082, in _bootstrap_inner
+    self._context.run(self.run)
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1024, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/concurrent/futures/thread.py", line 116, in _worker
+    work_item = work_queue.get(block=True)
+
+--- thread Thread-7 (_monitor) (id=133458653345472) ---
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1044, in _bootstrap
+    self._bootstrap_inner()
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1082, in _bootstrap_inner
+    self._context.run(self.run)
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1024, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/logging/handlers.py", line 1613, in _monitor
+    record = self.dequeue(True)
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/logging/handlers.py", line 1559, in dequeue
+    return self.queue.get(block)
+
+--- thread tui-readiness_0 (id=133458633365184) ---
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1044, in _bootstrap
+    self._bootstrap_inner()
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1082, in _bootstrap_inner
+    self._context.run(self.run)
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1024, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/concurrent/futures/thread.py", line 116, in _worker
+    work_item = work_queue.get(block=True)
+
+--- thread tui-rpc_1 (id=133458615531200) ---
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1044, in _bootstrap
+    self._bootstrap_inner()
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1082, in _bootstrap_inner
+    self._context.run(self.run)
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1024, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/concurrent/futures/thread.py", line 116, in _worker
+    work_item = work_queue.get(block=True)
+
+--- thread tui-rpc_2 (id=133458623923904) ---
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1044, in _bootstrap
+    self._bootstrap_inner()
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1082, in _bootstrap_inner
+    self._context.run(self.run)
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1024, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/concurrent/futures/thread.py", line 116, in _worker
+    work_item = work_queue.get(block=True)
+
+--- thread tui-rpc_3 (id=133458986788544) ---
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1044, in _bootstrap
+    self._bootstrap_inner()
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1082, in _bootstrap_inner
+    self._context.run(self.run)
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1024, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/concurrent/futures/thread.py", line 116, in _worker
+    work_item = work_queue.get(block=True)
+
+--- thread tui-notif-poller-8ba816bf (id=133458222376640) ---
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1044, in _bootstrap
+    self._bootstrap_inner()
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1082, in _bootstrap_inner
+    self._context.run(self.run)
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1024, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/hermes/tui_gateway/session_notifications.py", line 734, in _notification_poller_loop
+    _notification_poller_scoped_loop(stop_event, sid, session)
+  File "/opt/hermes/tui_gateway/session_notifications.py", line 775, in _notification_poller_scoped_loop
+    evt = queue.get(timeout=0.5)
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/queue.py", line 210, in get
+    self.not_empty.wait(remaining)
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 373, in wait
+    gotit = waiter.acquire(True, timeout)
+
+--- thread tui-rpc_4 (id=133458213983936) ---
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1044, in _bootstrap
+    self._bootstrap_inner()
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1082, in _bootstrap_inner
+    self._context.run(self.run)
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1024, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/concurrent/futures/thread.py", line 116, in _worker
+    work_item = work_queue.get(block=True)
+
+--- thread Thread-11 (id=133459344025280) ---
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1044, in _bootstrap
+    self._bootstrap_inner()
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1082, in _bootstrap_inner
+    self._context.run(self.run)
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 1383, in run
+    self.finished.wait(self.interval)
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 670, in wait
+    signaled = self._cond.wait(timeout)
+  File "/opt/hermes/tools/python-3.14.7+20260901-linux-x64/lib/python3.14/threading.py", line 373, in wait
+    gotit = waiter.acquire(True, timeout)

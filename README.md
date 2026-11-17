@@ -7,6 +7,12 @@
 </p>
 
 <p align="center">
+  <a href="https://github.com/mhbsti/techdiario/tree/main/IA%20LOCAL%20COM%20HERMES%2C%20Projeto%20pr%C3%A1tico%20na%20GTX%201660%20Ti">
+    <img src="./IA LOCAL COM HERMES, Projeto prático na GTX 1660 Ti/0004 - IA LOCAL COM HERMES, Projeto prático na GTX 1660 Ti.png" width="500">
+  </a>
+</p>
+
+<p align="center">
   <a href="https://github.com/mhbsti/techdiario/tree/main/ia%20local%20com%20a%20gtx%201660ti%206gb%20vram">
     <img src="./ia local com a gtx 1660ti 6gb vram/IA Local no GTX 1660 Ti.png" width="500">
   </a>

@@ -1,0 +1,1127 @@
+=== shutdown diagnostic @ SIGTERM ===
+--- date ---
+=== shutdown diagnostic @ SIGTERM ===
+2026-10-19T00:33:34Z
+--- ps (top 60 by cpu, comm only) ---
+2026-10-19T00:33:34Z
+--- ps (top 60 by cpu, comm only) ---
+    PID    PPID USER     %CPU %MEM STAT COMMAND
+    177     175 hermes    2.0  3.3 Rsl  hermes
+   1125    1116 hermes    0.0  0.0 D    bash
+   1124    1116 hermes    0.0  0.0 S    bash
+   1123    1116 hermes    0.0  0.0 R    bash
+   1122    1114 hermes    0.0  0.0 D    head
+   1121    1114 hermes    0.0  0.0 S    bash
+   1120    1114 hermes    0.0  0.0 R    ps
+   1116    1115 hermes    0.0  0.0 S    bash
+   1115     177 hermes    0.0  0.0 Ss   timeout
+   1114    1113 hermes    0.0  0.0 S    bash
+   1113     177 hermes    0.0  0.0 Ss   timeout
+    175       1 root      0.0  0.0 S    s6-supervise
+     21      18 root      0.0  0.0 Ss   s6-linux-init-s
+     18       1 root      0.0  0.0 S    s6-supervise
+      1       0 root      0.0  0.0 Ss   s6-svscan
+--- pstree of self ---
+    PID    PPID USER     %CPU %MEM STAT COMMAND
+    177     175 hermes    2.0  3.3 Rsl  hermes
+   1125    1116 hermes    0.0  0.0 S    head
+   1124    1116 hermes    0.0  0.0 S    bash
+   1123    1116 hermes    0.0  0.0 R    ps
+   1122    1114 hermes    0.0  0.0 R    head
+   1121    1114 hermes    0.0  0.0 S    bash
+   1116    1115 hermes    0.0  0.0 S    bash
+   1115     177 hermes    0.0  0.0 Ss   timeout
+   1114    1113 hermes    0.0  0.0 S    bash
+   1113     177 hermes    0.0  0.0 Ss   timeout
+    175       1 root      0.0  0.0 S    s6-supervise
+     21      18 root      0.0  0.0 Ss   s6-linux-init-s
+     18       1 root      0.0  0.0 S    s6-supervise
+      1       0 root      0.0  0.0 Ss   s6-svscan
+--- pstree of self ---
+--- loadavg ---
+--- loadavg ---
+0.62 0.33 0.88 5/359 1133
+0.62 0.33 0.88 4/358 1133
+ed) ---
+--- recent dmesg (oom/killed) ---
+=== end ===
+=== shutdown diagnostic @ SIGTERM ===
+--- date ---
+2026-10-19T01:27:59Z
+--- ps (top 60 by cpu, comm only) ---
+=== shutdown diagnostic @ SIGTERM ===
+--- date ---
+2026-10-19T01:27:59Z
+--- ps (top 60 by cpu, comm only) ---
+    PID    PPID USER     %CPU %MEM STAT COMMAND
+   1722    1715 hermes   50.0  0.0 R    ps
+    155     152 hermes    1.9  3.5 Rsl  hermes
+   1732    1721 hermes    0.0  0.0 S    head
+   1731    1721 hermes    0.0  0.0 S    bash
+   1730    1721 hermes    0.0  0.0 R    ps
+   1727    1715 hermes    0.0  0.0 S    head
+   1726    1717 hermes    0.0  0.0 S    head
+   1725    1717 hermes    0.0  0.0 S    bash
+   1724    1715 hermes    0.0  0.0 S    bash
+   1723    1717 hermes    0.0  0.0 R    ps
+   1721    1718 hermes    0.0  0.0 S    bash
+   1718     155 hermes    0.0  0.0 Ss   timeout
+   1717    1716 hermes    0.0  0.0 S    bash
+   1716     155 hermes    0.0  0.0 Ss   timeout
+   1715    1714 hermes    0.0  0.0 S    bash
+   1714     155 hermes    0.0  0.0 Ss   timeout
+    152       1 root      0.0  0.0 S    s6-supervise
+     22      18 root      0.0  0.0 Ss   s6-linux-init-s
+     18       1 root      0.0  0.0 S    s6-supervise
+      1       0 root      0.0  0.0 Ss   s6-svscan
+--- pstree of self ---
+--- pstree of self ---
+--- loadavg ---
+--- loadavg ---
+1.13 2.21 1.42 4/403 1744
+1.13 2.21 1.42 5/401 1744
+ed) ---
+--- recent dmesg (oom/killed) ---
+=== end ===
+=== shutdown diagnostic @ SIGTERM ===
+--- date ---
+2026-10-19T03:50:49Z
+--- ps (top 60 by cpu, comm only) ---
+    PID    PPID USER     %CPU %MEM STAT COMMAND
+   3329    3325 hermes   66.6  0.0 R    ps
+   3330    3323 hermes   33.3  0.0 R    ps
+   3323    3322 hermes   16.6  0.0 S    bash
+    157     155 hermes    1.6  3.5 Rsl  hermes
+   3334    3323 hermes    0.0  0.0 S    head
+   3333    3323 hermes    0.0  0.0 S    bash
+   3332    3325 hermes    0.0  0.0 S    head
+   3331    3325 hermes    0.0  0.0 S    bash
+   3325    3324 hermes    0.0  0.0 S    bash
+   3324     157 hermes    0.0  0.0 Ss   timeout
+   3322     157 hermes    0.0  0.0 Ss   timeout
+    155       1 root      0.0  0.0 S    s6-supervise
+     24      18 root      0.0  0.0 Ss   s6-linux-init-s
+     18       1 root      0.0  0.0 S    s6-supervise
+      1       0 root      0.0  0.0 Ss   s6-svscan
+--- pstree of self ---
+--- loadavg ---
+--- loadavg ---
+0.04 0.09 0.09 1/330 3341
+--- recent dmesg (oom/killed) ---
+0.04 0.09 0.09 4/330 3342
+--- recent dmesg (oom/killed) ---
+=== end ===
+=== shutdown diagnostic @ SIGTERM ===
+--- date ---
+2026-10-23T16:46:09Z
+--- ps (top 60 by cpu, comm only) ---
+=== shutdown diagnostic @ SIGTERM ===
+--- date ---
+2026-10-23T16:46:09Z
+--- ps (top 60 by cpu, comm only) ---
+=== shutdown diagnostic @ SIGTERM ===
+--- date ---
+    PID    PPID USER     %CPU %MEM STAT COMMAND
+    157     155 hermes    8.6  3.4 Rsl  hermes
+    496     487 hermes    0.0  0.0 S    head
+    495     487 hermes    0.0  0.0 S    bash
+    494     492 hermes    0.0  0.0 D    bash
+    493     487 hermes    0.0  0.0 R    ps
+    492     157 hermes    0.0  0.0 Ss   timeout
+    490     484 hermes    0.0  0.0 S    head
+    489     484 hermes    0.0  0.0 D    bash
+    487     485 hermes    0.0  0.0 S    bash
+    485     157 hermes    0.0  0.0 Ss   timeout
+    484     483 hermes    0.0  0.0 S    bash
+    483     157 hermes    0.0  0.0 Ss   timeout
+    155       1 root      0.0  0.0 S    s6-supervise
+     22      18 root      0.0  0.0 Ss   s6-linux-init-s
+     18       1 root      0.0  0.0 S    s6-supervise
+      1       0 root      0.0  0.0 Ss   s6-svscan
+       0 root      0.0  0.0 Ss   s6-svscan
+--- pstree of self ---
+comm only) ---
+--- loadavg ---
+=== shutdown diagnostic @ SIGTERM ===
+0.11 0.20 0.10 4/417 510
+--- recent dmesg (oom/killed) ---
+    PID    PPID USER     %CPU %MEM STAT COMMAND
+    157     155 hermes    8.6  3.4 Dsl  hermes
+    508     500 hermes    0.0  0.0 D    bash
+    507     494 hermes    0.0  0.0 S    head
+    504     494 hermes    0.0  0.0 S    bash
+    501     494 hermes    0.0  0.0 R    ps
+    500     157 hermes    0.0  0.0 Ss   timeout
+    494     492 hermes    0.0  0.0 S    bash
+    492     157 hermes    0.0  0.0 Ss   timeout
+    487     485 hermes    0.0  0.0 R    bash
+    485     157 hermes    0.0  0.0 Ss   timeout
+    484     483 hermes    0.0  0.0 R    bash
+    483     157 hermes    0.0  0.0 Ss   timeout
+    155       1 root      0.0  0.0 S    s6-supervise
+     22      18 root      0.0  0.0 Ss   s6-linux-init-s
+     18       1 root      0.0  0.0 S    s6-supervise
+      1       0 root      0.0  0.0 Ss   s6-svscan
+--- pstree of self ---
+comm only) ---
+--- loadavg ---
+0.11 0.20 0.10 4/413 523
+--- recent dmesg (oom/killed) ---
+    PID    PPID USER     %CPU %MEM STAT COMMAND
+    157     155 hermes    8.6  3.4 Rsl  hermes
+    522     508 hermes    0.0  0.0 S    head
+    520     508 hermes    0.0  0.0 S    bash
+    518     508 hermes    0.0  0.0 R    ps
+    508     500 hermes    0.0  0.0 S    bash
+    500     157 hermes    0.0  0.0 Ss   timeout
+    494     492 hermes    0.0  0.0 D    bash
+    492     157 hermes    0.0  0.0 Ss   timeout
+    485     157 hermes    0.0  0.0 Zs   timeout
+    483     157 hermes    0.0  0.0 Zs   timeout
+    155       1 root      0.0  0.0 S    s6-supervise
+     22      18 root      0.0  0.0 Ss   s6-linux-init-s
+     18       1 root      0.0  0.0 S    s6-supervise
+      1       0 root      0.0  0.0 Ss   s6-svscan
+--- pstree of self ---
+=== end ===
+--- loadavg ---
+0.11 0.20 0.10 2/411 529
+--- recent dmesg (oom/killed) ---
+=== end ===
+=== shutdown diagnostic @ SIGTERM ===
+--- date ---
+2026-10-23T16:50:25Z
+--- ps (top 60 by cpu, comm only) ---
+=== shutdown diagnostic @ SIGTERM ===
+--- date ---
+2026-10-23T16:50:25Z
+--- ps (top 60 by cpu, comm only) ---
+    PID    PPID USER     %CPU %MEM STA--- date ---
+ 157     155 hermes    7.1  3.4 Dsl  hermes
+    487     157 hermes    0.0  0.0 Ss   timeout
+    485     479 hermes    0.0  0.0 S    head
+    484     479 hermes    0.0  0.0 S    bash
+    483     479 hermes    0.0  0.0 R    ps
+    482     481 hermes    0.0  0.0 R    bash
+    481     157 hermes    0.0  0.0 Ss   timeout
+    479     478 hermes    0.0  0.0 S    bash
+    478     157 hermes    0.0  0.0 Ss   timeout
+    155       1 root      0.0  0.0 S    s6-supervise
+     21      18 root      0.0  0.0 Ss   s6-linux-init-s
+     18       1 root      0.0  0.0 S    s6-supervise
+      1       0 root      0.0  0.0 Ss   s6-svscan
+--- pstree of self ---
+2026-10-23T16:50:25Z
+--- ps (top 60 by cpu, comm only) ---
+T COMMAND
+    157     155 hermes    7.1  3.4 Dsl  hermes
+    491     482 hermes    0.0  0.0 S    head
+    490     482 hermes    0.0  0.0 S    bash
+    489     482 hermes    0.0  0.0 R    ps
+    488     487 hermes    0.0  0.0 D    bash
+    487     157 hermes    0.0  0.0 Ss   timeout
+    485     479 hermes    0.0  0.0 D    head
+    482     481 hermes    0.0  0.0 S    bash
+    481     157 hermes    0.0  0.0 Ss   timeout
+    479     478 hermes    0.0  0.0 S    bash
+    478     157 hermes    0.0  0.0 Ss   timeout
+    155       1 root      0.0  0.0 S    s6-supervise
+     21      18 root      0.0  0.0 Ss   s6-linux-init-s
+     18       1 root      0.0  0.0 S    s6-supervise
+      1       0 root      0.0  0.0 Ss   s6-svscan
+--- pstree of self ---
+--- loadavg ---
+0.03 0.18 0.12 4/415 503
+--- recent dmesg (oom/killed) ---
+0.03 0.18 0.12 6/417 506
+--- recent dmesg (oom/killed) ---
+=== end ===
+    PID    PPID USER     %CPU %MEM STAT COMMAND
+    157     155 hermes    7.1  3.4 Dsl  hermes
+    508     482 hermes    0.0  0.0 R    tail
+    500     488 hermes    0.0  0.0 S    head
+    499     488 hermes    0.0  0.0 S    bash
+    498     488 hermes    0.0  0.0 R    ps
+    488     487 hermes    0.0  0.0 S    bash
+    487     157 hermes    0.0  0.0 Ss   timeout
+    482     481 hermes    0.0  0.0 S    bash
+    481     157 hermes    0.0  0.0 Ss   timeout
+    478     157 hermes    0.0  0.0 Zs   timeout
+    155       1 root      0.0  0.0 S    s6-supervise
+     21      18 root      0.0  0.0 Ss   s6-linux-init-s
+     18       1 root      0.0  0.0 S    s6-supervise
+      1       0 root      0.0  0.0 Ss   s6-svscan
+--- pstree of self ---
+--- loadavg ---
+0.03 0.18 0.12 4/407 512
+--- recent dmesg (oom/killed) ---
+=== end ===
+=== shutdown diagnostic @ SIGTERM ===
+--- date ---
+2026-10-23T17:35:13Z
+--- ps (top 60 by cpu, comm only) ---
+=== shutdown diagnostic @ SIGTERM ===
+--- date ---
+2026-10-23T17:35:13Z
+--- ps (top 60 by cpu, comm only) ---
+    PID    PPID USER     %CPU %MEM STAT COMMAND
+   1325    1321 hermes    100  0.0 R    ps
+    157     155 hermes    1.8  3.6 Rsl  hermes
+   1330    1324 hermes    0.0  0.0 R    ps
+   1327    1321 hermes    0.0  0.0 S    head
+   1326    1321 hermes    0.0  0.0 S    bash
+   1324    1323 hermes    0.0  0.0 S    bash
+   1323     157 hermes    0.0  0.0 Ss   timeout
+   1321    1320 hermes    0.0  0.0 S    bash
+   1320     157 hermes    0.0  0.0 Ss   timeout
+    155       1 root      0.0  0.0 S    s6-supervise
+     20      18 root      0.0  0.0 Ss   s6-linux-init-s
+     18       1 root      0.0  0.0 S    s6-supervise
+      1       0 root      0.0  0.0 Ss   s6-svscan
+--- pstree of self ---
+    PID    PPID USER     %CPU %MEM STAT COMMAND
+    157     155 hermes    1.8  3.6 Ssl  hermes
+   1332    1324 hermes    0.0  0.0 S    head
+   1331    1324 hermes    0.0  0.0 S    bash
+   1330    1324 hermes    0.0  0.0 R    ps
+   1327    1321 hermes    0.0  0.0 S    head
+   1326    1321 hermes    0.0  0.0 D    bash
+   1324    1323 hermes    0.0  0.0 S    bash
+   1323     157 hermes    0.0  0.0 Ss   timeout
+   1321    1320 hermes    0.0  0.0 S    bash
+   1320     157 hermes    0.0  0.0 Ss   timeout
+    155       1 root      0.0  0.0 S    s6-supervise
+     20      18 root      0.0  0.0 Ss   s6-linux-init-s
+     18       1 root      0.0  0.0 S    s6-supervise
+      1       0 root      0.0  0.0 Ss   s6-svscan
+--- pstree of self ---
+--- loadavg ---
+--- loadavg ---
+0.14 0.13 0.09 2/405 1339
+--- recent dmesg (oom/killed) ---
+0.14 0.13 0.09 3/407 1342
+--- recent dmesg (oom/killed) ---
+=== end ===
+=== end ===
+=== shutdown diagnostic @ SIGTERM ===
+--- date ---
+2026-10-23T18:13:46Z
+--- ps (top 60 by cpu, comm only) ---
+=== shutdown diagnostic @ SIGTERM ===
+--- date ---
+2026-10-23T18:13:46Z
+--- ps (top 60 by cpu, comm only) ---
+=== shutdown diagnostic @ SIGTERM ===
+--- date ---
+2026-10-23T18:13:46Z
+--- ps (top 60 by cpu, comm only) ---
+    PID    PPID USER     %CPU %MEM STAT COMMAND
+   1353    1348 hermes   33.3  0.0 R    ps
+   1219       0 hermes   21.1  3.4 Dsl+ hermes
+    157     155 hermes    1.9  3.6 Dsl  hermes
+   1361    1352 hermes    0.0  0.0 S    head
+   1360    1352 hermes    0.0  0.0 S    bash
+   1359    1352 hermes    0.0  0.0 R    ps
+   1358    1357 hermes    0.0  0.0 R    bash
+   1357     157 hermes    0.0  0.0 Ss   timeout
+   1355    1348 hermes    0.0  0.0 S    head
+   1354    1348 hermes    0.0  0.0 S    bash
+   1352    1350 hermes    0.0  0.0 S    bash
+   1350     157 hermes    0.0  0.0 Ss   timeout
+   1348    1347 hermes    0.0  0.0 S    bash
+   1347     157 hermes    0.0  0.0 Ss   timeout
+    155       1 root      0.0  0.0 S    s6-supervise
+     21      18 root      0.0  0.0 Ss   s6-linux-init-s
+     18       1 root      0.0  0.0 S    s6-supervise
+      1       0 root      0.0  0.0 Ss   s6-svscan
+--- pstree of self ---
+    PID    PPID USER     %CPU %MEM STAT COMMAND
+   1219       0 hermes   21.1  3.4 Rsl+ hermes
+    157     155 hermes    1.9  3.6 Rsl  hermes
+   1366    1358 hermes    0.0  0.0 S    head
+   1365    1358 hermes    0.0  0.0 S    bash
+   1364    1358 hermes    0.0  0.0 R    ps
+   1361    1352 hermes    0.0  0.0 Z    head
+   1360    1352 hermes    0.0  0.0 Z    bash
+   1358    1357 hermes    0.0  0.0 S    bash
+   1357     157 hermes    0.0  0.0 Ss   timeout
+   1355    1348 hermes    0.0  0.0 R    head
+   1352    1350 hermes    0.0  0.0 R    bash
+   1350     157 hermes    0.0  0.0 Ss   timeout
+   1348    1347 hermes    0.0  0.0 S    bash
+   1347     157 hermes    0.0  0.0 Ss   timeout
+    155       1 root      0.0  0.0 S    s6-supervise
+     21      18 root      0.0  0.0 Ss   s6-linux-init-s
+     18       1 root      0.0  0.0 S    s6-supervise
+      1       0 root      0.0  0.0 Ss   s6-svscan
+--- pstree of self ---
+--- loadavg ---
+/425 1377
+--- recent dmesg (oom/killed) ---
+0.39 0.21 0.25 5/427 1382
+--- recent dmesg (oom/killed) ---
+=== end ===
+=== end ===
+=== end ===
+=== shutdown diagnostic @ SIGTERM ===
+--- date ---
+2026-10-23T18:16:37Z
+--- ps (top 60 by cpu, comm only) ---
+=== shutdown diagnostic @ SIGTERM ===
+--- date ---
+2026-10-23T18:16:37Z
+    %CPU %MEM STAT COMMAND
+    156     154 hermes   12.8  3.6 Rsl  hermes
+    444     443 hermes    0.0  0.0 D    bash
+    443     156 hermes    0.0  0.0 Ss   timeout
+    442     438 hermes    0.0  0.0 S    head
+    441     438 hermes    0.0  0.0 S    bash
+    440     438 hermes    0.0  0.0 R    ps
+    438     437 hermes    0.0  0.0 S    bash
+    437     156 hermes    0.0  0.0 Ss   timeout
+    154       1 root      0.0  0.0 S    s6-supervise
+     21      18 root      0.0  0.0 Ss   s6-linux-init-s
+     18       1 root      0.0  0.0 S    s6-supervise
+      1       0 root      0.0  0.0 Ss   s6-svscan
+--- ps (top 60 by cpu, comm only) ---
+--- loadavg ---
+0.65 0.50 0.36 2/414 453
+--- recent dmesg (oom/killed) ---
+    PID    PPID USER     %CPU %MEM STAT COMMAND
+    156     154 hermes   12.8  3.6 Dsl  hermes
+    452     444 hermes    0.0  0.0 S    head
+    451     444 hermes    0.0  0.0 S    bash
+    449     444 hermes    0.0  0.0 R    ps
+    444     443 hermes    0.0  0.0 S    bash
+    443     156 hermes    0.0  0.0 Ss   timeout
+    438     437 hermes    0.0  0.0 R    bash
+    437     156 hermes    0.0  0.0 Ss   timeout
+    154       1 root      0.0  0.0 S    s6-supervise
+     21      18 root      0.0  0.0 Ss   s6-linux-init-s
+     18       1 root      0.0  0.0 S    s6-supervise
+      1       0 root      0.0  0.0 Ss   s6-svscan
+--- pstree of self ---
+=== end ===
+--- loadavg ---
+0.65 0.50 0.36 2/408 459
+--- recent dmesg (oom/killed) ---
+=== end ===
+=== shutdown diagnostic @ SIGTERM ===
+--- date ---
+2026-10-23T18:46:09Z
+--- ps (top 60 by cpu, comm only) ---
+=== shutdown diagnostic @ SIGTERM ===
+--- date ---
+2026-10-23T18:46:09Z
+--- ps (top 60 by cpu, comm only) ---
+    PID    PPID USER     %CPU %MEM STAT COMMAND
+    156     154 hermes    4.7  3.4 Dsl  hermes
+    589     580 hermes    0.0  0.0 S    head
+    588     580 hermes    0.0  0.0 S    bash
+    587     580 hermes    0.0  0.0 R    ps
+    583     577 hermes    0.0  0.0 S    head
+    582     577 hermes    0.0  0.0 D    bash
+    580     578 hermes    0.0  0.0 S    bash
+    578     156 hermes    0.0  0.0 Ss   timeout
+    577     576 hermes    0.0  0.0 S    bash
+    576     156 hermes    0.0  0.0 Ss   timeout
+    154       1 root      0.0  0.0 S    s6-supervise
+     21      18 root      0.0  0.0 Ss   s6-linux-init-s
+     18       1 root      0.0  0.0 S    s6-supervise
+      1       0 root      0.0  0.0 Ss   s6-svscan
+       0 root      0.0  0.0 Ss   s6-svscan
+--- pstree of self ---
+--- loadavg ---
+0.19 0.27 0.19 4/407 597
+--- recent dmesg (oom/killed) ---
+--- recent dmesg (oom/killed) ---
+=== end ===
+=== shutdown diagnostic @ SIGTERM ===
+--- date ---
+2026-10-23T19:22:34Z
+--- ps (top 60 by cpu, comm only) ---
+=== shutdown diagnostic @ SIGTERM ===
+--- date ---
+2026-10-23T19:22:34Z
+--- ps (top 60 by cpu, comm only) ---
+    PID    PPID USER     %CPU %MEM STAT COMMAND
+    156     154 hermes    1.9  3.6 Dsl  hermes
+   1708    1703 hermes    0.0  0.0 D    date
+   1706    1700 hermes    0.0  0.0 S    head
+   1705    1700 hermes    0.0  0.0 S    bash
+   1704    1700 hermes    0.0  0.0 R    ps
+   1703    1701 hermes    0.0  0.0 S    bash
+   1701     156 hermes    0.0  0.0 Ss   timeout
+   1700    1699 hermes    0.0  0.0 S    bash
+   1699     156 hermes    0.0  0.0 Ss   timeout
+    154       1 root      0.0  0.0 S    s6-supervise
+     21      18 root      0.0  0.0 Ss   s6-linux-init-s
+     18       1 root      0.0  0.0 S    s6-supervise
+      1       0 root      0.0  0.0 Ss   s6-svscan
+--- pstree of self ---
+--- loadavg ---
+0.68 0.67 0.43 3/442 1715
+--- recent dmesg (oom/killed) ---
+    PID    PPID USER     %CPU %MEM STAT COMMAND
+    156     154 hermes    1.9  3.6 Dsl  hermes
+   1712    1703 hermes    0.0  0.0 S    head
+   1710    1703 hermes    0.0  0.0 S    bash
+   1709    1703 hermes    0.0  0.0 R    ps
+   1703    1701 hermes    0.0  0.0 S    bash
+   1701     156 hermes    0.0  0.0 Ss   timeout
+   1700    1699 hermes    0.0  0.0 R    bash
+   1699     156 hermes    0.0  0.0 Ss   timeout
+    154       1 root      0.0  0.0 S    s6-supervise
+     21      18 root      0.0  0.0 Ss   s6-linux-init-s
+     18       1 root      0.0  0.0 S    s6-supervise
+      1       0 root      0.0  0.0 Ss   s6-svscan
+=== end ===
+f self ---
+--- loadavg ---
+0.68 0.67 0.43 4/435 1721
+--- recent dmesg (oom/killed) ---
+=== end ===
+=== shutdown diagnostic @ SIGTERM ===
+--- date ---
+2026-10-23T20:11:45Z
+--- ps (top 60 by cpu, comm only) ---
+=== shutdown diagnostic @ SIGTERM ===
+--- date ---
+2026-10-23T20:11:45Z
+--- ps (top 60 by cpu, comm only) ---
+    PID    PPID USER     %CPU %MEM STAT COMMAND
+   3449    3448 hermes   25.0  0.0 S    bash
+    157     155 hermes    2.0  3.0 Rsl  hermes
+   3466    3453 hermes    0.0  0.0 S    head
+   3465    3453 hermes    0.0  0.0 S    bash
+   3464    3453 hermes    0.0  0.0 R    ps
+   3462    3449 hermes    0.0  0.0 S    head
+   3461    3449 hermes    0.0  0.0 S    bash
+   3460    3451 hermes    0.0  0.0 S    head
+   3459    3451 hermes    0.0  0.0 S    bash
+   3458    3451 hermes    0.0  0.0 R    ps
+   3457    3449 hermes    0.0  0.0 R    ps
+   3453    3452 hermes    0.0  0.0 S    bash
+   3452     157 hermes    0.0  0.0 Ss   timeout
+   3451    3450 hermes    0.0  0.0 S    bash
+   3450     157 hermes    0.0  0.0 Ss   timeout
+   3448     157 hermes    0.0  0.0 Ss   timeout
+    155       1 root      0.0  0.0 S    s6-supervise
+     21      18 root      0.0  0.0 Ss   s6-linux-init-s
+     18       1 root      0.0  0.0 S    s6-supervise
+      1       0 root      0.0  0.0 Ss   s6-svscan
+--- pstree of self ---
+  %CPU %MEM STAT COMMAND
+   3449    3448 hermes   25.0  0.0 S    bash
+    157     155 hermes    2.0  3.0 Rsl  hermes
+   3466    3453 hermes    0.0  0.0 S    head
+   3465    3453 hermes    0.0  0.0 S    bash
+   3464    3453 hermes    0.0  0.0 R    ps
+   3462    3449 hermes    0.0  0.0 S    head
+   3461    3449 hermes    0.0  0.0 S    bash
+   3460    3451 hermes    0.0  0.0 S    head
+   3459    3451 hermes    0.0  0.0 S    bash
+   3458    3451 hermes    0.0  0.0 R    ps
+   3457    3449 hermes    0.0  0.0 R    ps
+   3453    3452 hermes    0.0  0.0 S    bash
+   3452     157 hermes    0.0  0.0 Ss   timeout
+   3451    3450 hermes    0.0  0.0 S    bash
+   3450     157 hermes    0.0  0.0 Ss   timeout
+   3448     157 hermes    0.0  0.0 Ss   timeout
+    155       1 root      0.0  0.0 S    s6-supervise
+     21      18 root      0.0  0.0 Ss   s6-linux-init-s
+     18       1 root      0.0  0.0 S    s6-supervise
+      1       0 root      0.0  0.0 Ss   s6-svscan
+--- pstree of self ---
+--- loadavg ---
+0.17 1.31 1.96 6/420 3478
+--- recent dmesg (oom/killed) ---
+--- recent dmesg (oom/killed) ---
+=== end ===
+=== shutdown diagnostic @ SIGTERM ===
+--- date ---
+=== shutdown diagnostic @ SIGTERM ===
+--- date ---
+2026-10-23T22:34:38Z
+--- ps (top 60 by cpu, comm only) ---
+    PID    PPID USER     %CPU %MEM STAT COMMAND
+    157     154 hermes    1.5  2.9 Dsl  hermes
+   2693    2682 hermes    0.0  0.0 S    head
+   2692    2684 hermes    0.0  0.0 S    head
+   2691    2682 hermes    0.0  0.0 S    bash
+   2690    2684 hermes    0.0  0.0 S    bash
+   2689    2682 hermes    0.0  0.0 R    ps
+   2688    2684 hermes    0.0  0.0 R    ps
+   2684    2683 hermes    0.0  0.0 S    bash
+   2683     157 hermes    0.0  0.0 Ss   timeout
+   2682    2681 hermes    0.0  0.0 S    bash
+   2681     157 hermes    0.0  0.0 Ss   timeout
+    154       1 root      0.0  0.0 S    s6-supervise
+     21      18 root      0.0  0.0 Ss   s6-linux-init-s
+     18       1 root      0.0  0.0 S    s6-supervise
+      1       0 root      0.0  0.0 Ss   s6-svscan
+--- pstree of self ---
+--- loadavg ---
+2.30 2.75 2.88 4/449 2701
+--- recent dmesg (oom/killed) ---
+=== end ===
+=== shutdown diagnostic @ SIGTERM ===
+--- date ---
+2026-10-23T22:36:48Z
+--- ps (top 60 by cpu, comm only) ---
+=== shutdown diagnostic @ SIGTERM ===
+--- date ---
+2026-10-23T22:36:48Z
+    %CPU %MEM STAT COMMAND
+    158     155 hermes   13.8  3.6 Dsl  hermes
+    411     407 hermes    0.0  0.0 R    bash
+    410     405 hermes    0.0  0.0 S    head
+    409     405 hermes    0.0  0.0 S    bash
+    408     405 hermes    0.0  0.0 R    ps
+    407     158 hermes    0.0  0.0 Ss   timeout
+    405     404 hermes    0.0  0.0 S    bash
+    404     158 hermes    0.0  0.0 Ss   timeout
+    155       1 root      0.0  0.0 S    s6-supervise
+     22      18 root      0.0  0.0 Ss   s6-linux-init-s
+     18       1 root      0.0  0.0 S    s6-supervise
+      1       0 root      0.0  0.0 Ss   s6-svscan
+--- ps (top 60 by cpu, comm only) ---
+--- loadavg ---
+1.20 2.15 2.64 2/442 420
+--- recent dmesg (oom/killed) ---
+    PID    PPID USER     %CPU %MEM STAT COMMAND
+    158     155 hermes   13.8  3.6 Dsl  hermes
+    419     411 hermes    0.0  0.0 S    head
+    418     411 hermes    0.0  0.0 S    bash
+    417     411 hermes    0.0  0.0 R    ps
+    411     407 hermes    0.0  0.0 S    bash
+    407     158 hermes    0.0  0.0 Ss   timeout
+    405     404 hermes    0.0  0.0 R    bash
+    404     158 hermes    0.0  0.0 Ss   timeout
+    155       1 root      0.0  0.0 S    s6-supervise
+     22      18 root      0.0  0.0 Ss   s6-linux-init-s
+     18       1 root      0.0  0.0 S    s6-supervise
+      1       0 root      0.0  0.0 Ss   s6-svscan
+--- pstree of self ---
+=== end ===
+--- loadavg ---
+1.20 2.15 2.64 1/436 426
+--- recent dmesg (oom/killed) ---
+=== end ===
+=== shutdown diagnostic @ SIGTERM ===
+--- date ---
+2026-10-23T23:03:36Z
+--- ps (top 60 by cpu, comm only) ---
+=== shutdown diagnostic @ SIGTERM ===
+--- date ---
+2026-10-23T23:03:36Z
+    PID    PPID USER     %CPU %MEM STAT COMMAND
+    157     155 hermes    2.0  3.6 Dsl  hermes
+    919     913 hermes    0.0  0.0 S    head
+    918     913 hermes    0.0  0.0 S    bash
+    917     913 hermes    0.0  0.0 R    ps
+    916     915 hermes    0.0  0.0 D    bash
+    915     157 hermes    0.0  0.0 Ss   timeout
+    913     912 hermes    0.0  0.0 S    bash
+    912     157 hermes    0.0  0.0 Ss   timeout
+    155       1 root      0.0  0.0 S    s6-supervise
+     21      18 root      0.0  0.0 Ss   s6-linux-init-s
+     18       1 root      0.0  0.0 S    s6-supervise
+      1       0 root      0.0  0.0 Ss   s6-svscan
+--- pstree of self ---
+--- loadavg ---
+0.14 0.23 0.93 4/427 929
+--- recent dmesg (oom/killed) ---
+ STAT COMMAND
+    157     155 hermes    2.0  3.6 Ssl  hermes
+    925     916 hermes    0.0  0.0 S    head
+    924     916 hermes    0.0  0.0 S    bash
+    923     916 hermes    0.0  0.0 R    ps
+    916     915 hermes    0.0  0.0 S    bash
+    915     157 hermes    0.0  0.0 Ss   timeout
+    913     912 hermes    0.0  0.0 D    bash
+    912     157 hermes    0.0  0.0 Ss   timeout
+    155       1 root      0.0  0.0 S    s6-supervise
+     21      18 root      0.0  0.0 Ss   s6-linux-init-s
+     18       1 root      0.0  0.0 S    s6-supervise
+      1       0 root      0.0  0.0 Ss   s6-svscan
+--- pstree of self ---
+=== end ===
+---
+0.14 0.23 0.93 1/423 934
+--- recent dmesg (oom/killed) ---
+=== end ===
+=== shutdown diagnostic @ SIGTERM ===
+--- date ---
+2026-10-23T23:13:12Z
+--- ps (top 60 by cpu, comm only) ---
+=== shutdown diagnostic @ SIGTERM ===
+--- date ---
+    PID    PPID USER --- ps (top 60 by cpu, comm only) ---
+ 155 hermes    3.7  3.6 Rsl  hermes
+    568     562 hermes    0.0  0.0 S    head
+    567     562 hermes    0.0  0.0 S    bash
+    566     562 hermes    0.0  0.0 R    ps
+    565     564 hermes    0.0  0.0 D    bash
+    564     158 hermes    0.0  0.0 Ss   timeout
+    562     561 hermes    0.0  0.0 S    bash
+    561     158 hermes    0.0  0.0 Ss   timeout
+    155       1 root      0.0  0.0 S    s6-supervise
+     21      18 root      0.0  0.0 Ss   s6-linux-init-s
+     18       1 root      0.0  0.0 S    s6-supervise
+      1       0 root      0.0  0.0 Ss   s6-svscan
+--- pstree of self ---
+--- loadavg ---
+=== shutdown diagnostic @ SIGTERM ===
+--- date ---
+    PID    PPID USER     --- recent dmesg (oom/killed) ---
+ 155 hermes    3.7  3.6 Dsl  hermes
+    575     565 hermes    0.0  0.0 S    head
+    574     565 hermes    0.0  0.0 S    bash
+    573     571 hermes    0.0  0.0 R    bash
+    572     565 hermes    0.0  0.0 R    ps
+    571     158 hermes    0.0  0.0 Ss   timeout
+    565     564 hermes    0.0  0.0 S    bash
+    564     158 hermes    0.0  0.0 Ss   timeout
+    562     561 hermes    0.0  0.0 S    bash
+    561     158 hermes    0.0  0.0 Ss   timeout
+    155       1 root      0.0  0.0 S    s6-supervise
+     21      18 root      0.0  0.0 Ss   s6-linux-init-s
+     18       1 root      0.0  0.0 S    s6-supervise
+      1       0 root      0.0  0.0 Ss   s6-svscan
+2026-10-23T23:13:12Z
+-
+--- ps (top 60 by cpu, comm only) ---
+=== end ===
+---
+2.45 1.98 1.51 2/479 589
+--- recent dmesg (oom/killed) ---
+    PID    PPID USER     %CPU %MEM STAT COMMAND
+    158     155 hermes    3.7  3.6 Ssl  hermes
+    588     573 hermes    0.0  0.0 S    head
+    587     573 hermes    0.0  0.0 S    bash
+    586     573 hermes    0.0  0.0 R    ps
+    573     571 hermes    0.0  0.0 S    bash
+    571     158 hermes    0.0  0.0 Ss   timeout
+    565     564 hermes    0.0  0.0 S    bash
+    564     158 hermes    0.0  0.0 Ss   timeout
+    561     158 hermes    0.0  0.0 Zs   timeout
+    155       1 root      0.0  0.0 S    s6-supervise
+     21      18 root      0.0  0.0 Ss   s6-linux-init-s
+     18       1 root      0.0  0.0 S    s6-supervise
+      1       0 root      0.0  0.0 Ss   s6-svscan
+--- pstree of self ---
+=== end ===
+--- loadavg ---
+2.45 1.98 1.51 1/473 595
+--- recent dmesg (oom/killed) ---
+=== end ===
+=== shutdown diagnostic @ SIGTERM ===
+--- date ---
+2026-10-23T23:47:19Z
+ic @ SIGTERM ===
+--- date ---
+--- ps (top 60 by cpu, comm only) ---
+2026-10-23T23:47:19Z
+--- ps (top 60 by cpu, comm only) ---
+=== shutdown diagnostic @ SIGTERM ===
+--- date ---
+2026-10-23T23:47:19Z
+    PID    PPID USER     %CPU %MEM STAT COMMAND
+    158     156 hermes    2.3  3.0 Dsl  hermes
+   1078    1077 hermes    0.0  0.0 R    bash
+   1077     158 hermes    0.0  0.0 Ss   timeout
+   1076    1068 hermes    0.0  0.0 S    head
+   1075    1068 hermes    0.0  0.0 S    bash
+   1074    1068 hermes    0.0  0.0 R    ps
+   1073    1066 hermes    0.0  0.0 S    head
+   1072    1066 hermes    0.0  0.0 S    bash
+   1070    1066 hermes    0.0  0.0 R    ps
+   1068    1067 hermes    0.0  0.0 S    bash
+   1067     158 hermes    0.0  0.0 Ss   timeout
+   1066    1065 hermes    0.0  0.0 S    bash
+   1065     158 hermes    0.0  0.0 Ss   timeout
+    156       1 root      0.0  0.0 S    s6-supervise
+     22      19 root      0.0  0.0 Ss   s6-linux-init-s
+     19       1 root      0.0  0.0 S    s6-supervise
+      1       0 root      0.0  0.0 Ss   s6-svscan
+--- pstree of self ---
+--- pstree of self ---
+--- loadavg ---
+1.62 1.35 1.58 3/439 1092
+    PID    PPID USER     %CPU %MEM STAT COMMAND
+    158     156 hermes    2.3  3.0 Rsl  hermes
+   1089    1068 hermes    0.0  0.0 R    bash
+   1088    1068 hermes    0.0  0.0 R    bash
+   1087    1066 hermes    0.0  0.0 R    head
+   1086    1066 hermes    0.0  0.0 R    bash
+   1085    1078 hermes    0.0  0.0 S    head
+   1084    1078 hermes    0.0  0.0 S    bash
+   1083    1078 hermes    0.0  0.0 R    ps
+   1078    1077 hermes    0.0  0.0 S    bash
+   1077     158 hermes    0.0  0.0 Ss   timeout
+   1068    1067 hermes    0.0  0.0 S    bash
+   1067     158 hermes    0.0  0.0 Ss   timeout
+   1066    1065 hermes    0.0  0.0 S    bash
+   1065     158 hermes    0.0  0.0 Ss   timeout
+    156       1 root      0.0  0.0 S    s6-supervise
+     22      19 root      0.0  0.0 Ss   s6-linux-init-s
+     19       1 root      0.0  0.0 S    s6-supervise
+      1       0 root      0.0  0.0 Ss   s6-svscan
+--- pstree of self ---
+--- loadavg ---
+1.62 1.35 1.58 2/433 1099
+--- recent dmesg (oom/killed) ---
+=== end ===
+=== shutdown diagnostic @ SIGTERM ===
+=== shutdown diagnostic @ SIGTERM ===
+--- date ---
+2026-10-24T00:37:56Z
+--- ps (top 60 by cpu, comm only) ---
+=== shutdown diagnostic @ SIGTERM ===
+--- date ---
+2026-10-24T00:37:56Z
+--- ps (top 60 by cpu, comm only) ---
+    PID    PPID USER     %CPU %MEM STAT COMMAND
+   1423    1422 hermes   33.3  0.0 S    bash
+    157     155 hermes    2.1  3.5 Rsl  hermes
+   1435    1425 hermes    0.0  0.0 S    head
+   1434    1423 hermes    0.0  0.0 S    head
+   1433    1423 hermes    0.0  0.0 S    bash
+   1432    1425 hermes    0.0  0.0 S    bash
+   1431    1423 hermes    0.0  0.0 R    ps
+   1430    1425 hermes    0.0  0.0 R    ps
+   1429    1428 hermes    0.0  0.0 S    bash
+   1428     157 hermes    0.0  0.0 Ss   timeout
+   1425    1424 hermes    0.0  0.0 S    bash
+   1424     157 hermes    0.0  0.0 Ss   timeout
+   1422     157 hermes    0.0  0.0 Ss   timeout
+    155       1 root      0.0  0.0 S    s6-supervise
+     24      18 root      0.0  0.0 Ss   s6-linux-init-s
+     18       1 root      0.0  0.0 S    s6-supervise
+      1       0 root      0.0  0.0 Ss   s6-svscan
+    PID    PPID USER     %CPU %MEM STAT COMMAND
+   1423    1422 hermes   25.0  0.0 S    bash
+    157     155 hermes    2.1  3.5 Dsl  hermes
+   1441    1432 hermes    0.0  0.0 R    sort
+   1440    1429 hermes    0.0  0.0 S    head
+   1439    1429 hermes    0.0  0.0 S    bash
+   1438    1429 hermes    0.0  0.0 R    ps
+   1435    1425 hermes    0.0  0.0 S    head
+   1434    1423 hermes    0.0  0.0 S    head
+   1433    1423 hermes    0.0  0.0 S    bash
+   1432    1425 hermes    0.0  0.0 S    bash
+   1429    1428 hermes    0.0  0.0 S    bash
+   1428     157 hermes    0.0  0.0 Ss   timeout
+   1425    1424 hermes    0.0  0.0 S    bash
+   1424     157 hermes    0.0  0.0 Ss   timeout
+   1422     157 hermes    0.0  0.0 Ss   timeout
+    155       1 root      0.0  0.0 S    s6-supervise
+     24      18 root      0.0  0.0 Ss   s6-linux-init-s
+     18       1 root      0.0  0.0 S    s6-supervise
+      1       0 root      0.0  0.0 Ss   s6-svscan
+     0 root      0.0  0.0 Ss   s6-svscan
+--- pstree of self ---
+--- loadavg ---
+--- loadavg ---
+0.05 0.10 0.33 3/423 1451
+--- recent dmesg (oom/killed) ---
+0.05 0.10 0.33 4/423 1454
+ed) ---
+--- recent dmesg (oom/killed) ---
+=== end ===
+=== shutdown diagnostic @ SIGTERM ===
+--- date ---
+2026-10-24T01:03:11Z
+ic @ SIGTERM ===
+--- ps (top 60 by cpu, comm only) ---
+2026-10-24T01:03:11Z
+--- ps (top 60 by cpu, comm only) ---
+    PID    PPID USER     %CPU %MEM STAT COMMAND
+    829     824 hermes   50.0  0.0 R    ps
+    157     154 hermes    2.3  3.6 Rsl  hermes
+    835     826 hermes    0.0  0.0 S    head
+    834     826 hermes    0.0  0.0 S    bash
+    833     826 hermes    0.0  0.0 R    ps
+    831     824 hermes    0.0  0.0 S    head
+    830     824 hermes    0.0  0.0 S    bash
+    826     825 hermes    0.0  0.0 S    bash
+    825     157 hermes    0.0  0.0 Ss   timeout
+    824     823 hermes    0.0  0.0 S    bash
+    823     157 hermes    0.0  0.0 Ss   timeout
+    154       1 root      0.0  0.0 S    s6-supervise
+     21      18 root      0.0  0.0 Ss   s6-linux-init-s
+     18       1 root      0.0  0.0 S    s6-supervise
+      1       0 root      0.0  0.0 Ss   s6-svscan
+--- pstree of self ---
+--- loadavg ---
+0.35 1.15 1.60 4/420 843
+--- recent dmesg (oom/killed) ---
+=== end ===
+=== shutdown diagnostic @ SIGTERM ===
+--- date ---
+2026-10-24T01:20:01Z
+--- ps (top 60 by cpu, comm only) ---
+=== shutdown diagnostic @ SIGTERM ===
+--- date ---
+2026-10-24T01:20:01Z
+--- ps (top 60 by cpu, comm only) ---
+    PID    PPID USER     %CPU %MEM STAT COMMAND
+    157     155 hermes    2.8  3.4 Dsl  hermes
+    768     759 hermes    0.0  0.0 S    head
+    767     759 hermes    0.0  0.0 S    bash
+    766     759 hermes    0.0  0.0 R    ps
+    763     757 hermes    0.0  0.0 S    head
+    762     757 hermes    0.0  0.0 D    bash
+    759     758 hermes    0.0  0.0 S    bash
+    758     157 hermes    0.0  0.0 Ss   timeout
+    757     756 hermes    0.0  0.0 S    bash
+    756     157 hermes    0.0  0.0 Ss   timeout
+    155       1 root      0.0  0.0 S    s6-supervise
+     21      18 root      0.0  0.0 Ss   s6-linux-init-s
+     18       1 root      0.0  0.0 S    s6-supervise
+      1       0 root      0.0  0.0 Ss   s6-svscan
+       0 root      0.0  0.0 Ss   s6-svscan
+--- pstree of self ---
+--- loadavg ---
+0.67 0.61 1.05 2/438 776
+--- recent dmesg (oom/killed) ---
+=== end ===
+=== shutdown diagnostic @ SIGTERM ===
+--- date ---
+2026-10-24T01:38:05Z
+=== shutdown diagnostic @ SIGTERM ===
+--- date ---
+2026-10-24T01:38:05Z
+--- ps (top 60 by cpu, comm only) ---
+    PID    PPID USER     %CPU %MEM STAT COMMAND
+    157     154 hermes    2.3  3.6 Dsl  hermes
+    742     733 hermes    0.0  0.0 S    head
+    741     733 hermes    0.0  0.0 S    bash
+    740     733 hermes    0.0  0.0 R    ps
+    738     731 hermes    0.0  0.0 S    head
+    737     731 hermes    0.0  0.0 S    bash
+    736     731 hermes    0.0  0.0 R    ps
+    733     732 hermes    0.0  0.0 S    bash
+    732     157 hermes    0.0  0.0 Ss   timeout
+    731     730 hermes    0.0  0.0 S    bash
+    730     157 hermes    0.0  0.0 Ss   timeout
+    154       1 root      0.0  0.0 S    s6-supervise
+     21      18 root      0.0  0.0 Ss   s6-linux-init-s
+     18       1 root      0.0  0.0 S    s6-supervise
+      1       0 root      0.0  0.0 Ss   s6-svscan
+--- pstree of self ---
+--- loadavg ---
+1.91 1.99 1.71 4/441 750
+--- recent dmesg (oom/killed) ---
+=== end ===
+=== shutdown diagnostic @ SIGTERM ===
+--- date ---
+2026-10-24T02:35:15Z
+--- ps (top 60 by cpu, comm only) ---
+=== shutdown diagnostic @ SIGTERM ===
+--- date ---
+2026-10-24T02:35:15Z
+--- ps (top 60 by cpu, comm only) ---
+=== shutdown diagnostic @ SIGTERM ===
+--- date ---
+2026-10-24T02:35:15Z
+--- ps (top 60 by cpu, comm only) ---
+    PID    PPID USER     %CPU %MEM STAT COMMAND
+    159     157 hermes    1.4  3.5 Dsl  hermes
+   1547    1537 hermes    0.0  0.0 S    head
+   1546    1537 hermes    0.0  0.0 S    bash
+   1545    1537 hermes    0.0  0.0 R    ps
+   1544    1543 hermes    0.0  0.0 S    bash
+   1543     159 hermes    0.0  0.0 Ss   timeout
+   1541    1535 hermes    0.0  0.0 S    head
+   1540    1535 hermes    0.0  0.0 S    bash
+   1539    1535 hermes    0.0  0.0 R    ps
+   1537    1536 hermes    0.0  0.0 S    bash
+   1536     159 hermes    0.0  0.0 Ss   timeout
+   1535    1534 hermes    0.0  0.0 S    bash
+   1534     159 hermes    0.0  0.0 Ss   timeout
+    157       1 root      0.0  0.0 S    s6-supervise
+     21      18 root      0.0  0.0 Ss   s6-linux-init-s
+     18       1 root      0.0  0.0 S    s6-supervise
+      1       0 root      0.0  0.0 Ss   s6-svscan
+--- pstree of self ---
+--- loadavg ---
+--- loadavg ---
+    PID    PPID USER     %CPU %MEM STAT COMMAND
+    159     157 hermes    1.4  3.5 Dsl  hermes
+   1558    1537 hermes    0.0  0.0 R    head
+   1557    1535 hermes    0.0  0.0 R    bash
+   1554    1544 hermes    0.0  0.0 S    head
+   1553    1544 hermes    0.0  0.0 S    bash
+   1552    1544 hermes    0.0  0.0 R    ps
+   1544    1543 hermes    0.0  0.0 S    bash
+   1543     159 hermes    0.0  0.0 Ss   timeout
+   1537    1536 hermes    0.0  0.0 S    bash
+   1536     159 hermes    0.0  0.0 Ss   timeout
+   1535    1534 hermes    0.0  0.0 S    bash
+   1534     159 hermes    0.0  0.0 Ss   timeout
+    157       1 root      0.0  0.0 S    s6-supervise
+     21      18 root      0.0  0.0 Ss   s6-linux-init-s
+     18       1 root      0.0  0.0 S    s6-supervise
+      1       0 root      0.0  0.0 Ss   s6-svscan
+--- pstree of self ---
+0.10 0.41 0.82 6/431 1563
+0.10 0.41 0.82 4/430 1563
+ed) ---
+--- loadavg ---
+ (oom/killed) ---
+0.10 0.41 0.82 2/430 1568
+--- recent dmesg (oom/killed) ---
+=== end ===
+=== shutdown diagnostic @ SIGTERM ===
+--- date ---
+2026-10-24T02:48:16Z
+--- ps (top 60 by cpu, comm only) ---
+=== shutdown diagnostic @ SIGTERM ===
+--- date ---
+2026-10-24T02:48:16Z
+--- ps (top 60 by cpu, comm only) ---
+=== shutdown diagnostic @ SIGTERM ===
+--- date ---
+    PID    PPID USER     %CPU %MEM STAT COMMAND
+    157     155 hermes    3.0  3.5 Dsl  hermes
+    628     618 hermes    0.0  0.0 S    head
+    627     618 hermes    0.0  0.0 S    bash
+    626     624 hermes    0.0  0.0 D    bash
+    625     618 hermes    0.0  0.0 R    ps
+    624     157 hermes    0.0  0.0 Ss   timeout
+    622     616 hermes    0.0  0.0 S    head
+    621     616 hermes    0.0  0.0 S    bash
+    620     616 hermes    0.0  0.0 R    ps
+    618     617 hermes    0.0  0.0 S    bash
+    617     157 hermes    0.0  0.0 Ss   timeout
+    616     615 hermes    0.0  0.0 S    bash
+    615     157 hermes    0.0  0.0 Ss   timeout
+    155       1 root      0.0  0.0 S    s6-supervise
+     21      18 root      0.0  0.0 Ss   s6-linux-init-s
+     18       1 root      0.0  0.0 S    s6-supervise
+      1       0 root      0.0  0.0 Ss   s6-svscan
+--- pstree of self ---
+    PID    PPID USER     %CPU %MEM STAT COMMAND
+    157     155 hermes    3.0  3.5 Rsl  hermes
+    628     618 hermes    0.0  0.0 S    head
+    627     618 hermes    0.0  0.0 S    bash
+    626     624 hermes    0.0  0.0 D    bash
+    625     618 hermes    0.0  0.0 R    ps
+    624     157 hermes    0.0  0.0 Ss   timeout
+    622     616 hermes    0.0  0.0 S    head
+    621     616 hermes    0.0  0.0 S    bash
+    618     617 hermes    0.0  0.0 S    bash
+    617     157 hermes    0.0  0.0 Ss   timeout
+    616     615 hermes    0.0  0.0 S    bash
+    615     157 hermes    0.0  0.0 Ss   timeout
+    155       1 root      0.0  0.0 S    s6-supervise
+     21      18 root      0.0  0.0 Ss   s6-linux-init-s
+     18       1 root      0.0  0.0 S    s6-supervise
+      1       0 root      0.0  0.0 Ss   s6-svscan
+--- loadavg ---
+lf ---
+=== shutdown dia1.81 1.91 1.46 4/445 6--- date ---
+--- recent dmesg (oom/killed) ---
+1.81 1.91 1.46 6/448 647
+    PID    PPID USER     %CPU %MEM--- ps (top 60 by cpu, comm only) ---
+  3.0  3.5 Dsl  hermes
+    641     616 hermes    0.0  0.0 D    cat
+    638     626 hermes    0.0  0.0 S    head
+    637     626 hermes    0.0  0.0 S    bash
+    636     626 hermes    0.0  0.0 R    ps
+    635     632 hermes    0.0  0.0 D    bash
+    632     157 hermes    0.0  0.0 Ss   timeout
+    626     624 hermes    0.0  0.0 S    bash
+    624     157 hermes    0.0  0.0 Ss   timeout
+    618     617 hermes    0.0  0.0 D    bash
+    617     157 hermes    0.0  0.0 Ss   timeout
+    616     615 hermes    0.0  0.0 S    bash
+    615     157 hermes    0.0  0.0 Ss   timeout
+    155       1 root      0.0  0.0 S    s6-supervise
+     21      18 root      0.0  0.0 Ss   s6-linux-init-s
+     18       1 root      0.0  0.0 S    s6-supervise
+      1       0 root      0.0  0.0 Ss   s6-svscan
+--- pstree of self ---
+=== end ===
+--- loadavg ---
+1.81 1.91 1.46 2/442 655
+--- recent dmesg (oom/killed) ---
+    PID    PPID USER     %CPU %MEM STAT COMMAND
+    157     155 hermes    3.0  3.5 Ssl  hermes
+    652     635 hermes    0.0  0.0 S    head
+    651     635 hermes    0.0  0.0 S    bash
+    650     635 hermes    0.0  0.0 R    ps
+    635     632 hermes    0.0  0.0 S    bash
+    632     157 hermes    0.0  0.0 Ss   timeout
+    626     624 hermes    0.0  0.0 R    bash
+    624     157 hermes    0.0  0.0 Ss   timeout
+    617     157 hermes    0.0  0.0 Zs   timeout
+    615     157 hermes    0.0  0.0 Zs   timeout
+    155       1 root      0.0  0.0 S    s6-supervise
+     21      18 root      0.0  0.0 Ss   s6-linux-init-s
+     18       1 root      0.0  0.0 S    s6-supervise
+      1       0 root      0.0  0.0 Ss   s6-svscan
+--- pstree of self ---
+=== end ===
+--- loadavg ---
+1.81 1.91 1.46 1/437 661
+--- recent dmesg (oom/killed) ---
+=== end ===
+=== shutdown diagnostic @ SIGTERM ===
+--- date ---
+=== shutdown diagnostic @ SIGTERM ===
+--- ps (top 60 by cpu, comm only) ---
+2026-10-24T18:07:09Z
+--- ps (top 60 by cpu, comm only) ---
+=== shutdown diagnostic @ SIGTERM ===
+--- date ---
+2026-10-24T18:07:09Z
+--- ps (top 60 by cpu, comm only) ---
+    PID    PPID USER     %CPU %MEM STAT COMMAND
+    156     154 hermes    2.5  3.5 Dsl  hermes
+    820     816 hermes    0.0  0.0 D    bash
+    819     810 hermes    0.0  0.0 S    head
+    818     810 hermes    0.0  0.0 S    bash
+    817     810 hermes    0.0  0.0 R    ps
+    816     156 hermes    0.0  0.0 Ss   timeout
+    814     808 hermes    0.0  0.0 S    head
+    813     808 hermes    0.0  0.0 S    bash
+    812     808 hermes    0.0  0.0 R    ps
+    810     809 hermes    0.0  0.0 S    bash
+    809     156 hermes    0.0  0.0 Ss   timeout
+    808     807 hermes    0.0  0.0 S    bash
+    807     156 hermes    0.0  0.0 Ss   timeout
+    154       1 root      0.0  0.0 S    s6-supervise
+     21      18 root      0.0  0.0 Ss   s6-linux-init-s
+     18       1 root      0.0  0.0 S    s6-supervise
+      1       0 root      0.0  0.0 Ss   s6-svscan
+--- pstree of self ---
+    PID    PPID USER     %CPU %MEM STAT COMMAND
+    156     154 hermes    2.5  3.5 Ssl  hermes
+    825     820 hermes    0.0  0.0 S    head
+    824     820 hermes    0.0  0.0 S    bash
+    823     820 hermes    0.0  0.0 R    ps
+    820     816 hermes    0.0  0.0 S    bash
+    819     810 hermes    0.0  0.0 D    head
+    816     156 hermes    0.0  0.0 Ss   timeout
+    814     808 hermes    0.0  0.0 D    head
+    810     809 hermes    0.0  0.0 S    bash
+    809     156 hermes    0.0  0.0 Ss   timeout
+    808     807 hermes    0.0  0.0 S    bash
+    807     156 hermes    0.0  0.0 Ss   timeout
+    154       1 root      0.0  0.0 S    s6-supervise
+     21      18 root      0.0  0.0 Ss   s6-linux-init-s
+     18       1 root      0.0  0.0 S    s6-supervise
+      1       0 root      0.0  0.0 Ss   s6-svscan
+--- pstree of self ---
+--- loadavg ---
+0.27 0.62 0.80 3/412 836
+0.27 0.62 0.80 3/410 836
+led) ---
+--- recent dmesg (oom/killed) ---
+0.27 0.62 0.80 4/414 841
+--- recent dmesg (oom/killed) ---
+=== end ===
+=== end ===

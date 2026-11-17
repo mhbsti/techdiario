@@ -1,0 +1,22 @@
+{
+  "generated_at": "2026-10-24T14:58:59.488930",
+  "request": {
+    "image_url": "https://cdn.mos.cms.futurecdn.net/bBGEYE8htq38xZgt4xCdTQ-1920-80.jpg",
+    "headline_text": "LEAKED VIDEO EXPOSES HOW !",
+    "badge_text": "HARDWARE 2026",
+    "theme_style": "nvidia_rtx",
+    "output_subfolder": "2026-10-24_leaked-video-exposes-how-industrial-scale-chi",
+    "output_filename": "capa_youtube_1280x720.png",
+    "overlay_avatar": true,
+    "logo_position": "auto"
+  },
+  "response": {
+    "status": "success",
+    "method": "web_harvester_composite",
+    "elapsed_seconds": 3.1,
+    "theme_style": "nvidia_rtx",
+    "output_path": "/opt/output/2026-10-24_leaked-video-exposes-how-industrial-scale-chi/capa_youtube_1280x720.png",
+    "headline_rendered": "LEAKED VIDEO EXPOSES HOW !",
+    "badge_rendered": "HARDWARE 2026"
+  }
+}

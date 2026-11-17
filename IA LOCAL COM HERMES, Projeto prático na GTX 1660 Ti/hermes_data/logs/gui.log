@@ -1,0 +1,83 @@
+2026-10-18 21:33:56,210 INFO hermes_cli.web_server: Mounted plugin API routes: /api/plugins/hermes-achievements/
+2026-10-18 21:33:56,406 INFO hermes_cli.web_server: Mounted plugin API routes: /api/plugins/kanban/
+2026-10-18 21:33:56,487 INFO hermes_cli.web_server: Dashboard binding to 0.0.0.0 with auth gate enabled. Providers: basic
+2026-10-18 21:40:03,017 INFO tui_gateway.ws: ws accepted peer=172.19.0.1:46608
+2026-10-18 21:40:03,805 INFO hermes_cli.web_server: pty accepted peer=172.19.0.1 mode=gated cred=ticket
+2026-10-18 21:41:57,181 INFO hermes_cli.web_server: plugins/hub rebuilt in 1.893s (plugins=56 memory_options=2)
+2026-10-18 21:56:58,544 INFO tui_gateway.ws: ws closed peer=172.19.0.1:46608 reason=client_disconnect(code=1001,reason=) messages=33 parse_errors=0 dispatch_crashes=0 send_failures=0 reaped_sessions=1 detached_sessions=0
+2026-10-18 22:28:18,871 INFO hermes_cli.web_server: Mounted plugin API routes: /api/plugins/hermes-achievements/
+2026-10-18 22:28:19,063 INFO hermes_cli.web_server: Mounted plugin API routes: /api/plugins/kanban/
+2026-10-18 22:28:19,132 INFO hermes_cli.web_server: Dashboard binding to 0.0.0.0 with auth gate enabled. Providers: basic
+2026-10-23 13:42:16,343 INFO hermes_cli.web_server: Mounted plugin API routes: /api/plugins/hermes-achievements/
+2026-10-23 13:42:16,608 INFO hermes_cli.web_server: Mounted plugin API routes: /api/plugins/kanban/
+2026-10-23 13:42:16,732 INFO hermes_cli.web_server: Dashboard binding to 0.0.0.0 with auth gate enabled. Providers: basic
+2026-10-23 13:46:24,072 INFO hermes_cli.web_server: Mounted plugin API routes: /api/plugins/hermes-achievements/
+2026-10-23 13:46:24,223 INFO hermes_cli.web_server: Mounted plugin API routes: /api/plugins/kanban/
+2026-10-23 13:46:24,297 INFO hermes_cli.web_server: Dashboard binding to 0.0.0.0 with auth gate enabled. Providers: basic
+2026-10-23 13:50:39,986 INFO hermes_cli.web_server: Mounted plugin API routes: /api/plugins/hermes-achievements/
+2026-10-23 13:50:40,150 INFO hermes_cli.web_server: Mounted plugin API routes: /api/plugins/kanban/
+2026-10-23 13:50:40,222 INFO hermes_cli.web_server: Dashboard binding to 0.0.0.0 with auth gate enabled. Providers: basic
+2026-10-23 14:35:28,359 INFO hermes_cli.web_server: Mounted plugin API routes: /api/plugins/hermes-achievements/
+2026-10-23 14:35:28,529 INFO hermes_cli.web_server: Mounted plugin API routes: /api/plugins/kanban/
+2026-10-23 14:35:28,612 INFO hermes_cli.web_server: Dashboard binding to 0.0.0.0 with auth gate enabled. Providers: basic
+2026-10-23 15:14:10,404 INFO hermes_cli.web_server: Mounted plugin API routes: /api/plugins/hermes-achievements/
+2026-10-23 15:14:10,862 INFO hermes_cli.web_server: Mounted plugin API routes: /api/plugins/kanban/
+2026-10-23 15:14:11,037 INFO hermes_cli.web_server: Dashboard binding to 0.0.0.0 with auth gate enabled. Providers: basic
+2026-10-23 15:35:30,859 INFO hermes_cli.web_server: Mounted plugin API routes: /api/plugins/hermes-achievements/
+2026-10-23 15:35:31,059 INFO hermes_cli.web_server: Mounted plugin API routes: /api/plugins/kanban/
+2026-10-23 15:35:31,143 INFO hermes_cli.web_server: Dashboard binding to 0.0.0.0 with auth gate enabled. Providers: basic
+2026-10-23 15:49:02,115 INFO hermes_cli.web_server: Mounted plugin API routes: /api/plugins/hermes-achievements/
+2026-10-23 15:49:02,260 INFO hermes_cli.web_server: Mounted plugin API routes: /api/plugins/kanban/
+2026-10-23 15:49:02,325 INFO hermes_cli.web_server: Dashboard binding to 0.0.0.0 with auth gate enabled. Providers: basic
+2026-10-23 16:23:49,448 INFO hermes_cli.web_server: Mounted plugin API routes: /api/plugins/hermes-achievements/
+2026-10-23 16:23:49,640 INFO hermes_cli.web_server: Mounted plugin API routes: /api/plugins/kanban/
+2026-10-23 16:23:49,725 INFO hermes_cli.web_server: Dashboard binding to 0.0.0.0 with auth gate enabled. Providers: basic
+2026-10-23 16:27:06,285 INFO tui_gateway.ws: ws accepted peer=172.18.0.1:57044
+2026-10-23 16:27:06,508 INFO hermes_cli.web_server: pty accepted peer=172.18.0.1 mode=gated cred=ticket
+2026-10-23 16:29:27,646 INFO tui_gateway.ws: ws closed peer=172.18.0.1:57044 reason=client_disconnect(code=1005,reason=) messages=11 parse_errors=0 dispatch_crashes=0 send_failures=0 reaped_sessions=1 detached_sessions=0
+2026-10-23 16:30:59,017 INFO hermes_cli.web_server: pty accepted peer=172.18.0.1 mode=gated cred=ticket
+2026-10-23 16:59:00,985 WARNING hermes_cli.web_server: event loop stalled 7.5s (GIL pressure suspected)
+2026-10-23 17:49:29,129 INFO hermes_cli.web_server: Mounted plugin API routes: /api/plugins/hermes-achievements/
+2026-10-23 17:49:29,379 INFO hermes_cli.web_server: Mounted plugin API routes: /api/plugins/kanban/
+2026-10-23 17:49:29,458 INFO hermes_cli.web_server: Dashboard binding to 0.0.0.0 with auth gate enabled. Providers: basic
+2026-10-23 19:24:51,951 WARNING hermes_cli.web_server: event loop stalled 6.8s (GIL pressure suspected)
+2026-10-23 19:35:05,355 INFO hermes_cli.web_server: Mounted plugin API routes: /api/plugins/hermes-achievements/
+2026-10-23 19:35:05,503 INFO hermes_cli.web_server: Mounted plugin API routes: /api/plugins/kanban/
+2026-10-23 19:35:05,576 INFO hermes_cli.web_server: Dashboard binding to 0.0.0.0 with auth gate enabled. Providers: basic
+2026-10-23 19:37:28,911 INFO hermes_cli.web_server: Mounted plugin API routes: /api/plugins/hermes-achievements/
+2026-10-23 19:37:29,054 INFO hermes_cli.web_server: Mounted plugin API routes: /api/plugins/kanban/
+2026-10-23 19:37:29,131 INFO hermes_cli.web_server: Dashboard binding to 0.0.0.0 with auth gate enabled. Providers: basic
+2026-10-23 20:04:11,299 INFO hermes_cli.web_server: Mounted plugin API routes: /api/plugins/hermes-achievements/
+2026-10-23 20:04:11,462 INFO hermes_cli.web_server: Mounted plugin API routes: /api/plugins/kanban/
+2026-10-23 20:04:11,529 INFO hermes_cli.web_server: Dashboard binding to 0.0.0.0 with auth gate enabled. Providers: basic
+2026-10-23 20:16:16,691 INFO hermes_cli.web_server: Mounted plugin API routes: /api/plugins/hermes-achievements/
+2026-10-23 20:16:16,917 INFO hermes_cli.web_server: Mounted plugin API routes: /api/plugins/kanban/
+2026-10-23 20:16:16,998 INFO hermes_cli.web_server: Dashboard binding to 0.0.0.0 with auth gate enabled. Providers: basic
+2026-10-23 20:31:26,057 WARNING hermes_cli.web_server: event loop stalled 5.9s (GIL pressure suspected)
+2026-10-23 20:47:39,851 INFO hermes_cli.web_server: Mounted plugin API routes: /api/plugins/hermes-achievements/
+2026-10-23 20:47:40,233 INFO hermes_cli.web_server: Mounted plugin API routes: /api/plugins/kanban/
+2026-10-23 20:47:40,333 INFO hermes_cli.web_server: Dashboard binding to 0.0.0.0 with auth gate enabled. Providers: basic
+2026-10-23 21:40:58,367 INFO hermes_cli.web_server: Mounted plugin API routes: /api/plugins/hermes-achievements/
+2026-10-23 21:40:58,529 INFO hermes_cli.web_server: Mounted plugin API routes: /api/plugins/kanban/
+2026-10-23 21:40:58,598 INFO hermes_cli.web_server: Dashboard binding to 0.0.0.0 with auth gate enabled. Providers: basic
+2026-10-23 22:03:27,846 INFO hermes_cli.web_server: Mounted plugin API routes: /api/plugins/hermes-achievements/
+2026-10-23 22:03:28,043 INFO hermes_cli.web_server: Mounted plugin API routes: /api/plugins/kanban/
+2026-10-23 22:03:28,126 INFO hermes_cli.web_server: Dashboard binding to 0.0.0.0 with auth gate enabled. Providers: basic
+2026-10-23 22:20:30,052 INFO hermes_cli.web_server: Mounted plugin API routes: /api/plugins/hermes-achievements/
+2026-10-23 22:20:30,201 INFO hermes_cli.web_server: Mounted plugin API routes: /api/plugins/kanban/
+2026-10-23 22:20:30,263 INFO hermes_cli.web_server: Dashboard binding to 0.0.0.0 with auth gate enabled. Providers: basic
+2026-10-23 22:38:57,653 INFO hermes_cli.web_server: Mounted plugin API routes: /api/plugins/hermes-achievements/
+2026-10-23 22:38:57,831 INFO hermes_cli.web_server: Mounted plugin API routes: /api/plugins/kanban/
+2026-10-23 22:38:57,894 INFO hermes_cli.web_server: Dashboard binding to 0.0.0.0 with auth gate enabled. Providers: basic
+2026-10-23 22:39:18,378 INFO hermes_cli.web_server: Mounted plugin API routes: /api/plugins/hermes-achievements/
+2026-10-23 22:39:18,519 INFO hermes_cli.web_server: Mounted plugin API routes: /api/plugins/kanban/
+2026-10-23 22:39:18,601 INFO hermes_cli.web_server: Dashboard binding to 0.0.0.0 with auth gate enabled. Providers: basic
+2026-10-23 23:36:01,846 INFO hermes_cli.web_server: Mounted plugin API routes: /api/plugins/hermes-achievements/
+2026-10-23 23:36:02,011 INFO hermes_cli.web_server: Mounted plugin API routes: /api/plugins/kanban/
+2026-10-23 23:36:02,077 INFO hermes_cli.web_server: Dashboard binding to 0.0.0.0 with auth gate enabled. Providers: basic
+2026-10-23 23:48:41,909 INFO hermes_cli.web_server: Mounted plugin API routes: /api/plugins/hermes-achievements/
+2026-10-23 23:48:42,067 INFO hermes_cli.web_server: Mounted plugin API routes: /api/plugins/kanban/
+2026-10-23 23:48:42,135 INFO hermes_cli.web_server: Dashboard binding to 0.0.0.0 with auth gate enabled. Providers: basic
+2026-10-24 14:45:29,419 INFO hermes_cli.web_server: Mounted plugin API routes: /api/plugins/hermes-achievements/
+2026-10-24 14:45:29,611 INFO hermes_cli.web_server: Mounted plugin API routes: /api/plugins/kanban/
+2026-10-24 14:45:29,685 INFO hermes_cli.web_server: Dashboard binding to 0.0.0.0 with auth gate enabled. Providers: basic

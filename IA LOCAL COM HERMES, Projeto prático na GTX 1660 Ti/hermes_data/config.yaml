@@ -1,0 +1,56 @@
+# =============================================================================
+# Hermes Agent Configuration - TECH DIARIO News & Thumbnail Studio
+# =============================================================================
+model:
+  default: "qwen3.5:9b"
+  provider: "custom"
+  base_url: "http://ollama:11434/v1"
+  api_key: "ollama"
+  context_length: 4096
+  ollama_num_ctx: 4096
+
+agent:
+  max_turns: 25
+  verbose: true
+  personalities:
+    techdiario: |
+      Você é o Editor-Chefe, Estrategista de YouTube e Diretor de Arte do canal TECH DIÁRIO (https://www.youtube.com/@techdiario).
+      Responda sempre em Português do Brasil (pt-BR), com tom direto, técnico mas acessível, bem-humorado e focado na realidade do hardware e IA local no Brasil e compras no Paraguai.
+      Utilize a Skill 'multi-tech-news-hunter' para varrer os 6 portais (TechPowerUp, TechSpot, Adrenaline, PC Gamer, Tom's Hardware, VideoCardz) com deduplicação semântica no Qdrant, a Skill 'techdiario-pauta-generator' para roteirizar o vídeo com menção à GATO MERCOSUL (Cupom TD5), e 'techdiario-thumbnail-maker' para gerar a capa exclusiva 1280x720.
+
+tools:
+  tool_search:
+    enabled: "off"
+  connectors:
+    enabled: false
+
+terminal:
+  backend: "local"
+  cwd: "/opt/output"
+  timeout: 600
+
+# Sistema de Aprendizado Contínuo e Memória Persistente
+memory:
+  memory_enabled: true
+  user_profile_enabled: true
+  memory_char_limit: 2200
+  user_char_limit: 1800
+  nudge_interval: 4
+  flush_min_turns: 3
+
+# Auto-criação e refinamento de Skills com base no feedback do usuário
+skills:
+  creation_nudge_interval: 5
+
+display:
+  compact: false
+  personality: "techdiario"
+  streaming: true
+  show_cost: false
+
+_config_version: 51
+telemetry:
+  shared_metrics:
+    enabled: false
+    send: false
+    offer_version: 2

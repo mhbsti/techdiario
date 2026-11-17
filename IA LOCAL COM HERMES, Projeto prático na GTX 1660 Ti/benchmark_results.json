@@ -1,0 +1,111 @@
+{
+  "timestamp": "2026-10-24T15:00:29.596932",
+  "hardware": {
+    "cpu": {
+      "name": "Intel(R) Core(TM) i7-4790 CPU @ 3.60GHz",
+      "cores": 4,
+      "threads": 8,
+      "base_clock_ghz": 3.6,
+      "ram_total_gb": 16.0,
+      "arch": "AMD64",
+      "platform": "Windows-10-10.0.19045-SP0"
+    },
+    "gpu": {
+      "name": "NVIDIA GeForce GTX 1660 Ti",
+      "driver_version": "621.01",
+      "memory_total_mb": 6144.0,
+      "memory_free_mb": 1508.0,
+      "memory_used_mb": 4459.0,
+      "temperature_c": 62.2,
+      "power_draw_w": 68.8,
+      "utilization_gpu_pct": 100.0,
+      "utilization_memory_pct": 8.0
+    }
+  },
+  "embeddings": {
+    "model": "nomic-embed-text",
+    "iterations": 5,
+    "avg_latency_ms": 926.98,
+    "min_latency_ms": 82.67,
+    "max_latency_ms": 4198.27,
+    "throughput_embeddings_per_sec": 1.1
+  },
+  "llm_classifier_1_5b": [
+    {
+      "run": 1,
+      "model": "qwen2.5:1.5b",
+      "wall_time_s": 86.65,
+      "load_duration_s": 85.179,
+      "prompt_eval_count": 133,
+      "prompt_eval_rate_tok_s": 343.61,
+      "eval_count": 122,
+      "eval_rate_tok_s": 113.53,
+      "vram_used_mb": 1523.0,
+      "gpu_temp_c": 60.2,
+      "gpu_power_w": 105.74
+    }
+  ],
+  "llm_writer_9b": [
+    {
+      "run": 1,
+      "model": "qwen3.5:9b",
+      "wall_time_s": 51.93,
+      "load_duration_s": 43.622,
+      "prompt_eval_count": 118,
+      "prompt_eval_rate_tok_s": 114.89,
+      "eval_count": 220,
+      "eval_rate_tok_s": 30.26,
+      "vram_used_mb": 4380.0,
+      "gpu_temp_c": 57.4,
+      "gpu_power_w": 92.12
+    }
+  ],
+  "vram_gate": {
+    "model_unloaded": "qwen3.5:9b",
+    "unload_time_s": 0.451,
+    "vram_free_after_mb": 5587.0,
+    "vram_used_after_mb": 380.0
+  },
+  "thumbnail_engine": {
+    "results": [
+      {
+        "theme": "nvidia_rtx",
+        "elapsed_s": 2.274,
+        "method": "web_harvester_composite",
+        "status": "success"
+      },
+      {
+        "theme": "amd_radeon",
+        "elapsed_s": 2.021,
+        "method": "web_harvester_composite",
+        "status": "success"
+      },
+      {
+        "theme": "intel_core",
+        "elapsed_s": 1.891,
+        "method": "web_harvester_composite",
+        "status": "success"
+      },
+      {
+        "theme": "versus",
+        "elapsed_s": 1.787,
+        "method": "web_harvester_composite",
+        "status": "success"
+      },
+      {
+        "theme": "alert",
+        "elapsed_s": 1.809,
+        "method": "web_harvester_composite",
+        "status": "success"
+      },
+      {
+        "theme": "oferta_dollar",
+        "elapsed_s": 2.856,
+        "method": "web_harvester_composite",
+        "status": "success"
+      }
+    ],
+    "average_time_s": 2.11,
+    "speedup_vs_legacy_cpu": 154.0
+  }
+}
